@@ -6,7 +6,7 @@
 # Dependencies
 /node_modules
 
-/assets/bower_components
+#/assets/bower_components
 #/assets/plugins
 
 #/src/assets/bower_components
