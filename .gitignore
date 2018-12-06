@@ -7,9 +7,7 @@
 /node_modules
 
 /assets/bower_components
-/assets/plugins
+#/assets/plugins
 
 /src/assets/bower_components
-/src/assets/plugins
-
-
+#/src/assets/plugins
