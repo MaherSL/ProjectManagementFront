@@ -1,3 +1,11 @@
-assets/*
-node_modules/*
-src/assets/*
+#compiled output
+/dist
+/tmp
+/out-tsc
+
+# Dependencies
+/node_modules
+
+/src/assets
+/assets/bower_components
+assets/plugins
