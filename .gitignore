@@ -9,5 +9,5 @@
 /assets/bower_components
 #/assets/plugins
 
-/src/assets/bower_components
+#/src/assets/bower_components
 #/src/assets/plugins
