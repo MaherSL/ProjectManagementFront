@@ -1,5 +1,6 @@
+import { ComponentconnService } from './../../services/componentconn.service';
 import { AuthService } from './../../services/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, HostBinding } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -10,10 +11,16 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class LoginComponent implements OnInit {
   private login: string;
   private password: string;
-  constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private componentconnService: ComponentconnService,private authService: AuthService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.componentconnService.setVisible(false);
   }
+
+  /*@HostListener('click')
+  click() {
+    this.componentconnService.toggle();
+  }*/
 
   onConnecter() {
     //this.document.location.href = 'https://stackoverflow.com';
@@ -28,6 +35,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate([this.authService.redirectUrl]);
         this.authService.redirectUrl = "";
       }
+      this.componentconnService.setVisible(true);
     }
     else {
       this.authService.setLogout();

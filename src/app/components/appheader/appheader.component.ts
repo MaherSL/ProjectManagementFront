@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, HostBinding } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { ComponentconnService } from 'src/app/services/componentconn.service';
 
 @Component({
   selector: 'app-appheader',
@@ -8,10 +9,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./appheader.component.css']
 })
 export class AppheaderComponent implements OnInit {
-
-  constructor(private authService: AuthService, private router: Router) { }
+  @HostBinding('class.hide')
+  private isHide: boolean = true;
+  constructor(private componentconnService: ComponentconnService, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
+    this.componentconnService.change.subscribe(isOpen => {
+      this.isHide = !isOpen;
+    });
   }
 
   onSignOut() {
@@ -19,5 +24,6 @@ export class AppheaderComponent implements OnInit {
     this.router.navigate(['/login']);
     console.log("non connecté");
   }
+
 
 }
