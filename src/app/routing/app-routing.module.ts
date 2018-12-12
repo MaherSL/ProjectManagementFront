@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {IndexComponent} from './../components/index/index.component';
 import { Login2Component } from '../components/login2/login2.component';
 import { AuthGuard } from '../services/auth.guard';
+import { RolelistComponent } from '../components/rolelist/rolelist.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,11 @@ const routes: Routes = [
   {
     path: 'space',
     component:SpaceComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'rolelist',
+    component:RolelistComponent,
     canActivate: [AuthGuard]
   },
   {

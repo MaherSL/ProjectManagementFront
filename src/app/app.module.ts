@@ -13,6 +13,9 @@ import { AppRoutingModule } from './routing/app-routing.module';
 import { LoginComponent } from './components/login/login.component';
 import { Login2Component } from './components/login2/login2.component';
 import { AuthGuard } from './services/auth.guard';
+import { RolelistComponent } from './components/rolelist/rolelist.component';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -24,12 +27,14 @@ import { AuthGuard } from './services/auth.guard';
     SpaceComponent,
     IndexComponent,
     LoginComponent,
-    Login2Component
+    Login2Component,
+    RolelistComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
