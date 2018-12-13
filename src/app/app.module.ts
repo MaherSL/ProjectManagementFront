@@ -15,6 +15,9 @@ import { Login2Component } from './components/login2/login2.component';
 import { AuthGuard } from './services/auth.guard';
 import { RolelistComponent } from './components/rolelist/rolelist.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { RolelistmodifComponent } from './components/rolelistmodif/rolelistmodif.component';
+
+
 
 
 @NgModule({
@@ -28,7 +31,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     IndexComponent,
     LoginComponent,
     Login2Component,
-    RolelistComponent
+    RolelistComponent,
+    RolelistmodifComponent
   ],
   imports: [
     BrowserModule,

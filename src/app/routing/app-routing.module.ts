@@ -7,6 +7,7 @@ import {IndexComponent} from './../components/index/index.component';
 import { Login2Component } from '../components/login2/login2.component';
 import { AuthGuard } from '../services/auth.guard';
 import { RolelistComponent } from '../components/rolelist/rolelist.component';
+import { RolelistmodifComponent } from '../components/rolelistmodif/rolelistmodif.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,11 @@ const routes: Routes = [
   {
     path: 'rolelist',
     component:RolelistComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'rolelistmodif',
+    component:RolelistmodifComponent,
     canActivate: [AuthGuard]
   },
   {
