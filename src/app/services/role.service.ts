@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Role } from '../entity/Role';
+import { environment } from '../../environments/environment';
 
 
 
@@ -8,11 +9,10 @@ import { Role } from '../entity/Role';
   providedIn: 'root'
 })
 export class RoleService {
-    private url:string="http://localhost:8181/role"
   constructor(private http: HttpClient) { }
 
   getAll() {
-      return this.http.get<Role[]>(this.url+"/roleList");
+      return this.http.get<Role[]>(environment.apiUrl+"/role/roleList");
   }
 
   /*getById(id: number) {
