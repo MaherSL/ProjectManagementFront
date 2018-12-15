@@ -48,11 +48,12 @@
           </thead>
           <tbody>
               <tr *ngFor = "let role of rolelist">
-                  <td>{{role.idrole}}</td>                                        
+                  <td>{{role.idrole}}</td>
                   <td>{{role.namerole}}</td>
                   <td>{{role.descrole}}</td>
-                  <td><a href="http://localhost:4200/rolelistmodif" target="_blank">Modify</a></td>
-                </tr> 
+                  <td><a routerLink="/rolelistmodif">Modify</a></td>
+                  <!--<td><a href="http://localhost:4200/rolelistmodif" target="_blank">Modify</a></td>-->
+                </tr>
           </tbody>
         </table>
       </div>
