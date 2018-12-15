@@ -9,6 +9,7 @@ import { AuthGuard } from '../services/auth.guard';
 import { RolelistComponent } from '../components/rolelist/rolelist.component';
 import { RolelistmodifComponent } from '../components/rolelistmodif/rolelistmodif.component';
 import { OldindexComponent } from '../components/oldindex/oldindex.component';
+import { FormiComponent } from '../components/formi/formi.component';
 
 const routes: Routes = [
   {
@@ -44,11 +45,15 @@ const routes: Routes = [
   {
     path: 'login',
     component:LoginComponent
-  }
-  ,
+  },
   {
     path: 'login2',
     component:Login2Component,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'formi',
+    component:FormiComponent,
     canActivate: [AuthGuard]
   }
 ];

@@ -19,6 +19,7 @@ import { RolelistmodifComponent } from './components/rolelistmodif/rolelistmodif
 import { OldappmenuComponent } from './components/oldappmenu/oldappmenu.component';
 import { OldindexComponent } from './components/oldindex/oldindex.component';
 import { OldappheaderComponent } from './components/oldappheader/oldappheader.component';
+import { FormiComponent } from './components/formi/formi.component';
 
 @NgModule({
   declarations: [
@@ -35,13 +36,15 @@ import { OldappheaderComponent } from './components/oldappheader/oldappheader.co
     RolelistmodifComponent,
     OldappmenuComponent,
     OldindexComponent,
-    OldappheaderComponent
+    OldappheaderComponent,
+    FormiComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

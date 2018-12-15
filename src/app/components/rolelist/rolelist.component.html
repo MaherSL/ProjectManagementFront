@@ -1,7 +1,7 @@
 <div class="content-header">
   <h1>
-    Detail des projets
-    <small>arrêté au 07.10.2018</small>
+    Details of Roles
+    <!--<small>arrêté au 07.10.2018</small>-->
   </h1>
   <ol class="breadcrumb">
     <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
@@ -13,7 +13,7 @@
 <div class="content">
   <div class="box box-primary">
     <div class="box-header with-border">
-      <h3 class="box-title">Liste des projets en cours</h3>
+      <!--<h3 class="box-title">Liste des projets en cours</h3>-->
       <div class="box-tools pull-right">
         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
         </button>
@@ -21,13 +21,13 @@
             <button type="button" class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-wrench"></i></button>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Ajouter</a></li>
-              <li><a href="#">Imprimer</a></li>
-              <li><a href="#">explorer</a></li>
+              <li><a routerLink="/formi">Add</a></li>
+              <li><a routerLink="/formi">Edit</a></li>
+              <li><a routerLink="/formi">Delete</a></li>
               <li class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-              <li><a href="#">Importer</a></li>
-              <li><a href="#">Editer</a></li>
+              <li><a href="#">AnotherAction1</a></li>
+              <li><a href="#">AnotherAction2</a></li>
+              <li><a href="#">AnotherAction3</a></li>
             </ul>
           </div>
 
@@ -51,13 +51,41 @@
                   <td>{{role.idrole}}</td>
                   <td>{{role.namerole}}</td>
                   <td>{{role.descrole}}</td>
-                  <td> <a routerLink="/rolelistmodif">Modify</a></td>
+                  <!--<td> <a routerLink="/formi">Modify</a></td>-->
                 </tr> 
           </tbody>
         </table>
       </div>
       <!-- /.table-responsive -->
     </div>
+
+
+    <!--<div class="uk-panel">
+
+      <h3 class="uk-panel-title">Formulaire Livre</h3>
+    
+        <form class="uk-form" name="bookForm">
+          <input ng-model="book.title" name="title" placeholder="titre du film">
+          <input ng-model="book.description" placeholder="description du film">
+          <select ng-model="book.level"
+                  ng-options="level for level in levels">
+          </select>
+    
+          <p ng-model="book">{{book._id}}</p>
+    
+          <hr>
+          <a href="# " ng-click="newBook()">Nouveau</a> |
+          <a href="# " ng-click="saveBook(book)">Valider (ajout ou modification)</a> |
+          <a href="# " ng-click="deleteBook(book._id)">Supprimer</a> |
+          <hr>
+    
+        </form>
+    
+    </div>-->
+
+
+
+    
     <!-- /.box-body -->
     <!--<div class="box-footer clearfix">
       <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
