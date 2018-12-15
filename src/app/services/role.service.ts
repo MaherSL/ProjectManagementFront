@@ -12,22 +12,22 @@ export class RoleService {
   constructor(private http: HttpClient) { }
 
   getAll() {
-      return this.http.get<Role[]>(environment.apiUrl+"/role/roleList");
+      return this.http.get<Role[]>(environment.apiUrl+"/role/rolelist");
   }
 
-  /*getById(id: number) {
-      return this.http.get(`${config.apiUrl}/Roles/` + id);
+  getById(id: number) {
+      return this.http.get(environment.apiUrl+"/role/" + id);
   }
 
-  register(Role: Role) {
-      return this.http.post(`${config.apiUrl}/Roles/register`, Role);
+  save(Role: Role) {
+      return this.http.post(environment.apiUrl+"/role/save", Role);
   }
 
   update(Role: Role) {
-      return this.http.put(`${config.apiUrl}/Roles/` + Role.idrole, Role);
+      return this.http.put(environment.apiUrl+"/role/" + Role.idrole, Role);
   }
 
   delete(id: number) {
-      return this.http.delete(`${config.apiUrl}/Roles/` + id);
-  }*/
+      return this.http.delete(environment.apiUrl+"/role/"+id);
+  }
 }

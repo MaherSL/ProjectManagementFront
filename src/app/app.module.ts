@@ -16,6 +16,8 @@ import { AuthGuard } from './services/auth.guard';
 import { RolelistComponent } from './components/rolelist/rolelist.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { RolelistmodifComponent } from './components/rolelistmodif/rolelistmodif.component';
+import { OldindexComponent } from './components/oldindex/oldindex.component';
+import { OldappheaderComponent } from './components/oldappheader/oldappheader.component';
 
 
 
@@ -32,7 +34,9 @@ import { RolelistmodifComponent } from './components/rolelistmodif/rolelistmodif
     LoginComponent,
     Login2Component,
     RolelistComponent,
-    RolelistmodifComponent
+    RolelistmodifComponent,
+    OldindexComponent,
+    OldappheaderComponent
   ],
   imports: [
     BrowserModule,

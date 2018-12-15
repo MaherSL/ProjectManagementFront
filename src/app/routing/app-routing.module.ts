@@ -8,6 +8,7 @@ import { Login2Component } from '../components/login2/login2.component';
 import { AuthGuard } from '../services/auth.guard';
 import { RolelistComponent } from '../components/rolelist/rolelist.component';
 import { RolelistmodifComponent } from '../components/rolelistmodif/rolelistmodif.component';
+import { OldindexComponent } from '../components/oldindex/oldindex.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,11 @@ const routes: Routes = [
   {
     path: 'index',
     component: IndexComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'oldindex',
+    component: OldindexComponent,
     canActivate: [AuthGuard]
   },
   {
