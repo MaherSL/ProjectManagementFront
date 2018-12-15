@@ -17,9 +17,8 @@ import { RolelistComponent } from './components/rolelist/rolelist.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { RolelistmodifComponent } from './components/rolelistmodif/rolelistmodif.component';
 import { OldappmenuComponent } from './components/oldappmenu/oldappmenu.component';
-
-
-
+import { OldindexComponent } from './components/oldindex/oldindex.component';
+import { OldappheaderComponent } from './components/oldappheader/oldappheader.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +33,9 @@ import { OldappmenuComponent } from './components/oldappmenu/oldappmenu.componen
     Login2Component,
     RolelistComponent,
     RolelistmodifComponent,
-    OldappmenuComponent
+    OldappmenuComponent,
+    OldindexComponent,
+    OldappheaderComponent
   ],
   imports: [
     BrowserModule,
