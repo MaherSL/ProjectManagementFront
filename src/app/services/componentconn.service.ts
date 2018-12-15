@@ -8,10 +8,10 @@ export class ComponentconnService {
 
   @Output() change: EventEmitter<boolean> = new EventEmitter();
 
-  toggle() {
+  /*toggle() {
     this.isOpen = !this.isOpen;
     this.change.emit(this.isOpen);
-  }
+  }*/
 
   setVisible(open:boolean){
     this.isOpen = open;

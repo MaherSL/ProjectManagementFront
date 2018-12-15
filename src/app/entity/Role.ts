@@ -3,5 +3,4 @@ export class Role {
     namerole: string;
     enabledrole: number;
     descrole: string;
-   
 }
