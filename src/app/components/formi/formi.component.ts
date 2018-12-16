@@ -23,17 +23,24 @@ export class FormiComponent implements OnInit {
         error=> {this.error=error;}
       );
         this.registerForm = this.formBuilder.group({
-            identifiant: ['', [Validators.required, Validators.minLength(6)]],
+            identifiant: ['', [Validators.required]],
             nameRole: ['', [Validators.required, Validators.minLength(6)]],
-            descRole: ['', [Validators.required]
+            descRole: ['', [Validators.required]]
            // lastName: ['', Validators.required],
             //email: ['', [Validators.required, Validators.email]],
-            //password: ['', [Validators.required, Validators.minLength(6)]]
+           //password: ['', [Validators.required, Validators.minLength(6)]]
       });
     }
 
+    public save(isValid: boolean, r: Role) {
+        console.log(r);
+    }
+    indexTracker(index: number, value: any) {
+        return index;
+      }
+
     // convenience getter for easy access to form fields
-    get f() { return this.registerForm.controls; }
+    get r() { return this.registerForm.controls; }
 
     onSubmit() {
         this.submitted = true;
