@@ -8,8 +8,13 @@ import {IndexComponent} from './../components/index/index.component';
 import { AuthGuard } from '../services/auth.guard';
 import { RolelistComponent } from '../components/rolelist/rolelist.component';
 import { RolelistmodifComponent } from '../components/rolelistmodif/rolelistmodif.component';
+<<<<<<< HEAD
 import { ViewlistComponent } from '../components/viewlist/viewlist.component';
 import { ViewComponent } from '../components/view/view.component';
+=======
+import { OldindexComponent } from '../components/oldindex/oldindex.component';
+import { FormiComponent } from '../components/formi/formi.component';
+>>>>>>> 8768d70679110a0a50f154ed5193ff04d0eb7343
 
 const routes: Routes = [
   {
@@ -38,9 +43,14 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+<<<<<<< HEAD
     path: 'viewlist',
     component:ViewlistComponent,
     canActivate: [AuthGuard]
+=======
+    path: 'login',
+    component:LoginComponent
+>>>>>>> 8768d70679110a0a50f154ed5193ff04d0eb7343
   },
   {
     path: 'view/:id',
@@ -48,6 +58,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+<<<<<<< HEAD
     path: 'view',
     component:ViewComponent,
     canActivate: [AuthGuard]
@@ -57,6 +68,12 @@ const routes: Routes = [
     component:LoginComponent
   },
   { path: '**', component: SyspagenotfoundComponent }
+=======
+    path: 'formi',
+    component:FormiComponent,
+    canActivate: [AuthGuard]
+  }
+>>>>>>> 8768d70679110a0a50f154ed5193ff04d0eb7343
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
