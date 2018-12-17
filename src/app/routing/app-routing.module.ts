@@ -1,14 +1,15 @@
+import { SyspagenotfoundComponent } from './../syspagenotfound/syspagenotfound.component';
 import { LoginComponent } from './../components/login/login.component';
 import { SpaceComponent } from './../components/space/space.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import {IndexComponent} from './../components/index/index.component';
-import { Login2Component } from '../components/login2/login2.component';
 import { AuthGuard } from '../services/auth.guard';
 import { RolelistComponent } from '../components/rolelist/rolelist.component';
 import { RolelistmodifComponent } from '../components/rolelistmodif/rolelistmodif.component';
-import { OldindexComponent } from '../components/oldindex/oldindex.component';
+import { ViewlistComponent } from '../components/viewlist/viewlist.component';
+import { ViewComponent } from '../components/view/view.component';
 
 const routes: Routes = [
   {
@@ -19,11 +20,6 @@ const routes: Routes = [
   {
     path: 'index',
     component: IndexComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'oldindex',
-    component: OldindexComponent,
     canActivate: [AuthGuard]
   },
   {
@@ -42,15 +38,25 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'viewlist',
+    component:ViewlistComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'view/:id',
+    component:ViewComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'view',
+    component:ViewComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'login',
     component:LoginComponent
-  }
-  ,
-  {
-    path: 'login2',
-    component:Login2Component,
-    canActivate: [AuthGuard]
-  }
+  },
+  { path: '**', component: SyspagenotfoundComponent }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

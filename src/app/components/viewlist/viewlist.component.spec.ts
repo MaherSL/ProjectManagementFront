@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OldindexComponent } from './oldindex.component';
+import { ViewlistComponent } from './viewlist.component';
 
-describe('oldindexComponent', () => {
-  let component: OldindexComponent;
-  let fixture: ComponentFixture<OldindexComponent>;
+describe('ViewlistComponent', () => {
+  let component: ViewlistComponent;
+  let fixture: ComponentFixture<ViewlistComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OldindexComponent ]
+      declarations: [ ViewlistComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OldindexComponent);
+    fixture = TestBed.createComponent(ViewlistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,19 @@
+<!-- Cas login clt
+  <div *ngIf="message" [ngClass]="{ 'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error' }">{{message.text}}</div>
+-->
+    <!--
+      cas initial
+      <div class="alert alert-success alert-dismissible">
+    <button class="close" aria-hidden="true" type="button" data-dismiss="alert">×</button>
+    <h4><i class="icon fa fa-check"></i> Alert!</h4>
+    Success alert preview. This alert is dismissable.
+  </div>-->
+
+<div *ngIf="message" class="alert alert-dismissible"
+[ngClass]="{ 'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error' }">
+    <button class="close" aria-hidden="true" type="button" data-dismiss="alert" (click)="annuler()">X</button>
+    <h5>{{message.text}}</h5>
+    <!--<h4><i class="icon fa fa-check"></i>{{message.title}}</h4>-->
+    <!--{{message.text}}-->
+  </div>
+
