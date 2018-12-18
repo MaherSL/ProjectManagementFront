@@ -1,3 +1,4 @@
+import { FormiComponent } from './components/formi/formi.component';
 import { AlertService } from './services/alert.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -16,17 +17,10 @@ import { AuthGuard } from './services/auth.guard';
 import { RolelistComponent } from './components/rolelist/rolelist.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { RolelistmodifComponent } from './components/rolelistmodif/rolelistmodif.component';
-<<<<<<< HEAD
 import { ViewlistComponent } from './components/viewlist/viewlist.component';
 import { ViewComponent } from './components/view/view.component';
 import { SyspagenotfoundComponent } from './syspagenotfound/syspagenotfound.component';
 import { AlertComponent } from './components/alert/alert.component';
-=======
-import { OldappmenuComponent } from './components/oldappmenu/oldappmenu.component';
-import { OldindexComponent } from './components/oldindex/oldindex.component';
-import { OldappheaderComponent } from './components/oldappheader/oldappheader.component';
-import { FormiComponent } from './components/formi/formi.component';
->>>>>>> 8768d70679110a0a50f154ed5193ff04d0eb7343
 
 @NgModule({
   declarations: [
@@ -40,17 +34,11 @@ import { FormiComponent } from './components/formi/formi.component';
     LoginComponent,
     RolelistComponent,
     RolelistmodifComponent,
-<<<<<<< HEAD
     ViewlistComponent,
     ViewComponent,
     SyspagenotfoundComponent,
-    AlertComponent
-=======
-    OldappmenuComponent,
-    OldindexComponent,
-    OldappheaderComponent,
+    AlertComponent,
     FormiComponent
->>>>>>> 8768d70679110a0a50f154ed5193ff04d0eb7343
   ],
   imports: [
     BrowserModule,
