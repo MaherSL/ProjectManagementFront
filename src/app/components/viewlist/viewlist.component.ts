@@ -11,6 +11,7 @@ import { first } from 'rxjs/operators';
 })
 export class ViewlistComponent implements OnInit {
   private viewlist: Tview[];
+  private isSuppressionActive:boolean=false;
 
   constructor(private viewService: ViewService, private alertService: AlertService) { }
   ngOnInit() {
@@ -20,7 +21,7 @@ export class ViewlistComponent implements OnInit {
   getAll() {
     this.viewService.getAll().subscribe(
       res => { this.viewlist = res },
-      error => { this.alertService.error(error); });
+      error => { this.alertService.error(JSON.stringify(error)); });
   }
   supprimer(id: number) {
     this.viewService.delete(id)
@@ -30,7 +31,7 @@ export class ViewlistComponent implements OnInit {
           this.getAll();
         },
         error => {
-          this.alertService.error("Erreur de suppression: " + error);
+          this.alertService.error("Erreur de suppression: " + JSON.stringify(error));
         });
   }
 

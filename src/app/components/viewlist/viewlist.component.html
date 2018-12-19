@@ -22,13 +22,10 @@
           <button type="button" class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown">
             <i class="fa fa-wrench"></i></button>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Ajouter</a></li>
-            <li><a href="#">Imprimer</a></li>
-            <li><a href="#">explorer</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li><a href="#">Importer</a></li>
-            <li><a href="#">Editer</a></li>
+            <li>
+              <a (click)="inverserSuppressionActive=!inverserSuppressionActive">
+                {{inverserSuppressionActive ? 'Désac. suppr.' : 'Activer suppr.'}}</a>
+            </li>
           </ul>
         </div>
 
@@ -44,6 +41,7 @@
               <th>Nom</th>
               <th>Programme</th>
               <th>Etat</th>
+              <th *ngIf="inverserSuppressionActive">Supp</th>
             </tr>
           </thead>
           <tbody>
@@ -52,8 +50,8 @@
               <td>{{view.progview}}</td>
               <td>{{view.enabledview}}</td>
               <!--<td> <a routerLink="/view/{{view.idview}}">Modify</a></td>-->
-              <td> <a (click)="supprimer(view.idview)">Del</a></td>
-
+              <td *ngIf="inverserSuppressionActive"> <a (click)="supprimer(view.idview)"  class="btn btn-sm btn-default btn-flat">
+                Del</a></td>
             </tr>
           </tbody>
         </table>

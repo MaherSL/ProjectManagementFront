@@ -13,11 +13,12 @@ import { Tview } from 'src/app/entity/Tview';
   styleUrls: ['./view.component.css']
 })
 export class ViewComponent implements OnInit {
-  registerForm: FormGroup;
-  loading = false;
-  submitted = false;
+  private registerForm: FormGroup;
+  private loading = false;
+  private submitted = false;
   private tview: Tview;
   private idviewSelected: number;
+  private isSuppressionActive:boolean=false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -75,7 +76,7 @@ ngOnInit() {
       this.alertService.success("test");
       this.viewService.getById(this.idviewSelected).subscribe(
         res => { this.tview = res; this.registerForm.patchValue(this.tview) },
-        error => { this.alertService.error("Erreur : "+error); }
+        error => { this.alertService.error("Erreur : "+JSON.stringify(error)); }
       );
     }
 
@@ -105,7 +106,7 @@ ngOnInit() {
           //        this.router.navigate(['/login']);
         },
         error => {
-          this.alertService.error(error);
+          this.alertService.error(JSON.stringify(error));
           this.loading = false;
         });
   }
