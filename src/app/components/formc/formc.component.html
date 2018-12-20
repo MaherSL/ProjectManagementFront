@@ -1,0 +1,73 @@
+<div [hidden]="submitted">
+  <h2>List Of Roles</h2>
+  <form  (ngSubmit)="onSubmit()" #rolelistForm="ngForm">
+
+    <div class="form-group">
+      <label for="idrole">Id Role</label>
+      <select (change)="filterForeCasts($event.target.value)" class="form-control" id="idrole" 
+              required>
+              <!--[(ngModel)]="role.idrole" name="idrole" #idrole="ngModel">-->
+              <option value="0" class="form-control">{{role.idrole}}</option>
+        <option *ngFor="let role of rolelist" value={{role.idrole}}>{{role.idrole}}</option>
+      </select>
+     <!-- <div [hidden]="idrole.valid || idrole.pristine" class="alert alert-danger">
+          Identity is required
+      </div>-->
+    </div>
+
+    <!--<div>
+        <label>Name</label>
+        <div *ngFor="let role of rolelist" contenteditable>
+          <input type="text" name="name" [(ngModel)]="role.nameRole" 
+          [value]='role.namerole' >
+          {{role.namerole}}
+
+      </div>
+    </div> -->
+
+   <!-- <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn"  [returnWith]="returnFn">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="role">
+          {{ role.namerole }}
+        </mat-option>
+      </mat-autocomplete> -->
+
+
+
+
+
+
+    <div class="form-group">
+      <label for="namerole">Name</label>
+      <div *ngFor="let role of rolelist" contenteditable>
+      <input type="text" class="form-control" id="namerole" 
+             required
+             [(ngModel)]="role.namerole" name="namerole" #name="ngModel">
+      <div [hidden]="namerole.valid || namerole.pristine"
+           class="alert alert-danger">
+          Name is required
+      </div>
+</div>
+    </div>
+
+    <div class="form-group">
+      <label for="descrole">Description</label>
+      <input type="text" class="form-control" id="descrole"
+              [(ngModel)]="role.descrole" name="descrole">
+    </div>
+
+   
+
+    <button type="submit" class="btn btn-success" [disabled]="!rolelistForm.form.valid">Submit</button>
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+    <h2>Submitted Customer</h2>
+    <hr>
+    <div><span class="badge badge-info">ID</span> -> {{role.idrole}}</div>
+    <div><span class="badge badge-info">Name</span> -> {{role.namerole}}</div>
+    <div><span class="badge badge-info">Descript</span> -> {{role.descrole}}</div>
+    <div><span class="badge badge-info">ID</span> -> {{role.idrole}}</div>
+    <br>
+    <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+</div>

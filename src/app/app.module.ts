@@ -20,6 +20,8 @@ import { OldappmenuComponent } from './components/oldappmenu/oldappmenu.componen
 import { OldindexComponent } from './components/oldindex/oldindex.component';
 import { OldappheaderComponent } from './components/oldappheader/oldappheader.component';
 import { FormiComponent } from './components/formi/formi.component';
+import { FormcComponent } from './components/formc/formc.component';
+
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { FormiComponent } from './components/formi/formi.component';
     OldappmenuComponent,
     OldindexComponent,
     OldappheaderComponent,
-    FormiComponent
+    FormiComponent,
+    FormcComponent
+    
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,8 @@ import { RolelistComponent } from '../components/rolelist/rolelist.component';
 import { RolelistmodifComponent } from '../components/rolelistmodif/rolelistmodif.component';
 import { OldindexComponent } from '../components/oldindex/oldindex.component';
 import { FormiComponent } from '../components/formi/formi.component';
+import { FormcComponent } from '../components/formc/formc.component';
+
 
 const routes: Routes = [
   {
@@ -54,6 +56,11 @@ const routes: Routes = [
   {
     path: 'formi',
     component:FormiComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'formc',
+    component:FormcComponent,
     canActivate: [AuthGuard]
   }
 ];
