@@ -1,7 +1,7 @@
 import { ComponentconnService } from './../../services/componentconn.service';
 import { Component, OnInit, HostBinding } from '@angular/core';
-import { View } from 'src/app/entity/View';
 import { ViewService } from 'src/app/services/view.service';
+import { Tview } from 'src/app/entity/Tview';
 
 @Component({
   selector: 'app-appmenu',
@@ -9,7 +9,7 @@ import { ViewService } from 'src/app/services/view.service';
   styleUrls: ['./appmenu.component.css']
 })
 export class AppmenuComponent implements OnInit {
-  private viewlist: View[];
+  private viewlist: Tview[];
   private error: string;
 
   @HostBinding('class.hide')

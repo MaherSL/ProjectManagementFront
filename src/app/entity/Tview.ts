@@ -1,6 +1,6 @@
-export class View {
+export class Tview {
   idview: number;
   nameview: string;
-  enabledview: number;
   progview: string;
+  enabledview: number;
 }

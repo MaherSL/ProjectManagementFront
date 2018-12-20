@@ -1,0 +1,68 @@
+<app-alert></app-alert>
+<div class="content-header">
+  <h1>
+    Detail des projets
+    <small>arrêté au 07.10.2018</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+    <li class="active">Projets</li>
+  </ol>
+</div>
+
+<!-- Main content -->
+<div class="content">
+  <div class="box box-primary">
+    <div class="box-header with-border">
+      <h3 class="box-title">Liste des vues</h3>
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+        </button>
+        <div class="btn-group">
+          <button type="button" class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-wrench"></i></button>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a (click)="inverserSuppressionActive=!inverserSuppressionActive">
+                {{inverserSuppressionActive ? 'Désac. suppr.' : 'Activer suppr.'}}</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>-->
+      </div>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <div class="table-responsive">
+        <table class="table no-margin">
+          <thead>
+            <tr>
+              <th>Nom</th>
+              <th>Programme</th>
+              <th>Etat</th>
+              <th *ngIf="inverserSuppressionActive">Supp</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let view of viewlist">
+              <td><a routerLink="/view/{{view.idview}}">{{view.nameview}}</a></td>
+              <td>{{view.progview}}</td>
+              <td>{{view.enabledview}}</td>
+              <!--<td> <a routerLink="/view/{{view.idview}}">Modify</a></td>-->
+              <td *ngIf="inverserSuppressionActive"> <a (click)="supprimer(view.idview)"  class="btn btn-sm btn-default btn-flat">
+                Del</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- /.table-responsive -->
+    </div>
+    <!-- /.box-body -->
+    <div class="box-footer clearfix">
+      <a routerLink="/view" class="btn btn-sm btn-info btn-flat pull-left">Ajouter page</a>
+    </div>
+    <!-- /.box-footer -->
+    <!-- /.box-footer -->
+  </div>
+</div>

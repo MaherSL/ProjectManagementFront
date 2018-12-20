@@ -1,3 +1,5 @@
+import { FormiComponent } from './components/formi/formi.component';
+import { AlertService } from './services/alert.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -11,17 +13,15 @@ import { SpaceComponent } from './components/space/space.component';
 import { IndexComponent } from './components/index/index.component';
 import { AppRoutingModule } from './routing/app-routing.module';
 import { LoginComponent } from './components/login/login.component';
-import { Login2Component } from './components/login2/login2.component';
 import { AuthGuard } from './services/auth.guard';
 import { RolelistComponent } from './components/rolelist/rolelist.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { RolelistmodifComponent } from './components/rolelistmodif/rolelistmodif.component';
-import { OldappmenuComponent } from './components/oldappmenu/oldappmenu.component';
-import { OldindexComponent } from './components/oldindex/oldindex.component';
-import { OldappheaderComponent } from './components/oldappheader/oldappheader.component';
-import { FormiComponent } from './components/formi/formi.component';
 import { FormcComponent } from './components/formc/formc.component';
-
+import { ViewlistComponent } from './components/viewlist/viewlist.component';
+import { ViewComponent } from './components/view/view.component';
+import { SyspagenotfoundComponent } from './syspagenotfound/syspagenotfound.component';
+import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -33,15 +33,14 @@ import { FormcComponent } from './components/formc/formc.component';
     SpaceComponent,
     IndexComponent,
     LoginComponent,
-    Login2Component,
     RolelistComponent,
     RolelistmodifComponent,
-    OldappmenuComponent,
-    OldindexComponent,
-    OldappheaderComponent,
     FormiComponent,
     FormcComponent
-    
+    ViewComponent,
+    SyspagenotfoundComponent,
+    AlertComponent,
+    FormiComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +49,7 @@ import { FormcComponent } from './components/formc/formc.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard,AlertService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
