@@ -34,7 +34,7 @@ export class ViewComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       idview: [''],
       nameview: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
-      progview: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)],],
+      progview: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
       enabledview: ['', Validators.required]
     }, { updateOn: 'blur' });
     //updateOn:'submit"'
@@ -73,7 +73,6 @@ ngOnInit() {
 }*/
 
     if (this.idviewSelected != null) {
-      this.alertService.success("test");
       this.viewService.getById(this.idviewSelected).subscribe(
         res => { this.tview = res; this.registerForm.patchValue(this.tview) },
         error => { this.alertService.error("Erreur : "+JSON.stringify(error)); }

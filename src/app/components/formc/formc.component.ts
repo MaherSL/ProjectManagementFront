@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Role } from '../../entity/role';
+import { Trole } from '../../entity/Trole';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RoleService } from '../../services/role.service';
 
@@ -11,8 +11,8 @@ import { RoleService } from '../../services/role.service';
 export class FormcComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
-  private rolelist:Role[];
-  role = new Role();
+  private rolelist:Trole[];
+  role = new Trole();
   private error:string;
 
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RoleService } from '../../services/role.service';
-import { Role } from '../../entity/role';
+import { Trole } from '../../entity/Trole';
 
 @Component({
     selector: 'app-formi',
@@ -12,7 +12,7 @@ import { Role } from '../../entity/role';
 export class FormiComponent implements OnInit {
     registerForm: FormGroup;
     submitted = false;
-    private rolelist:Role[];
+    private rolelist:Trole[];
     private error:string;
 
     constructor(private formBuilder: FormBuilder,private roleService:RoleService) { }
@@ -32,7 +32,7 @@ export class FormiComponent implements OnInit {
       });
     }
 
-    public save(isValid: boolean, r: Role) {
+    public save(isValid: boolean, r: Trole) {
         console.log(r);
     }
     indexTracker(index: number, value: any) {

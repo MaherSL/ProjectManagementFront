@@ -22,6 +22,8 @@ import { ViewlistComponent } from './components/viewlist/viewlist.component';
 import { ViewComponent } from './components/view/view.component';
 import { SyspagenotfoundComponent } from './syspagenotfound/syspagenotfound.component';
 import { AlertComponent } from './components/alert/alert.component';
+import { VocabComponent } from './components/vocab/vocab.component';
+import { VocablistComponent } from './components/vocablist/vocablist.component';
 
 @NgModule({
   declarations: [
@@ -36,11 +38,14 @@ import { AlertComponent } from './components/alert/alert.component';
     RolelistComponent,
     RolelistmodifComponent,
     FormiComponent,
-    FormcComponent
+    FormcComponent,
     ViewComponent,
+    ViewlistComponent,
     SyspagenotfoundComponent,
     AlertComponent,
-    FormiComponent
+    FormiComponent,
+    VocabComponent,
+    VocablistComponent
   ],
   imports: [
     BrowserModule,

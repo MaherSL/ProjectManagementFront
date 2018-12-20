@@ -12,6 +12,8 @@ import { ViewlistComponent } from '../components/viewlist/viewlist.component';
 import { ViewComponent } from '../components/view/view.component';
 import { FormiComponent } from '../components/formi/formi.component';
 import { FormcComponent } from '../components/formc/formc.component';
+import { VocabComponent } from '../components/vocab/vocab.component';
+import { VocablistComponent } from '../components/vocablist/vocablist.component';
 
 
 const routes: Routes = [
@@ -58,6 +60,23 @@ const routes: Routes = [
     component:ViewComponent,
     canActivate: [AuthGuard]
   },
+
+  {
+    path: 'vocablist',
+    component:VocablistComponent,
+    canActivate: [AuthGuard]},
+
+  {
+    path: 'vocab/:id',
+    component:VocabComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'vocab',
+    component:VocabComponent,
+    canActivate: [AuthGuard]
+  },
+
   {
   path: 'formi',
   component:FormiComponent,

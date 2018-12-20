@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Role } from '../entity/Role';
+import { Trole } from '../entity/Trole';
 import { environment } from '../../environments/environment';
 
 
@@ -12,19 +12,19 @@ export class RoleService {
   constructor(private http: HttpClient) { }
 
   getAll() {
-      return this.http.get<Role[]>(environment.apiUrl+"/role/rolelist");
+      return this.http.get<Trole[]>(environment.apiUrl+"/role/rolelist");
   }
 
   getById(id: number) {
       return this.http.get(environment.apiUrl+"/role/" + id);
   }
 
-  save(Role: Role) {
-      return this.http.post(environment.apiUrl+"/role/save", Role);
+  save(Trole: Trole) {
+      return this.http.post(environment.apiUrl+"/role/save", Trole);
   }
 
-  update(Role: Role) {
-      return this.http.put(environment.apiUrl+"/role/" + Role.idrole, Role);
+  update(Trole: Trole) {
+      return this.http.put(environment.apiUrl+"/role/" + Trole.idrole, Trole);
   }
 
   delete(id: number) {

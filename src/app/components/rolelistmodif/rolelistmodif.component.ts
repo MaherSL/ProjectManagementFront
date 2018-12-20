@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RoleService } from '../../services/role.service';
-import { Role } from '../../entity/role';
+import { Trole } from '../../entity/Trole';
 
 @Component({
   selector: 'app-rolelistmodif',
@@ -8,7 +8,7 @@ import { Role } from '../../entity/role';
   styleUrls: ['./rolelistmodif.component.css']
 })
 export class RolelistmodifComponent implements OnInit {
-private rolelist:Role[];
+private rolelist:Trole[];
 private error:string;
   constructor(private roleService:RoleService) { }
   

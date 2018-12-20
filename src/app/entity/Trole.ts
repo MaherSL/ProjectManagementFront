@@ -1,4 +1,4 @@
-export class Role {
+export class Trole {
     idrole: number;
     namerole: string;
     enabledrole: number;
