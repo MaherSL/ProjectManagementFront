@@ -14,6 +14,10 @@ import { FormiComponent } from '../components/formi/formi.component';
 import { FormcComponent } from '../components/formc/formc.component';
 import { VocabComponent } from '../components/vocab/vocab.component';
 import { VocablistComponent } from '../components/vocablist/vocablist.component';
+import { ProductComponent } from '../components/product/product.component';
+import { ProductlistComponent } from '../components/productlist/productlist.component';
+import { ProductversionlistComponent } from '../components/productversionlist/productversionlist.component';
+import { ProductversionComponent } from '../components/productversion/productversion.component';
 
 
 const routes: Routes = [
@@ -76,6 +80,42 @@ const routes: Routes = [
     component:VocabComponent,
     canActivate: [AuthGuard]
   },
+  {
+    path: 'productlist',
+    component:ProductlistComponent,
+    canActivate: [AuthGuard]},
+
+  {
+    path: 'product/:id',
+    component:ProductComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'product',
+    component:ProductComponent,
+    canActivate: [AuthGuard]
+  },
+
+  
+  {
+    path: 'productversionlist',
+    component:ProductversionlistComponent,
+    canActivate: [AuthGuard]},
+
+  {
+    path: 'productversion/:id',
+    component:ProductversionComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'productversion',
+    component:ProductversionComponent,
+    canActivate: [AuthGuard]
+  },
+
+
+
+
 
   {
   path: 'formi',

@@ -1,0 +1,80 @@
+<!--<div style="background: rgb(243, 156, 18); padding: 20px 30px; font-size: 16px; font-weight: 600; z-index: 999999;"><a
+    title="Never show me this again!" class="float-right" style="color: rgb(255, 255, 255); font-size: 20px;" href="#"
+    data-toggle="tooltip" data-placement="left">×</a><a style="color: rgba(255, 255, 255, 0.9); text-decoration: none; margin-right: 10px; display: inline-block;"
+    href="https://themequarry.com">Ready to sell your theme? Submit your theme to our new marketplace now and let over
+    200k visitors see it!</a><a class="btn btn-default btn-sm" style="background: rgb(255, 255, 255); border: 0px; border-image: none; color: rgb(243, 156, 18); font-weight: 600; margin-top: -5px; box-shadow: none;"
+    href="https://themequarry.com">Let's Do It!</a></div>
+-->
+<app-alert></app-alert>
+<div class="content-header">
+  <h1>
+    Detail des projets
+    <small>arrêté au 07.10.2018</small>
+  </h1>
+
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+    <li class="active">Projets</li>
+  </ol>
+</div>
+<!-- Main content -->
+<div class="content">
+  <div class="box box-primary">
+    <div class="box-header with-border">
+      <h3 class="box-title">Liste des produits</h3>
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+        </button>
+        <div class="btn-group">
+          <button type="button" class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-wrench"></i></button>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a (click)="inverserSuppressionActive=!inverserSuppressionActive">{{inverserSuppressionActive ? 'Désac. suppr.' : 'Activer suppr.'}}</a>
+            </li>
+            <!--<li><a href="#">Imprimer</a></li>
+            <li><a href="#">explorer</a></li>
+            <li class="divider"></li>-->
+          </ul>
+        </div>
+        <!-- <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>-->
+      </div>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <div class="table-responsive">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <input type="hidden" formControlName="idproduct" class="form-control" />
+          <div class="form-group" [ngClass]="{'has-error': submitted && f.nameproduct.errors}">
+            <label for="nameproduct">Nom</label>
+            <input type="text" formControlName="nameproduct" class="form-control" />
+            <div *ngIf="f.nameproduct.errors" class="help-block">
+              <div *ngIf="f.nameproduct.errors.required">Nom obligatoire</div>
+              <div *ngIf="f.nameproduct.errors.minlength">longueur minimale de 3</div>
+              <div *ngIf="f.nameproduct.errors.maxlength">longueur maximale est atteinte</div>
+            </div>
+          </div>
+
+          
+          <div class="form-group" [ngClass]="{'has-error': submitted && f.enabledproduct.errors}">
+            <label for="enabledproduct">Actif</label>
+            <input type="number" min="0" max="1" formControlName="enabledproduct" class="form-control" />
+            <div *ngIf="submitted && f.enabledproduct.errors" class="help-block">
+              <div *ngIf="f.enabledproduct.errors.required">Etat (actif/inactif est obligatoire)</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <button [disabled]="loading" class="btn btn-primary">Enregistrer</button>
+            <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            <a routerLink="/productlist" class="btn btn-link">Annuler</a>
+            <a routerLink="/product" class="btn btn-sm btn-info btn-flat pull-right">Ajouter page</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+  <!-- /.table-responsive -->
+</div>
+
+

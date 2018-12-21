@@ -24,6 +24,10 @@ import { SyspagenotfoundComponent } from './syspagenotfound/syspagenotfound.comp
 import { AlertComponent } from './components/alert/alert.component';
 import { VocabComponent } from './components/vocab/vocab.component';
 import { VocablistComponent } from './components/vocablist/vocablist.component';
+import { ProductComponent } from './components/product/product.component';
+import { ProductlistComponent } from './components/productlist/productlist.component';
+import { ProductversionComponent } from './components/productversion/productversion.component';
+import { ProductversionlistComponent } from './components/productversionlist/productversionlist.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +49,11 @@ import { VocablistComponent } from './components/vocablist/vocablist.component';
     AlertComponent,
     FormiComponent,
     VocabComponent,
-    VocablistComponent
+    VocablistComponent,
+    ProductComponent,
+    ProductlistComponent,
+    ProductversionComponent,
+    ProductversionlistComponent
   ],
   imports: [
     BrowserModule,
