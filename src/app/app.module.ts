@@ -28,6 +28,8 @@ import { ProductComponent } from './components/product/product.component';
 import { ProductlistComponent } from './components/productlist/productlist.component';
 import { ProductversionComponent } from './components/productversion/productversion.component';
 import { ProductversionlistComponent } from './components/productversionlist/productversionlist.component';
+import { TicketComponent } from './components/ticket/ticket.component';
+import { TicketlistComponent } from './components/ticketlist/ticketlist.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,9 @@ import { ProductversionlistComponent } from './components/productversionlist/pro
     ProductComponent,
     ProductlistComponent,
     ProductversionComponent,
-    ProductversionlistComponent
+    ProductversionlistComponent,
+    TicketComponent,
+    TicketlistComponent
   ],
   imports: [
     BrowserModule,

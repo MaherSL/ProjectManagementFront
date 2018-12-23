@@ -18,6 +18,8 @@ import { ProductComponent } from '../components/product/product.component';
 import { ProductlistComponent } from '../components/productlist/productlist.component';
 import { ProductversionlistComponent } from '../components/productversionlist/productversionlist.component';
 import { ProductversionComponent } from '../components/productversion/productversion.component';
+import { TicketComponent } from '../components/ticket/ticket.component';
+import { TicketlistComponent } from '../components/ticketlist/ticketlist.component';
 
 
 const routes: Routes = [
@@ -110,6 +112,22 @@ const routes: Routes = [
   {
     path: 'productversion',
     component:ProductversionComponent,
+    canActivate: [AuthGuard]
+  },
+
+  {
+    path: 'ticketlist',
+    component:TicketlistComponent,
+    canActivate: [AuthGuard]},
+
+  {
+    path: 'ticket/:id',
+    component:TicketComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'ticket',
+    component:TicketComponent,
     canActivate: [AuthGuard]
   },
 
