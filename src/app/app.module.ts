@@ -30,6 +30,8 @@ import { ProductversionComponent } from './components/productversion/productvers
 import { ProductversionlistComponent } from './components/productversionlist/productversionlist.component';
 import { JwtInterceptor } from './security/jwt.interceptor';
 import { ContentheaderComponent } from './components/templates/contentheader/contentheader.component';
+import { TicketlistComponent } from './components/ticketlist/ticketlist.component';
+import { TicketComponent } from './components/ticket/ticket.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,8 @@ import { ContentheaderComponent } from './components/templates/contentheader/con
     ProductlistComponent,
     ProductversionComponent,
     ProductversionlistComponent,
+    TicketlistComponent,
+    TicketComponent,
     ContentheaderComponent
   ],
   imports: [
