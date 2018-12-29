@@ -11,11 +11,13 @@ import { AuthService } from './auth.service';
 @Injectable()
 export class AuthGuard implements CanActivate {
   private loginUrl: string = "/login";
-  constructor(private componentconnService:ComponentconnService ,private router: Router, private authService: AuthService) { }
+  constructor(private componentconnService: ComponentconnService, private router: Router, private authService: AuthService) { }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     let url: string = state.url;
     console.log("url=" + url);
-    this.authService.redirectUrl=url;
+    if (url == this.loginUrl || url == this.loginUrl.replace("/", "")){
+      url = "/";
+    }
     return this.verifyLogin(url);
   }
 
@@ -25,8 +27,8 @@ export class AuthGuard implements CanActivate {
     status = this.authService.loginStatus(url);
     console.log("status=" + status)
     if (status != "OK") {
-      this.router.navigate([this.loginUrl]);
       this.componentconnService.setVisible(false);
+      this.router.navigate([this.loginUrl], { queryParams: { returnUrl: url }});
       return false;
     }
     else {
@@ -35,8 +37,5 @@ export class AuthGuard implements CanActivate {
       this.componentconnService.setVisible(true);
       return true;
     }
-
   }
-
-
 }

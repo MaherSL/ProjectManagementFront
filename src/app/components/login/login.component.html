@@ -11,7 +11,7 @@
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" [(ngModel)]="password" name="password" class="form-control" placeholder="Password">
+        <input type="password" [(ngModel)]="password" (keydown.enter)="onConnecter()"  name="password" class="form-control" placeholder="Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
@@ -20,6 +20,12 @@
         <div class="col-xs-5">
           <button type="button" (click)="onConnecter()" class="btn btn-primary btn-block btn-flat">Connection</button>
           <!--/*type="submit"-->
+        </div>
+      </div>
+      <div class="row"> </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <app-alert></app-alert>
         </div>
       </div>
     </form>

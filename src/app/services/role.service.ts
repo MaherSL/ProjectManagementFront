@@ -3,8 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Trole } from '../entity/Trole';
 import { environment } from '../../environments/environment';
 
-
-
 @Injectable({
   providedIn: 'root'
 })

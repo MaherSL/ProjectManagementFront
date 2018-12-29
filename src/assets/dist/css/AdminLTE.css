@@ -22,6 +22,13 @@ body {
   font-weight: 400;
   overflow-x: hidden;
   overflow-y: auto;
+  /*added*/
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /*font-size: 12px*/
+  /*fin added*/
+
+
 }
 /* Layout */
 .wrapper {

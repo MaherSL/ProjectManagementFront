@@ -1,0 +1,3 @@
+Mot de passe de l'application
+  cripté="$2a$10$QziKrHMjMo/t8cjOkyFad.DTc5k.KadI3GA0bFBqxWjJq6msV0hVq"
+  décripté="123456789"
