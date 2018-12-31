@@ -1,0 +1,15 @@
+Mot de passe de l'application
+  cripté="$2a$10$QziKrHMjMo/t8cjOkyFad.DTc5k.KadI3GA0bFBqxWjJq6msV0hVq"
+  décripté="123456789"
+
+
+  script table tusersignin
+  CREATE TABLE `tusersignin` (
+  `idusersignin` int(11) NOT NULL,
+  `token` varchar(480) NOT NULL,
+  `iduser` int(11) NOT NULL,
+  PRIMARY KEY (`idusersignin`),
+  UNIQUE KEY `token_UNIQUE` (`token`),
+  KEY `fk_usersignin_user_idx` (`iduser`),
+  CONSTRAINT `fk_usersignin_user` FOREIGN KEY (`iduser`) REFERENCES `tuser` (`iduser`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1

@@ -15,7 +15,7 @@ import { AppRoutingModule } from './routing/app-routing.module';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './services/auth.guard';
 import { RolelistComponent } from './components/rolelist/rolelist.component';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RolelistmodifComponent } from './components/rolelistmodif/rolelistmodif.component';
 import { FormcComponent } from './components/formc/formc.component';
 import { ViewlistComponent } from './components/viewlist/viewlist.component';
@@ -28,10 +28,12 @@ import { ProductComponent } from './components/product/product.component';
 import { ProductlistComponent } from './components/productlist/productlist.component';
 import { ProductversionComponent } from './components/productversion/productversion.component';
 import { ProductversionlistComponent } from './components/productversionlist/productversionlist.component';
-import { TicketComponent } from './components/ticket/ticket.component';
+import { JwtInterceptor } from './security/jwt.interceptor';
+import { ContentheaderComponent } from './components/templates/contentheader/contentheader.component';
 import { TicketlistComponent } from './components/ticketlist/ticketlist.component';
 import { TicketFilterPipe } from './components/ticket/ticket-filter.pipe';
 
+import { TicketComponent } from './components/ticket/ticket.component';
 
 @NgModule({
   declarations: [
@@ -58,10 +60,11 @@ import { TicketFilterPipe } from './components/ticket/ticket-filter.pipe';
     ProductlistComponent,
     ProductversionComponent,
     ProductversionlistComponent,
+    TicketlistComponent,
     TicketComponent,
     TicketlistComponent,
-    TicketFilterPipe
-    
+    TicketFilterPipe,    
+    ContentheaderComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +73,10 @@ import { TicketFilterPipe } from './components/ticket/ticket-filter.pipe';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [AuthGuard,AlertService],
+  providers: [AuthGuard, AlertService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+  ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

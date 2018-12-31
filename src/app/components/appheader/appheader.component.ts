@@ -11,16 +11,22 @@ import { ComponentconnService } from 'src/app/services/componentconn.service';
 export class AppheaderComponent implements OnInit {
   @HostBinding('class.hide')
   private isHide: boolean = true;
+  private nameUser:String;
+  private mailUser:String;
   constructor(private componentconnService: ComponentconnService, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.componentconnService.change.subscribe(isOpen => {
       this.isHide = !isOpen;
+      this.nameUser=this.authService.currentNameuser();
+      this.mailUser=this.authService.currentMailuser();
+
+
     });
   }
 
   onSignOut() {
-    this.authService.setLogout();
+    this.authService.logout();
     this.router.navigate(['/login']);
     console.log("non connecté");
   }

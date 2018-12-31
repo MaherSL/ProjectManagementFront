@@ -16,6 +16,11 @@ export class ViewService {
   getById(id: number) {
     return this.http.get<Tview>(environment.apiUrl + "/view/" + id);
   }
+
+  getByProgview(progview: string) {
+    return this.http.get<Tview>(environment.apiUrl + "/view?progview=" + progview);
+  }
+
 //jé changé Trole elle a ete Role*******************************************
   save(Role: Tview) {
     return this.http.post<Tview>(environment.apiUrl + "/view/save", Role);

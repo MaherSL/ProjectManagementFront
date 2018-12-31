@@ -1,6 +1,5 @@
 export class Tperson {
-    idperson: number;
-    nameperson: string;
-    emailperson: string;
-    
+  idperson: number;
+  nameperson: string;
+  emailperson: string;
 }

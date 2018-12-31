@@ -44,10 +44,10 @@
     <div class="box-body">
       <div class="table-responsive">
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-          <input type="hidden" formControlName="idvocab" class="form-control" />
+          <input type="hidden" disabled formControlName="idvocab" class="form-control" />
           <div class="form-group" [ngClass]="{'has-error': submitted && f.codevocab.errors}">
               <label for="codevocab">Code</label>
-              <input type="text" formControlName="codevocab" class="form-control" />
+              <input type="text" formControlName="codevocab" class="form-control"  disabled />
               <div *ngIf="submitted && f.codevocab.errors" class="help-block">
                 <div *ngIf="f.codevocab.errors.required">Code obligatoire</div>
                 <div *ngIf="f.codevocab.errors.minlength">longueur minimale de 3</div>
@@ -64,7 +64,7 @@
             </div>
           </div>
 
-          
+
           <div class="form-group" [ngClass]="{'has-error': submitted && f.enabledvocab.errors}">
             <label for="enabledvocab">Actif</label>
             <input type="number" min="0" max="1" formControlName="enabledvocab" class="form-control" />
