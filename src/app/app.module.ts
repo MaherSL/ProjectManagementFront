@@ -30,6 +30,8 @@ import { ProductversionComponent } from './components/productversion/productvers
 import { ProductversionlistComponent } from './components/productversionlist/productversionlist.component';
 import { TicketComponent } from './components/ticket/ticket.component';
 import { TicketlistComponent } from './components/ticketlist/ticketlist.component';
+import { TicketFilterPipe } from './components/ticket/ticket-filter.pipe';
+
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import { TicketlistComponent } from './components/ticketlist/ticketlist.componen
     ProductversionComponent,
     ProductversionlistComponent,
     TicketComponent,
-    TicketlistComponent
+    TicketlistComponent,
+    TicketFilterPipe
+    
   ],
   imports: [
     BrowserModule,

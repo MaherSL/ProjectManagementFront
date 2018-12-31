@@ -22,6 +22,7 @@ import { TicketComponent } from '../components/ticket/ticket.component';
 import { TicketlistComponent } from '../components/ticketlist/ticketlist.component';
 
 
+
 const routes: Routes = [
   {
     path: '',
@@ -130,9 +131,6 @@ const routes: Routes = [
     component:TicketComponent,
     canActivate: [AuthGuard]
   },
-
-
-
 
 
   {
