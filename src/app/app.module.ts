@@ -34,6 +34,10 @@ import { TicketlistComponent } from './components/ticketlist/ticketlist.componen
 import { TicketFilterPipe } from './components/ticket/ticket-filter.pipe';
 
 import { TicketComponent } from './components/ticket/ticket.component';
+import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
+
+//material Design
+import { AppMaterialModule} from 'src/app/app-material/app-material.module';
 
 @NgModule({
   declarations: [
@@ -64,14 +68,17 @@ import { TicketComponent } from './components/ticket/ticket.component';
     TicketComponent,
     TicketlistComponent,
     TicketFilterPipe,    
-    ContentheaderComponent
+    ContentheaderComponent,
+     ConfirmModalComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppMaterialModule
   ],
   providers: [AuthGuard, AlertService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

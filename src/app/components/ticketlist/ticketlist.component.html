@@ -1,14 +1,4 @@
-<app-alert></app-alert>
-<div class="content-header">
-  <h1>
-    Detail des projets
-    <small>arrêté au 07.10.2018</small>
-  </h1>
-  <ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
-    <li class="active">Projets</li>
-  </ol>
-</div>
+<app-contentheader></app-contentheader>
 
 <!-- Main content -->
 <div class="content">
@@ -33,22 +23,36 @@
       </div>
     </div>
     <div class="form-group">
-    <input type="text" class="form-control" placeholder="Search by name Product" style="width: 300px" [(ngModel)]="searchTerm"/>
-  </div>
+      <input type="text" class="form-control" placeholder="Search by name Product" style="width: 300px" [(ngModel)]="searchTerm" />
+    </div>
+
+
     <!-- /.box-header -->
     <div class="box-body">
       <div class="table-responsive">
         <table class="table no-margin">
           <thead>
             <tr>
-              <th>Date Ticket(date submitted)</th>
+              <th>Date</th>
               <th>Status</th>
-              <th>Product Name</th>
+              <th>Product
+              
+                  <div class="form-group">
+                    <!--<label>Minimal</label>-->
+                    <select (change)="onFilterIdproduct($event.target.value)"
+                    class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                      <option></option>
+                      <option  [value]="product.idproduct" *ngFor="let product of productlist ">{{product.nameproduct}}</option>
+                    </select>
+                    <!--<span class="select2 select2-container select2-container--default select2-container--below" dir="ltr" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-xzb0-container"><span class="select2-selection__rendered" id="select2-xzb0-container" title="Alabama">Alabama</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>-->
+                  </div>
+              </th>
+
               <th>ID(Jira)</th>
               <th>summary</th>
-              <th>Name Reporter</th>
+              <th>Reporter</th>
               <th>Product Version</th>
-               <!-- <div class="form-group">
+              <!-- <div class="form-group">
                   <label>Produit</label>
                   <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1"
                     aria-hidden="true"
@@ -63,44 +67,61 @@
               </th>-->
               <th>Date Version</th>
               <th>Resolution</th>
-              
-              
               <th *ngIf="inverserSuppressionActive">Supp</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let ticket of ticketlist | ticketFilter:searchTerm">
-                <td>{{ticket.dateticket}}</td>
-                <td>{{ticket.vocticketstatus.nameword}}</td>
-                <!--name product as a list to use it later-->
-             <!-- <td > 
+              <td>{{ticket.dateticket}}</td>
+              <td>{{ticket.vocticketstatus.nameword}}</td>
+              <!--name product as a list to use it later-->
+              <!-- <td > 
                       <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1"
                         aria-hidden="true"
                         (change)="onChangeNameproduct($event.target.value)">
                         <option  [value]="product.idproduct" *ngFor="let product of productList ">{{product.nameproduct}}</option>
                       </select>
               </td>-->
-              <td><a routerLink="/ticket/{{ticket.idticket}}">{{ticket.tproduct.nameproduct}}</a></td>
-              <td>{{ticket.externalcodea}}</td>
-              <td><textarea>{{ticket.summary}}</textarea></td>
+              <td><a class="changecolor" routerLink="/ticket/{{ticket.idticket}}" data-toggle="popover" title="Modify ticket"
+                  data-content="Some content inside the popover">{{ticket.tproduct.nameproduct}}</a></td>
+              <td>
+                <!--<div class="group">
+                      <input #name matInput/>
+                      <a (click)="editName()">{{ticket.externalcodea}}</a>-->
+                {{ticket.externalcodea}}
+              </td>
+              <td>{{ticket.summary}}</td>
               <td>{{ticket.treporter.tperson.nameperson}}</td>
               <td>{{ticket.tproductversion.numberversion}}</td>
               <td>{{ticket.tproductversion.dateversion}}</td>
-              
-            
               <td>{{ticket.vocticketresol.nameword}}</td>
-              
-              
-              
+
+
+
               <!--<td> <a routerLink="/product/{{vocav.idproduct}}">Modify</a></td>-->
-              <td *ngIf="inverserSuppressionActive"> <a (click)="supprimer(ticket.idticket)" class="btn btn-sm btn-default btn-flat">
-                  Del</a></td>
+              <td *ngIf="inverserSuppressionActive">
+                <!-- Button trigger modal -->
+                <button (click)="selectedTicket=ticket" type="button" class="btn btn-default" data-toggle="modal"
+                  data-target="#suppr">
+                  Supp
+                </button>
+
+                <!--<a (click)="supprimer(ticket.idticket)" class="btn btn-sm btn-default btn-flat">
+                  Del</a>
+                -->
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
       <!-- /.table-responsive -->
     </div>
+    <!-- <div>
+        <mat-radio-group>
+            <mat-radio-button value="1" >Option1</mat-radio-button>
+            <mat-radio-button value="1" >Option1</mat-radio-button>
+          </mat-radio-group>
+    </div>-->
     <!-- /.box-body -->
     <div class="box-footer clearfix">
       <a routerLink="/ticket" class="btn btn-sm btn-info btn-flat pull-left">Ajouter ticket</a>
@@ -113,3 +134,24 @@
     <!-- /.box-footer -->
   </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="suppr" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Confirmation de suppression</h4>
+      </div>
+      <div class="modal-body">
+        Voulez vous supprimer le ticket
+        {{selectedTicket == null ? '' : selectedTicket.summary}} du produit
+        {{selectedTicket == null ? '' : selectedTicket.tproduct.nameproduct}} ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Annuler</button>
+        <button type="button" (click)="supprimer(selectedTicket.idticket)" class="btn btn-primary" data-dismiss="modal">Supprimer</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--<app-confirm-modal cid="suppr" ctitle="Confirmation de suppression" cmessage="Voulez vous supprimer ce ticket"></app-confirm-modal>-->

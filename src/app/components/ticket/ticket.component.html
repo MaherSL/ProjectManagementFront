@@ -148,16 +148,24 @@
           </div>
 
           <div class="form-group" [ngClass]="{'has-error': submitted && f.dateticket.errors}">
-            <label for="dateticket">Date ticket</label>
-            <input type="Date" min="0" max="1" formControlName="dateticket" class="form-control" />
-            <div *ngIf="submitted && f.dateticket.errors" class="help-block">
-              <div *ngIf="f.dateticket.errors.required">Date ticket obligatoire</div>
+              <label for="dateticket">Date Ticket:</label>
+
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-calendar"></i>
+                </div>
+                <div  >
+                <input type="Date" id="try" class="form-control" formControlName="dateticket"  />
+              </div>
+                <div *ngIf="submitted && f.dateticket.errors" class="help-block">
+                    <div *ngIf="f.dateticket.errors.required">Date ticket obligatoire</div>
+                  </div>
+              </div>
             </div>
-          </div>
 
           <div class="form-group" [ngClass]="{'has-error': submitted && f.externalcodea.errors}">
             <label for="externalcodea">Code Externe</label>
-            <input type="number" min="0" max="1" formControlName="externalcodea" class="form-control" />
+            <input type="number"  min="0" max="1" formControlName="externalcodea" class="form-control" />
             <div *ngIf="submitted && f.externalcodea.errors" class="help-block">
               <div *ngIf="f.externalcodea.errors.required">code externe obligatoire</div>
             </div>
@@ -165,7 +173,7 @@
 
           <div class="form-group" [ngClass]="{'has-error': submitted && f.summary.errors}">
             <label for="summary">Description</label>
-            <textarea type="string" min="0" max="1" formControlName="externalcodea" class="form-control" placeholder="type the description" ></textarea>
+            <textarea type="string"  min="0" max="1" formControlName="externalcodea" class="form-control" placeholder="type the description" ></textarea>
             <div *ngIf="submitted && f.summary.errors" class="help-block">
               <div *ngIf="f.summary.errors.required">Description obligatoire</div>
             </div>

@@ -1,5 +1,5 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component,ViewChild,ElementRef, OnInit } from '@angular/core';
 import { TicketService } from 'src/app/services/ticket.service';
 import { Tticket } from 'src/app/entity/Tticket';
 import { AlertService } from 'src/app/services/alert.service';
@@ -7,25 +7,34 @@ import { first } from 'rxjs/operators';
 import { Tproduct } from '../../entity/Tproduct';
 import { ProductService } from '../../services/product.service';
 
+
+
+
 @Component({
   selector: 'app-ticketlist',
   templateUrl: './ticketlist.component.html',
   styleUrls: ['./ticketlist.component.css']
 })
+
 export class TicketlistComponent implements OnInit {
+  /*@ViewChild("name") nameField: ElementRef;
+  editName(): void {
+    this.nameField.nativeElement.focus();}*/
+
   private searchTerm: string;
 
   private ticketlist: Tticket[];
   private isSuppressionActive:boolean=false;
-  private productList:Tproduct[];
+  private productlist:Tproduct[];
   private filterednameproduct:string;
+  private selectedTicket:Tticket;
+  private selectedProduct:Tproduct;
 
   constructor(private ticketService: TicketService, private alertService: AlertService,
     private productService:ProductService) { }
   ngOnInit() {
     this.getAll();
     this.getAllProduct();
-
 
   }
   getAll() {
@@ -35,10 +44,11 @@ export class TicketlistComponent implements OnInit {
   }
   getAllProduct() {
     this.productService.getAll().subscribe(
-      res => { this.productList = res },
+      res => { this.productlist = res },
       error => { this.alertService.error(JSON.stringify(error)); });
   }
 
+ 
 
 
   supprimer(id: number) {
@@ -53,12 +63,21 @@ export class TicketlistComponent implements OnInit {
         });
   }
 
-  onChangeNameproduct(nameproduct:string)
+  onFilterIdproduct(idproduct:string)
   {
-    this.filterednameproduct=nameproduct;
-    this.alertService.success(nameproduct);
+    this.filterednameproduct=idproduct;
+    
+    this.alertService.success(idproduct);
+    
     //this.getAll();
   }
+
+  /*onChange($event) {
+    console.log(this.selectedProduct);
+    this.alertService.success(this.selectedProduct.nameproduct);
+    // I want to do something here for new selectedDevice, but what I
+    // got here is always last selection, not the one I just select.
+}*/
   
 }
 
