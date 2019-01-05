@@ -1,3 +1,4 @@
+import { SearchCriteria } from './../class/SearchCriteria';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
@@ -13,6 +14,14 @@ export class ViewService {
     return this.http.get<Tview[]>(environment.apiUrl + "/view/viewlist");
   }
 
+  getByTview(tview: Tview) {
+    return this.http.post<Tview[]>(environment.apiUrl + "/view/viewtest3", tview);
+  }
+
+  getByCriterias(criterias: SearchCriteria[]) {
+    return this.http.post<Tview[]>(environment.apiUrl + "/view/viewtest5", criterias);
+  }
+
   getById(id: number) {
     return this.http.get<Tview>(environment.apiUrl + "/view/" + id);
   }
@@ -22,8 +31,8 @@ export class ViewService {
   }
 
 //jé changé Trole elle a ete Role*******************************************
-  save(Role: Tview) {
-    return this.http.post<Tview>(environment.apiUrl + "/view/save", Role);
+  save(tview: Tview) {
+    return this.http.post<Tview>(environment.apiUrl + "/view/save", tview);
   }
 
   /*update(Role: Tview) {

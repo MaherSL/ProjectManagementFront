@@ -32,6 +32,7 @@ import { JwtInterceptor } from './security/jwt.interceptor';
 import { ContentheaderComponent } from './components/templates/contentheader/contentheader.component';
 import { TicketlistComponent } from './components/ticketlist/ticketlist.component';
 import { TicketComponent } from './components/ticket/ticket.component';
+import { Viewlist2Component } from './components/viewlist2/viewlist2.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { TicketComponent } from './components/ticket/ticket.component';
     ProductversionlistComponent,
     TicketlistComponent,
     TicketComponent,
-    ContentheaderComponent
+    ContentheaderComponent,
+    Viewlist2Component
   ],
   imports: [
     BrowserModule,

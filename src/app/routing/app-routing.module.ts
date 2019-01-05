@@ -9,6 +9,7 @@ import { AuthGuard } from '../services/auth.guard';
 import { RolelistComponent } from '../components/rolelist/rolelist.component';
 import { RolelistmodifComponent } from '../components/rolelistmodif/rolelistmodif.component';
 import { ViewlistComponent } from '../components/viewlist/viewlist.component';
+import { Viewlist2Component } from '../components/viewlist2/viewlist2.component';
 import { ViewComponent } from '../components/view/view.component';
 import { FormiComponent } from '../components/formi/formi.component';
 import { FormcComponent } from '../components/formc/formc.component';
@@ -52,6 +53,10 @@ const routes: Routes = [
     path: 'viewlist',
     component:ViewlistComponent,
     canActivate: [AuthGuard]},
+    {
+      path: 'viewlist2',
+      component:Viewlist2Component,
+      canActivate: [AuthGuard]},
   {
     path: 'login',
     component:LoginComponent
@@ -98,7 +103,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
 
-  
+
   {
     path: 'productversionlist',
     component:ProductversionlistComponent,
