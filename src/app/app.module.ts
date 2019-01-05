@@ -67,7 +67,7 @@ import { AppMaterialModule} from 'src/app/app-material/app-material.module';
     TicketlistComponent,
     TicketComponent,
     ContentheaderComponent,
-    Viewlist2Component
+    Viewlist2Component,
     TicketFilterPipe,
     ContentheaderComponent,
      ConfirmModalComponent
