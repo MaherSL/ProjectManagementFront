@@ -12,24 +12,32 @@ import { first } from 'rxjs/operators';
 })
 export class Viewlist2Component implements OnInit {
   private viewlist: Tview[];
+  private viewlistInitial: Tview[];
   private searchCriteria: SearchCriteria[];
   private isSuppressionActive: boolean = false;
+  private filteredView: Tview;
 
   constructor(private viewService: ViewService, private alertService: AlertService) { }
   ngOnInit() {
     //this.getAll();
+    this.filteredView = new Tview();
+    this.filteredView.enabledview = 1;
     this.getByTview();
+    this.getAllFilter();
     //this.getByCriterias();
   }
 
   getByTview() {
+    /*
+    1 exemple
     let tview: Tview = new Tview();
     //tview.idview=1;
     //tview.progview = "/rolelist";
     //tview.enabledview = 1;
     tview.nameview="Produit";
-
     this.viewService.getByTview(tview)
+*/
+    this.viewService.getByTview(this.filteredView)
       .subscribe(
         data => {
           this.viewlist = data;
@@ -38,6 +46,19 @@ export class Viewlist2Component implements OnInit {
         error => {
           this.alertService.error(JSON.stringify(error));
         });
+  }
+
+
+  onFilterNameview(nameview: string) {
+
+    if (typeof nameview == 'undefined')
+      this.filteredView.nameview = null;
+    else
+      if (nameview != null)
+        this.filteredView.nameview = nameview;
+      else
+        this.filteredView.nameview = "";
+    this.getByTview();
   }
 
   getByCriterias() {
@@ -60,6 +81,16 @@ export class Viewlist2Component implements OnInit {
   getAll() {
     this.viewService.getAll().subscribe(
       res => { this.viewlist = res },
+      error => { this.alertService.error(JSON.stringify(error)); });
+  }
+
+
+  getAllFilter() {
+    this.viewService.getAll().subscribe(
+      res => {
+        this.viewlistInitial = res;
+        this.viewlistInitial.unshift(new Tview())
+      },
       error => { this.alertService.error(JSON.stringify(error)); });
   }
   supprimer(id: number) {

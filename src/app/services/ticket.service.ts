@@ -18,6 +18,10 @@ export class TicketService {
     return this.http.get<Tticket>(environment.apiUrl + "/ticket/" + id);
   }
 
+  getByEntity(tticket: Tticket) {
+    return this.http.post<Tticket[]>(environment.apiUrl + "/ticket/ticketlist2", tticket);
+  }
+
   save(Trole: Tticket) {
     return this.http.post<Tticket>(environment.apiUrl + "/ticket/save", Trole);
   }

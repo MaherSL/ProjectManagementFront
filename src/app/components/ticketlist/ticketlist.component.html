@@ -27,13 +27,6 @@
     </div>
 <!--begin try-->
 
-
-
-
-
-
-    
-
     <!-- /.box-header -->
     <div class="box-body">
       <div class="table-responsive">
@@ -43,7 +36,7 @@
               <th>Date</th>
               <th>Status</th>
               <th>Product
-              
+
                   <div class="form-group">
                     <!--<label>Minimal</label>-->
                     <select (change)="onFilterIdproduct($event.target.value)"
@@ -72,7 +65,7 @@
                 </div>
 
               </th>-->
-              
+
               <th>Resolution</th>
               <th>Fixed In Version</th>
               <th>New Test</th>
@@ -89,7 +82,7 @@
               <td>{{ticket.dateticket}}</td>
               <td>{{ticket.vocticketstatus.nameword}}</td>
               <!--name product as a list to use it later-->
-              <!-- <td > 
+              <!-- <td >
                       <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1"
                         aria-hidden="true"
                         (change)="onChangeNameproduct($event.target.value)">

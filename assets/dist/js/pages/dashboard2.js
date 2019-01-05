@@ -27,7 +27,7 @@ $(function () {
         pointStrokeColor    : '#c1c7d1',
         pointHighlightFill  : '#fff',
         pointHighlightStroke: 'rgb(220,220,220)',
-        data                : [65, 59, 80, 81, 56, 55, 40]
+        data                : [30, 59, 80, 81, 56, 55, 40]
       },
       {
         label               : 'Digital Goods',
