@@ -1,5 +1,5 @@
 <app-contentheader></app-contentheader>
-
+<!--<app-datatabl></app-datatabl>-->
 <!-- Main content -->
 <div class="content">
   <div class="box box-primary">
@@ -25,7 +25,14 @@
     <div class="form-group">
       <input type="text" class="form-control" placeholder="Search by name Product" style="width: 300px" [(ngModel)]="searchTerm" />
     </div>
+<!--begin try-->
 
+
+
+
+
+
+    
 
     <!-- /.box-header -->
     <div class="box-body">
@@ -65,8 +72,15 @@
                 </div>
 
               </th>-->
-              <th>Date Version</th>
+              
               <th>Resolution</th>
+              <th>Fixed In Version</th>
+              <th>New Test</th>
+              <th>Test Name</th>
+              <th>salesforce case number</th>
+              <th>salesforce case number</th>
+              <th>salesforce case number</th>
+              <!--<th>Date Version</th>-->
               <th *ngIf="inverserSuppressionActive">Supp</th>
             </tr>
           </thead>
@@ -91,12 +105,11 @@
                 {{ticket.externalcodea}}
               </td>
               <td>{{ticket.summary}}</td>
-              <td>{{ticket.treporter.tperson.nameperson}}</td>
+              <td>{{ticket.treporter.tperson.nameperson | uppercase}}</td>
               <td>{{ticket.tproductversion.numberversion}}</td>
-              <td>{{ticket.tproductversion.dateversion}}</td>
               <td>{{ticket.vocticketresol.nameword}}</td>
 
-
+<!--<td>{{ticket.tproductversion.dateversion}}</td>-->
 
               <!--<td> <a routerLink="/product/{{vocav.idproduct}}">Modify</a></td>-->
               <td *ngIf="inverserSuppressionActive">

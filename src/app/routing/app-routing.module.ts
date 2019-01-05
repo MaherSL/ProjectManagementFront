@@ -22,6 +22,9 @@ import { ProductversionComponent } from '../components/productversion/productver
 import { TicketComponent } from '../components/ticket/ticket.component';
 import { TicketlistComponent } from '../components/ticketlist/ticketlist.component';
 
+import { TryComponent } from '../components/try/try.component';
+
+
 
 
 const routes: Routes = [
@@ -143,8 +146,13 @@ const routes: Routes = [
   component:FormiComponent,
   canActivate: [AuthGuard]
 },
-  { path: '**', component: SyspagenotfoundComponent }
-
+{
+  path: 'try',
+  component:TryComponent,
+  canActivate: [AuthGuard]
+},
+  { path: '**', component: SyspagenotfoundComponent },
+ 
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

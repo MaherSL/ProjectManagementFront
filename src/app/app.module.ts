@@ -39,6 +39,8 @@ import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.
 //material Design
 import { AppMaterialModule} from 'src/app/app-material/app-material.module';
 
+import { TryComponent } from './components/try/try.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,7 +72,9 @@ import { AppMaterialModule} from 'src/app/app-material/app-material.module';
     Viewlist2Component,
     TicketFilterPipe,
     ContentheaderComponent,
-     ConfirmModalComponent
+     ConfirmModalComponent,
+     
+     TryComponent
   ],
   imports: [
     BrowserModule,
