@@ -8,7 +8,7 @@ export class Tticket {
     tproduct: Tproduct;
     tproductversion: Tproductversion;
     treporter: Treporter;
-    vocticketstatus: Tvocabword;
+    tvocabword: Tvocabword;
     vocticketresol: Tvocabword;
     dateticket: Date;
     externalcodea: number;

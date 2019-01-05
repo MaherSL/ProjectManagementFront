@@ -19,6 +19,7 @@ export class TicketComponent implements OnInit {
   private tticket: Tticket;
   private idticketSelected: number=null;
   private isSuppressionActive:boolean=false;
+  private ticketlist:Tticket[];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -45,6 +46,13 @@ export class TicketComponent implements OnInit {
       );
     }
 
+    if (this.idticketSelected != null) {
+      this.ticketService.getAll().subscribe(
+        res => {this.ticketlist=res},
+        error => { this.alertService.error("Erreur : "+JSON.stringify(error)); }
+      );
+    }
+  
 
   }
 

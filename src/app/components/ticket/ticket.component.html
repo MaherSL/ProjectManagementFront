@@ -45,8 +45,80 @@
       <div class="table-responsive">
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
           <input type="hidden" formControlName="idticket" class="form-control" />
+
+         <!-- <div>
+            <label>ID: </label>
+            <select (change)="filterForeCasts($event.target.value)">
+                <option value="0" class="form-control">{{ticket.tproduct.nameproduct}}</option>
+               <option *ngFor="let ticket of ticketlist" value={{ticket.tproduct.nameproduct}}>
+                    {{ticket.tproduct.nameproduct}}
+                </option>
+            </select>
+        </div>-->
+
+        <!--<div class="row">
+          <app-header></app-header>
+          </div>
+          <div class="container">
+
+          -->
+          <!--<div class="row">-->
+          <!--<div [hidden]="allTasks.length>0" class="progress">
+          <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+          <span class="sr-only">45% Complete</span>
+          </div>
+          </div>-->
+          <!--search bar-->
+          <!--<div class="input-group">
+          <span class="input-group-btn">
+          <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+          </span>
+          <input type="text" (keyup)="0" #input1 class="form-control" placeholder="Search for...">
+          </div>-->
+          <!--</div>-->
+          <!--
+          <div class="row">-->
+         <!--
+          <table class="table">
+          <thead>
+          <th></th>
+          <th>Name Product</th>    
+          <th>Name Repoter</th>   Id Title
+          <th>Status</th>
+          <th>Action</th>
+          </thead>
+         
+          <tr *ngFor="let ticket of (allTasks|filter:input1.value|paginate: { itemsPerPage: 5, currentPage: page } )">
+          <td>
+          <input type="checkbox" (change)="checkbox(item)"></td>
+          <td>{{item.Id}}</td>
+          <td>{{item.Title}}</td>
+          <td><span [ngClass]="{'donestatus': item.Status=='done','pendingstatus': item.Status=='pending'}" >{{item.Status}}</span></td>
+          <td>
+          <button (click)='updateStatus(item)' type="button" class="btn btn-default" aria-label="Left Align">
+          <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+          </button>
+          <button (click)='deleteStatus(item)' type="button" class="btn btn-default" aria-label="Left Align">
+          <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+          </button></td>
+          </tr>
+          </table>
+          <button (click)="deleteAll()" >Click</button>
+          <div class="has-text-centered">
+          <pagination-controls (pageChange)="page = $event"></pagination-controls>
+          </div>
+          </div>
+          </div>-->
+          
+
+    
+
+
+
+
+
           <div class="form-group" [ngClass]="{'has-error': submitted && f.tproduct.errors}">
-            <label for="tproduct">TPRODUCT</label>
+            <label for="tproduct">PRODUCT Name</label>
             <input type="Tproduct" formControlName="tproduct" class="form-control" />
             <div *ngIf="f.tproduct.errors" class="help-block">
               <div *ngIf="f.tproduct.errors.required">tproduct obligatoire</div>
@@ -75,26 +147,25 @@
             </div>
           </div>
 
-          <div class="form-group" [ngClass]="{'has-error': submitted && f.vocticketstatus.errors}">
-            <label for="vocticketstatus">STATUT</label>
-            <input type="Tvocabword" formControlName="vocticketstatus" class="form-control" />
-            <div *ngIf="f.vocticketstatus.errors" class="help-block">
-              <div *ngIf="f.vocticketstatus.errors.required">statut obligatoire</div>
-              <div *ngIf="f.vocticketstatus.errors.minlength">longueur minimale de 3</div>
-              <div *ngIf="f.vocticketstatus.errors.maxlength">longueur maximale est atteinte</div>
-            </div>
-          </div>
           <div class="form-group" [ngClass]="{'has-error': submitted && f.dateticket.errors}">
-            <label for="dateticket">Date ticket</label>
-            <input type="Date" min="0" max="1" formControlName="dateticket" class="form-control" />
-            <div *ngIf="submitted && f.dateticket.errors" class="help-block">
-              <div *ngIf="f.dateticket.errors.required">Date ticket obligatoire</div>
+              <label for="dateticket">Date Ticket:</label>
+
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-calendar"></i>
+                </div>
+                <div  >
+                <input type="Date" id="try" class="form-control" formControlName="dateticket"  />
+              </div>
+                <div *ngIf="submitted && f.dateticket.errors" class="help-block">
+                    <div *ngIf="f.dateticket.errors.required">Date ticket obligatoire</div>
+                  </div>
+              </div>
             </div>
-          </div>
 
           <div class="form-group" [ngClass]="{'has-error': submitted && f.externalcodea.errors}">
             <label for="externalcodea">Code Externe</label>
-            <input type="number" min="0" max="1" formControlName="externalcodea" class="form-control" />
+            <input type="number"  min="0" max="1" formControlName="externalcodea" class="form-control" />
             <div *ngIf="submitted && f.externalcodea.errors" class="help-block">
               <div *ngIf="f.externalcodea.errors.required">code externe obligatoire</div>
             </div>
@@ -102,13 +173,26 @@
 
           <div class="form-group" [ngClass]="{'has-error': submitted && f.summary.errors}">
             <label for="summary">Description</label>
-            <input type="string" min="0" max="1" formControlName="externalcodea" class="form-control" />
+            <textarea type="string"  min="0" max="1" formControlName="externalcodea" class="form-control" placeholder="type the description" ></textarea>
             <div *ngIf="submitted && f.summary.errors" class="help-block">
               <div *ngIf="f.summary.errors.required">Description obligatoire</div>
             </div>
           </div>
 
+<!--remember me
+          <div class="checkbox">
+              <label>
+              <input #idticket [(ngModel)]="idticket.selected" type="checkbox" data-toggle="toggle">Benutername speichern
+              </label></div>-->
 
+             <!-- <select (change)="filterForeCasts($event.target.value)">
+                  <option value="0" class="form-control">{{ticket.idticket}}</option>
+                  <option *ngFor="let ticket of ticketlist" value={{ticket.idticket}}>
+                      
+                  </option>
+              </select>-->
+
+              
 
 
 
