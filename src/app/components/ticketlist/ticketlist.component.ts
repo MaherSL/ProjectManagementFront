@@ -6,6 +6,8 @@ import { AlertService } from 'src/app/services/alert.service';
 import { first } from 'rxjs/operators';
 import { Tproduct } from '../../entity/Tproduct';
 import { ProductService } from '../../services/product.service';
+import { SearchCriteria } from 'src/app/class/SearchCriteria';
+import { OpCriteria } from 'src/app/class/OpCriteria';
 
 
 
@@ -22,7 +24,7 @@ export class TicketlistComponent implements OnInit {
     this.nameField.nativeElement.focus();}*/
 
   private searchTerm: string;
-
+  private searchMap:Map<String,SearchCriteria> = new Map();
   private ticketlist: Tticket[];
   private isSuppressionActive:boolean=false;
   private productlist:Tproduct[];
@@ -44,12 +46,14 @@ export class TicketlistComponent implements OnInit {
   }
   getAllProduct() {
     this.productService.getAll().subscribe(
-      res => { this.productlist = res },
+      res => { this.productlist = res
+      let p: Tproduct = new Tproduct();
+        p.nameproduct="[Tous les produits]";
+        p.idproduct=null;
+        this.productlist.unshift(p);
+       },
       error => { this.alertService.error(JSON.stringify(error)); });
   }
-
- 
-
 
   supprimer(id: number) {
     this.ticketService.delete(id)
@@ -63,13 +67,65 @@ export class TicketlistComponent implements OnInit {
         });
   }
 
-  onFilterIdproduct(idproduct:string)
+  /*onFilterIdproduct(idproduct:number)
   {
-    this.filterednameproduct=idproduct;
-    
-    this.alertService.success(idproduct);
-    
-    //this.getAll();
+    if (+idproduct==null){
+    this.searchMap.delete("tproduct");
+    }else{
+    let searchCriteria_ = new SearchCriteria("tproduct.idproduct",OpCriteria.equals,+idproduct);
+    this.searchMap.set(searchCriteria_.key,searchCriteria_);}
+    this.getByCriterias();
+
+  }*/
+  onFilterProduct(nameproduct:string)
+  {
+    let searchCriteria_ = new SearchCriteria("tproduct.nameproduct",OpCriteria.likeIgnoreCase,"%"+nameproduct+"%");
+    this.searchMap.set(searchCriteria_.key,searchCriteria_);
+    this.getByCriterias();
+
+  }
+
+
+  onFilterExternalcodea(externalcodea:string)
+  {
+    let searchCriteria_ = new SearchCriteria("externalcodea",OpCriteria.likeIgnoreCase,"%"+externalcodea+"%");
+    this.searchMap.set(searchCriteria_.key,searchCriteria_);
+    this.getByCriterias();
+
+  }
+  onFilterSummary(summary:string)
+  {
+    let searchCriteria_ = new SearchCriteria("summary",OpCriteria.likeIgnoreCase,"%"+summary+"%");
+    this.searchMap.set(searchCriteria_.key,searchCriteria_);
+    this.getByCriterias();
+
+  }
+  onFilterReporter(reporter:string)
+  {
+    let searchCriteria_ = new SearchCriteria("treporter.tperson.nameperson",OpCriteria.likeIgnoreCase,"%"+reporter+"%");
+    this.searchMap.set(searchCriteria_.key,searchCriteria_);
+    this.getByCriterias();
+
+  }
+  onFilterProductversion(productversion:string)
+  {
+    let searchCriteria_ = new SearchCriteria("tproductversion.nameversion",OpCriteria.likeIgnoreCase,"%"+productversion+"%");
+    this.searchMap.set(searchCriteria_.key,searchCriteria_);
+    this.getByCriterias();
+
+  }
+
+  getByCriterias() {
+    var arr = Array.from(this.searchMap.values());
+
+    this.ticketService.getByCriterias(arr)
+      .subscribe(
+        data => {
+          this.ticketlist = data;
+        },
+        error => {
+          this.alertService.error(JSON.stringify(error));
+        });
   }
 
   /*onChange($event) {
@@ -78,7 +134,7 @@ export class TicketlistComponent implements OnInit {
     // I want to do something here for new selectedDevice, but what I
     // got here is always last selection, not the one I just select.
 }*/
-  
+
 }
 
 

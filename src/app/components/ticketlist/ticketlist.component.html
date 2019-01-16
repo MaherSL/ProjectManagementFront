@@ -35,23 +35,22 @@
             <tr>
               <th>Date</th>
               <th>Status</th>
-              <th>Product
-
-                  <div class="form-group">
-                    <!--<label>Minimal</label>-->
-                    <select (change)="onFilterIdproduct($event.target.value)"
-                    class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                      <option></option>
+              <!--<th>Product
+                    class="form-control input-sm" style="width: 100%;" tabindex="-1" aria-hidden="true">
                       <option  [value]="product.idproduct" *ngFor="let product of productlist ">{{product.nameproduct}}</option>
                     </select>
-                    <!--<span class="select2 select2-container select2-container--default select2-container--below" dir="ltr" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-xzb0-container"><span class="select2-selection__rendered" id="select2-xzb0-container" title="Alabama">Alabama</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>-->
-                  </div>
-              </th>
+              </th>-->
+              <th><input type="search" (input)="onFilterProduct($event.target.value)" class="form-control input-sm"
+                style="width: 100%;" placeholder="Product"></th>
+             <th><input type="search" (input)="onFilterExternalcodea($event.target.value)" class="form-control input-sm"
+                style="width: 100%;" placeholder="Id Jira"></th>
 
-              <th>ID(Jira)</th>
-              <th>summary</th>
-              <th>Reporter</th>
-              <th>Product Version</th>
+              <th><input type="search" (input)="onFilterSummary($event.target.value)" class="form-control input-sm"
+                style="width: 100%;" placeholder="Summary"></th>
+              <th><input type="search" (input)="onFilterReporter($event.target.value)" class="form-control input-sm"
+                style="width: 100%;" placeholder="Reporter"></th>
+              <th><input type="search" (input)="onFilterProductversion($event.target.value)" class="form-control input-sm"
+                style="width: 100%;" placeholder="Product Ver"></th>
               <!-- <div class="form-group">
                   <label>Produit</label>
                   <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1"

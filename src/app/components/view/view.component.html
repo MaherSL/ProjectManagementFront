@@ -1,23 +1,4 @@
-<!--<div style="background: rgb(243, 156, 18); padding: 20px 30px; font-size: 16px; font-weight: 600; z-index: 999999;"><a
-    title="Never show me this again!" class="float-right" style="color: rgb(255, 255, 255); font-size: 20px;" href="#"
-    data-toggle="tooltip" data-placement="left">×</a><a style="color: rgba(255, 255, 255, 0.9); text-decoration: none; margin-right: 10px; display: inline-block;"
-    href="https://themequarry.com">Ready to sell your theme? Submit your theme to our new marketplace now and let over
-    200k visitors see it!</a><a class="btn btn-default btn-sm" style="background: rgb(255, 255, 255); border: 0px; border-image: none; color: rgb(243, 156, 18); font-weight: 600; margin-top: -5px; box-shadow: none;"
-    href="https://themequarry.com">Let's Do It!</a></div>
--->
 <app-contentheader></app-contentheader>
-<!--<div class="content-header">
-  <h1>
-    Detail des projets
-    <small>arrêté au 07.10.2018</small>
-  </h1>
-
-  <ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
-    <li class="active">Projets</li>
-  </ol>
-</div>
--->
 <!-- Main content -->
 <div class="content">
   <div class="box box-primary">
@@ -67,6 +48,12 @@
           </div>
           <div class="form-group" [ngClass]="{'has-error': submitted && f.enabledview.errors}">
             <label for="enabledView">Actif</label>
+            <!--<label class="switch">
+                <input type="checkbox" formControlName="enabledview" class="form-control"
+                ng-true-value="1" ng-false-value="0"/>
+                /*<input type="checkbox" [(ngModel)]="theCheckbox">-->
+               <!-- <span class="slider round"></span>
+              </label>-->
             <input type="number" min="0" max="1" formControlName="enabledview" class="form-control" />
             <div *ngIf="submitted && f.enabledview.errors" class="help-block">
               <div *ngIf="f.enabledview.errors.required">Etat (actif/inactif est obligatoire)</div>

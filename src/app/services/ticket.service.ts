@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Tticket } from '../entity/Tticket';
+import { SearchCriteria } from '../class/SearchCriteria';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,10 @@ export class TicketService {
 
   save(Trole: Tticket) {
     return this.http.post<Tticket>(environment.apiUrl + "/ticket/save", Trole);
+  }
+
+  getByCriterias(criterias: SearchCriteria[]) {
+    return this.http.post<Tticket[]>(environment.apiUrl + "/ticket/searchbycriteria", criterias);
   }
 
   /*update(Trole: Tticket) {

@@ -1,6 +1,6 @@
 <app-appheader></app-appheader>
 <app-appmenu></app-appmenu>
-<div [ngClass]="{'': isHide, 'content-wrapper': !isHide}">
+<div class="content-wrapper" [ngClass]="{'': isHide, 'content-wrapper': !isHide}">
   <router-outlet></router-outlet>
 </div>
 <app-appfooter></app-appfooter>

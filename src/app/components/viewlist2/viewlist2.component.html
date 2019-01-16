@@ -1,5 +1,22 @@
 <app-contentheader></app-contentheader>
 
+<!-- Rectangular switch -->
+<label class="switch">
+  <input type="checkbox">
+  <span class="slider"></span>
+</label>
+
+<!-- Rounded switch -->
+<label class="switch">
+  <input type="checkbox">
+  <span class="slider round"></span>
+</label>
+<label class="switch btn-sm btn-default btn-flat">
+  <input type="checkbox">
+  <span class="slider round"></span>
+</label>
+
+
 <!-- Main content -->
 <div class="content">
   <div class="box box-primary">
@@ -24,21 +41,29 @@
     </div>
     <!-- /.box-header -->
     <div class="box-body">
-        dataTables_wrapper form-inline dt-bootstrap
-      <div class="table-responsive">
+      <div class="table-responsive dataTables_wrapper form-inline dt-bootstrap">
         <table class="table no-margin table-hover table-condensed">
           <thead>
             <tr>
-              <th>Nom</th>
-              <div class="form-group">
-                <!--<label>Minimal</label>-->
-                <select (change)="onFilterNameview($event.target.value)"
-                class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                  <option  [value]="view.nameview" *ngFor="let view of viewlistInitial ">{{view.nameview}}</option>
-                </select>
-              </div>
-              <th>Programme</th>
-              <th>Etat</th>
+              <th><input type="search" (input)="onFilterNameview($event.target.value)" class="form-control input-sm"
+                style="width: 100%;" placeholder="Nom"></th>
+              <th>
+                  <input type="search" (input)="onFilterProgview($event.target.value)" class="form-control input-sm"
+                  style="width: 100%;" placeholder="Programme">
+                <!--<select (change)="onFilterProgviewChange($event.target.value)" class="form-control select2 select2-hidden-accessible  input-sm"
+                  style="width: 100%;" tabindex="-1" aria-hidden="true">
+                  <option [value]="view.progview" *ngFor="let view of viewlistInitial "><span *ngIf="!view.progview">[Tous
+                      les programmes]</span>
+                    <span *ngIf="view.progview">{{view.progview}}</span></option>
+                </select>-->
+              </th>
+              <th>
+                <select (change)="onFilterEnabledview($event.target.value)" class="form-control select2 select2-hidden-accessible  input-sm"
+                  style="width: 100%;" tabindex="-1" aria-hidden="true">
+                  <option [value]=null>[Etat]</option>
+                  <option [value]=1 selected>Actif</option>
+                  <option [value]=0>Inactif</option>
+                </select></th>
               <th *ngIf="inverserSuppressionActive">Supp</th>
             </tr>
           </thead>
@@ -46,10 +71,11 @@
             <tr *ngFor="let view of viewlist">
               <td><a routerLink="/view/{{view.idview}}">{{view.nameview}}</a></td>
               <td>{{view.progview}}</td>
-              <td>{{view.enabledview}}</td>
-              <!--<td> <a routerLink="/view/{{view.idview}}">Modify</a></td>-->
-              <td *ngIf="inverserSuppressionActive"> <a (click)="supprimer(view.idview)"  class="btn btn-sm btn-default btn-flat">
-                Del</a></td>
+              <td>
+                <span *ngIf="view.enabledview==1">Actif</span><span *ngIf="view.enabledview!=1">Inactif</span>
+              </td>
+              <td *ngIf="inverserSuppressionActive"> <a (click)="supprimer(view.idview)" class="btn btn-sm btn-default btn-flat">
+                  Del</a></td>
             </tr>
           </tbody>
         </table>

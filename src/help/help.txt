@@ -1,15 +1,32 @@
-Mot de passe de l'application
-  cripté="$2a$10$QziKrHMjMo/t8cjOkyFad.DTc5k.KadI3GA0bFBqxWjJq6msV0hVq"
-  décripté="123456789"
+Catégorie (Date finalisation)(Date création)Commentaire
+
+AFAIRE
+  T2. (2019.01.08)  Rectifier responsive du boutons de recherche de pageheader
+  T3. (2019.01.08)  Ajouter le sablier et connexion en cours lors de la connexion
+  T4. (2019.01.08)  Rendre l'affichage des messages de succès au dessus de la page
+
+ENCOURS
+
+FAIT
+  T1. Recherche par critère d'une table maitre [Open,Reporter,Close]=[2019.01.08,MSl,2019.01.15]
+
+ANNULE
+  .
+
+INFO
+  2018.12.31
+    Mot de passe de l'application
+      cripté="$2a$10$QziKrHMjMo/t8cjOkyFad.DTc5k.KadI3GA0bFBqxWjJq6msV0hVq"
+      décripté="123456789"
 
 
-  script table tusersignin
-  CREATE TABLE `tusersignin` (
-  `idusersignin` int(11) NOT NULL,
-  `token` varchar(480) NOT NULL,
-  `iduser` int(11) NOT NULL,
-  PRIMARY KEY (`idusersignin`),
-  UNIQUE KEY `token_UNIQUE` (`token`),
-  KEY `fk_usersignin_user_idx` (`iduser`),
-  CONSTRAINT `fk_usersignin_user` FOREIGN KEY (`iduser`) REFERENCES `tuser` (`iduser`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1
+      script table tusersignin
+      CREATE TABLE `tusersignin` (
+      `idusersignin` int(11) NOT NULL,
+      `token` varchar(480) NOT NULL,
+      `iduser` int(11) NOT NULL,
+      PRIMARY KEY (`idusersignin`),
+      UNIQUE KEY `token_UNIQUE` (`token`),
+      KEY `fk_usersignin_user_idx` (`iduser`),
+      CONSTRAINT `fk_usersignin_user` FOREIGN KEY (`iduser`) REFERENCES `tuser` (`iduser`) ON DELETE NO ACTION ON UPDATE NO ACTION
+    ) ENGINE=InnoDB DEFAULT CHARSET=latin1
