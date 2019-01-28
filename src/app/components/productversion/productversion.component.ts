@@ -10,7 +10,7 @@ import { first } from 'rxjs/operators';
 @Component({
   selector: 'app-productversion',
   templateUrl: './productversion.component.html',
-  styleUrls: ['./productversion.component.css']
+  styleUrls: ['../../../shared.style.css']
 })
 export class ProductversionComponent implements OnInit {
   private registerForm: FormGroup;

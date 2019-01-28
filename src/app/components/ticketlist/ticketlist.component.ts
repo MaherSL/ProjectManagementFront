@@ -13,7 +13,7 @@ import { ProductService } from '../../services/product.service';
 @Component({
   selector: 'app-ticketlist',
   templateUrl: './ticketlist.component.html',
-  styleUrls: ['./ticketlist.component.css']
+  styleUrls: ['../../../shared.style.css']
 })
 
 export class TicketlistComponent implements OnInit {
@@ -22,11 +22,15 @@ export class TicketlistComponent implements OnInit {
     this.nameField.nativeElement.focus();}*/
 
   private searchTerm: string;
+  //private searchDate: Date;
+
 
   private ticketlist: Tticket[];
   private isSuppressionActive:boolean=false;
   private productlist:Tproduct[];
   private filterednameproduct:string;
+  
+
   private selectedTicket:Tticket;
   private selectedProduct:Tproduct;
 
@@ -71,6 +75,10 @@ export class TicketlistComponent implements OnInit {
     
     //this.getAll();
   }
+
+
+
+
 
   /*onChange($event) {
     console.log(this.selectedProduct);

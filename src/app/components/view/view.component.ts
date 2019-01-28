@@ -10,7 +10,7 @@ import { Tview } from 'src/app/entity/Tview';
 @Component({
   selector: 'app-view',
   templateUrl: './view.component.html',
-  styleUrls: ['./view.component.css']
+  styleUrls: ['../../../shared.style.css']
 })
 export class ViewComponent implements OnInit {
   private registerForm: FormGroup;

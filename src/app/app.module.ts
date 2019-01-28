@@ -40,6 +40,10 @@ import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.
 import { AppMaterialModule} from 'src/app/app-material/app-material.module';
 
 import { TryComponent } from './components/try/try.component';
+import { EnabledProdValidator } from './enabledProdValidator';
+import { NameproductValidator } from './nameproductValidator';
+import { UniqueNameviewValidatorDirective } from './unique-nameview-validator.directive';
+
 
 @NgModule({
   declarations: [
@@ -74,7 +78,11 @@ import { TryComponent } from './components/try/try.component';
     ContentheaderComponent,
      ConfirmModalComponent,
      
-     TryComponent
+     
+     TryComponent,
+     
+     
+     UniqueNameviewValidatorDirective
   ],
   imports: [
     BrowserModule,
@@ -85,7 +93,7 @@ import { TryComponent } from './components/try/try.component';
     ReactiveFormsModule,
     AppMaterialModule
   ],
-  providers: [AuthGuard, AlertService,
+  providers: [AuthGuard, AlertService,EnabledProdValidator,NameproductValidator,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
   ],
 

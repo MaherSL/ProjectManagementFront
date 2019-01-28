@@ -119,7 +119,7 @@
 
           <div class="form-group" [ngClass]="{'has-error': submitted && f.tproduct.errors}">
             <label for="tproduct">PRODUCT Name</label>
-            <input type="Tproduct" formControlName="tproduct" class="form-control" />
+            <input type="Tproduct" formControlName="tproduct" class="form-control" required />
             <div *ngIf="f.tproduct.errors" class="help-block">
               <div *ngIf="f.tproduct.errors.required">tproduct obligatoire</div>
               <div *ngIf="f.tproduct.errors.minlength">longueur minimale de 3</div>

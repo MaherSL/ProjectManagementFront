@@ -5,7 +5,7 @@ import { Trole } from '../../entity/Trole';
 @Component({
   selector: 'app-rolelistmodif',
   templateUrl: './rolelistmodif.component.html',
-  styleUrls: ['./rolelistmodif.component.css']
+  styleUrls: ['../../../shared.style.css']
 })
 export class RolelistmodifComponent implements OnInit {
 private rolelist:Trole[];

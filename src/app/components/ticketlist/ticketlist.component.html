@@ -15,6 +15,9 @@
             <li>
               <a (click)="inverserSuppressionActive=!inverserSuppressionActive">
                 {{inverserSuppressionActive ? 'Désac. suppr.' : 'Activer suppr.'}}</a>
+                <!--filtre-->
+                <a (click)="inverserFiltreActive=!inverserFiltreActive">
+                  {{inverserFiltreActive ? 'Désac. filtre.' : 'Activer filtre.'}}</a>
             </li>
           </ul>
         </div>
@@ -25,7 +28,10 @@
     <div class="form-group">
       <input type="text" class="form-control" placeholder="Search by name Product" style="width: 300px" [(ngModel)]="searchTerm" />
     </div>
-<!--begin try-->
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Search by date" style="width: 300px" [(ngModel)]="searchTerm" />
+    </div>
+
 
     <!-- /.box-header -->
     <div class="box-body">
@@ -67,6 +73,7 @@
               </th>-->
 
               <th>Resolution</th>
+              
               <th>Fixed In Version</th>
               <th>New Test</th>
               <th>Test Name</th>
@@ -75,6 +82,7 @@
               <th>salesforce case number</th>
               <!--<th>Date Version</th>-->
               <th *ngIf="inverserSuppressionActive">Supp</th>
+              <th *ngIf="inverserFiltreActive">Filtrer</th>
             </tr>
           </thead>
           <tbody>
@@ -89,6 +97,8 @@
                         <option  [value]="product.idproduct" *ngFor="let product of productList ">{{product.nameproduct}}</option>
                       </select>
               </td>-->
+
+              
               <td><a class="changecolor" routerLink="/ticket/{{ticket.idticket}}" data-toggle="popover" title="Modify ticket"
                   data-content="Some content inside the popover">{{ticket.tproduct.nameproduct}}</a></td>
               <td>
@@ -101,7 +111,9 @@
               <td>{{ticket.treporter.tperson.nameperson | uppercase}}</td>
               <td>{{ticket.tproductversion.numberversion}}</td>
               <td>{{ticket.vocticketresol.nameword}}</td>
-
+              <!--fixed in -->
+            
+              <td>{{ticket.tproductversion.nameversion}}</td>
 <!--<td>{{ticket.tproductversion.dateversion}}</td>-->
 
               <!--<td> <a routerLink="/product/{{vocav.idproduct}}">Modify</a></td>-->
@@ -111,11 +123,12 @@
                   data-target="#suppr">
                   Supp
                 </button>
-
                 <!--<a (click)="supprimer(ticket.idticket)" class="btn btn-sm btn-default btn-flat">
                   Del</a>
                 -->
               </td>
+              <!--traitement du filtre?!!!!!!-->
+
             </tr>
           </tbody>
         </table>

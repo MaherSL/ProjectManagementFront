@@ -48,8 +48,10 @@
           <input type="hidden" formControlName="idview" class="form-control" />
           <div class="form-group" [ngClass]="{'has-error': submitted && f.nameview.errors}">
             <label for="nameview">Nom</label>
-            <input type="text" formControlName="nameview" class="form-control" />
+            <input type="text" formControlName="nameview" class="form-control" required uniqueNameview />
             <div *ngIf="f.nameview.errors" class="help-block">
+                <div *ngIf="f.nameview.errors['required']"> Name is required</div>
+                <div *ngIf="f.nameview.errors['uniqueNameview']"> Name already exists</div>
               <div *ngIf="f.nameview.errors.required">Nom obligatoire</div>
               <div *ngIf="f.nameview.errors.minlength">longueur minimale de 3</div>
               <div *ngIf="f.nameview.errors.maxlength">longueur maximale est atteinte</div>

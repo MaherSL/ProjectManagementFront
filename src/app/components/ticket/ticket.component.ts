@@ -10,7 +10,8 @@ import { first } from 'rxjs/operators';
 @Component({
   selector: 'app-ticket',
   templateUrl: './ticket.component.html',
-  styleUrls: ['./ticket.component.css']
+  styleUrls: ['../../../shared.style.css']
+  
 })
 export class TicketComponent implements OnInit {
   private registerForm: FormGroup;

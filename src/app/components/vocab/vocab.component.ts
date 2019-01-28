@@ -9,7 +9,7 @@ import { first } from 'rxjs/operators';
 @Component({
   selector: 'app-vocab',
   templateUrl: './vocab.component.html',
-  styleUrls: ['./vocab.component.css']
+  styleUrls: ['../../../shared.style.css']
 })
 export class VocabComponent implements OnInit {
   private registerForm: FormGroup;

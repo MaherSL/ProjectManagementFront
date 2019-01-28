@@ -7,7 +7,7 @@ import { first } from 'rxjs/operators';
 @Component({
   selector: 'app-viewlist',
   templateUrl: './viewlist.component.html',
-  styleUrls: ['./viewlist.component.css']
+  styleUrls: ['../../../shared.style.css']
 })
 export class ViewlistComponent implements OnInit {
   private viewlist: Tview[];

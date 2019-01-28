@@ -7,7 +7,7 @@ import { first } from 'rxjs/operators';
 @Component({
   selector: 'app-vocablist',
   templateUrl: './vocablist.component.html',
-  styleUrls: ['./vocablist.component.css']
+  styleUrls: ['../../../shared.style.css']
 })
 export class VocablistComponent implements OnInit {
   private vocablist: Tvocab[];

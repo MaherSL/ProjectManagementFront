@@ -9,7 +9,7 @@ import { Tproductversion } from '../../entity/Tproductversion';
 @Component({
   selector: 'app-productversionlist',
   templateUrl: './productversionlist.component.html',
-  styleUrls: ['./productversionlist.component.css']
+  styleUrls: ['../../../shared.style.css']
 })
 export class ProductversionlistComponent implements OnInit {
   private productversionlist: Tproductversion[];

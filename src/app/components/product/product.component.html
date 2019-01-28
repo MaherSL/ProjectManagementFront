@@ -43,28 +43,68 @@
     <!-- /.box-header -->
     <div class="box-body">
       <div class="table-responsive">
-        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+         <!-- (submit)="register()" novalidate-->
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" (submit)="enregister()" novalidate>
           <input type="hidden" formControlName="idproduct" class="form-control" />
-          <div class="form-group" [ngClass]="{'has-error': submitted && f.nameproduct.errors}">
-            <label for="nameproduct">Nom</label>
-            <input type="text" formControlName="nameproduct" class="form-control" />
-            <div *ngIf="f.nameproduct.errors" class="help-block">
-              <div *ngIf="f.nameproduct.errors.required">Nom obligatoire</div>
-              <div *ngIf="f.nameproduct.errors.minlength">longueur minimale de 3</div>
-              <div *ngIf="f.nameproduct.errors.maxlength">longueur maximale est atteinte</div>
-            </div>
+          <div class="form-group" [ngClass]="{'has-error': submitted && f.nameproduct.error-message}">
+            <label for="nameproduct" position="stacked" >Nom</label>
+            <input type="text" formControlName="nameproduct" [class.invalid]="isInvalidAndDirty('nameproduct')" class="form-control" />
+            <!--debut validator-->
+            
+            <div class="error-message" *ngIf="hasError('nameproduct', 'required')">
+                <label>
+                    nameproduct is required
+                </label>
+              </div>
+              <div class="error-message" *ngIf="hasError('nameproduct', 'minlength')">
+                  <label>
+                      nameproduct must be at least 2 characters long
+                  </label>
+                </div>
+                <div class="error-message" *ngIf="hasError('nameproduct', 'maxlength')">
+                  <label>
+                      nameproduct cannot be longer than 30 characters
+                  </label>
+                </div>
+                <div class="error-message" *ngIf="hasError('nameproduct', 'nameproductTaken')">
+                  <label>
+                      nameproduct is already taken
+                  </label>
+                </div>
+              
+
+
+
+
+
+
+<!--commented by me-->
+          <!-- <div *ngIf="f.nameproduct.errors" class="help-block">-->
+              <!--<div *ngIf="f.nameproduct.errors.required">Nom obligatoire</div>-->
+              <!--<div *ngIf="f.nameproduct.errors.minlength">longueur minimale de 3</div>-->
+              <!--<div *ngIf="f.nameproduct.errors.maxlength">longueur maximale est atteinte</div>-->
+          <!-- </div>-->
           </div>
 
-          
-          <div class="form-group" [ngClass]="{'has-error': submitted && f.enabledproduct.errors}">
-            <label for="enabledproduct">Actif</label>
-            <input type="number" min="0" max="1" formControlName="enabledproduct" class="form-control" />
-            <div *ngIf="submitted && f.enabledproduct.errors" class="help-block">
+        
+
+
+
+         <div class="form-group" [ngClass]="{'has-error': submitted && f.enabledproduct.error-message}">
+            <label for="enabledproduct" position="stacked">Actif</label>
+            <input type="number" formControlName="enabledproduct"  [class.invalid]="isInvalidAndDirty('enabledproduct')"class="form-control" />
+            <div class="error-message" *ngIf="hasError('enabledproduct', 'notEnabledValue')">
+                <label>
+                  You must enter 0 or {{maxNumber}} !!!
+                </label>
+              </div>
+            <!--<div *ngIf="submitted && f.enabledproduct.errors" class="help-block">
               <div *ngIf="f.enabledproduct.errors.required">Etat (actif/inactif est obligatoire)</div>
-            </div>
-          </div>
+            </div>-->
+          </div> 
+          <!-- end commented by me-->
           <div class="form-group">
-            <button [disabled]="loading" class="btn btn-primary">Enregistrer</button>
+            <button expand="block" type="submit" [disabled]="!registerForm.valid" class="btn btn-primary">Enregistrer</button>
             <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
             <a routerLink="/productlist" class="btn btn-link">Annuler</a>
             <a routerLink="/product" class="btn btn-sm btn-info btn-flat pull-right">Ajouter page</a>

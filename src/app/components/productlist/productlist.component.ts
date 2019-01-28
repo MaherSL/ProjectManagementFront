@@ -7,7 +7,7 @@ import { first } from 'rxjs/operators';
 @Component({
   selector: 'app-productlist',
   templateUrl: './productlist.component.html',
-  styleUrls: ['./productlist.component.css']
+  styleUrls: ['../../../shared.style.css']
 })
 export class ProductlistComponent implements OnInit {
   private productlist: Tproduct[];

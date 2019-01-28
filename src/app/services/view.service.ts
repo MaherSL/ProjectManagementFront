@@ -8,6 +8,10 @@ import { Tview } from '../entity/Tview';
   providedIn: 'root'
 })
 export class ViewService {
+private url ='http://localhost:8181/view';
+
+
+
   constructor(private http: HttpClient) { }
 
   getAll() {
@@ -24,6 +28,11 @@ export class ViewService {
 
   getById(id: number) {
     return this.http.get<Tview>(environment.apiUrl + "/view/" + id);
+  }
+
+  //essai unique name view
+  getViewByName(nameview: string){
+    return this.http.get<Tview>(environment.apiUrl +"/view/?nameview="+nameview);
   }
 
   getByProgview(progview: string) {

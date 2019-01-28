@@ -39,6 +39,8 @@
           <thead>
             <tr>
               <th>Nom</th>
+              <th>Version Produit</th>
+              
               <th>Etat</th>
               <th *ngIf="inverserSuppressionActive">Supp</th>
             </tr>
@@ -46,6 +48,8 @@
           <tbody>
             <tr *ngFor="let product of productlist">
                 <td><a routerLink="/product/{{product.idproduct}}">{{product.nameproduct}}</a></td>
+                <td></td>
+
               <td>{{product.enabledproduct}}</td>
               <!--<td> <a routerLink="/product/{{vocav.idproduct}}">Modify</a></td>-->
               <td *ngIf="inverserSuppressionActive"> <a (click)="supprimer(product.idproduct)"  class="btn btn-sm btn-default btn-flat">
