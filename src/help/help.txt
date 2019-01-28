@@ -6,11 +6,15 @@ AFAIRE
   T4. (2019.01.08)  Rendre l'affichage des messages de succès au dessus de la page
 
 ENCOURS
-  () Url pour productcomponent.ts afficher le nom de la fonction indépandament des paramètres
+
   () Ajouter validateur dans product avec utilisation webservice
 
 FAIT
   T1. Recherche par critère d'une table maitre [Open,Reporter,Close]=[2019.01.08,MSl,2019.01.15]
+    . Afficher de nom de la fonction même si elle est par paramètres
+      Url pour productcomponent.ts afficher le nom de la fonction indépandament
+      des paramètresUrl pour productcomponent.ts [Open,Reporter,Close]=[2019.01.20,MSl,2019.01.28]
+
 
 ANNULE
   .
