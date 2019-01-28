@@ -1,0 +1,23 @@
+h3 {
+    color:rgb(180, 180, 180);
+    font-style: oblique;
+    font-family: Helvetica;
+    text-shadow:15px; 
+  }
+  label{
+      font-size: 12px;
+  }
+  input{
+    font-size: 11px;
+  }
+  /* essai for input type="Tproduct" required*/
+  input:required{
+    font-size: 12px;
+    color:red;
+  }
+  button{
+    font-size: 12px; 
+  }
+  div{
+    font-size: 11px;
+  }
