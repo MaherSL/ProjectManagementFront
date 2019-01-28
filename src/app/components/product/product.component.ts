@@ -1,11 +1,11 @@
-
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Tproduct } from '../../entity/Tproduct';
 import { ProductService } from '../../services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from '../../services/alert.service';
 import { first } from 'rxjs/operators';
+import { ValidateNameProductNotTaken } from 'src/app/validators/ValidateNameProductNotTaken';
 
 @Component({
   selector: 'app-product',
@@ -30,14 +30,18 @@ export class ProductComponent implements OnInit {
   ngOnInit() {
     this.tproduct = new Tproduct();
     //1ere methode
-    this.idproductSelected = +this.activatedRoute.snapshot.paramMap.get('id');
+    //this.idproductSelected = +this.activatedRoute.snapshot.paramMap.get('id');
+    if (this.activatedRoute.snapshot.queryParamMap.get("id")!=null)
+      this.idproductSelected = parseFloat(this.activatedRoute.snapshot.queryParamMap.get("id"))
     this.registerForm = this.formBuilder.group({
       idproduct: [''],
-      nameproduct: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+      nameproduct: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]/*,
+    ValidateNameProductNotTaken.createValidator(this.productService)*/],
+
       enabledproduct: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]]
     }, { updateOn: 'blur' });
     //updateOn:'submit"'
-    
+
     if (this.idproductSelected != null) {
       this.productService.getById(this.idproductSelected).subscribe(
         res => { this.tproduct = res; if(this.tproduct) this.registerForm.patchValue(this.tproduct); },
@@ -75,4 +79,30 @@ export class ProductComponent implements OnInit {
           this.loading = false;
         });
   }
+
+  validateNameProductNotTaken(control: AbstractControl) {
+    let product:Tproduct;
+    let success:boolean=false;
+    this.productService.getByName(control.value).subscribe(
+      data=> {product=data;
+        if (product==null) return null;
+        else
+        return {productTaken:true};
+    },
+    error => {
+      this.alertService.error(JSON.stringify(error));
+      this.loading = false;
+
+    });
+
+    }
+
+
+/*
+    checkEmailNotTaken(control.value).map(res => {
+      return res ? null : { emailTaken: true };
+    });
+  }*/
+
+
 }

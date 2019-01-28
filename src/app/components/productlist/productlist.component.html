@@ -1,14 +1,4 @@
-<app-alert></app-alert>
-<div class="content-header">
-  <h1>
-    Detail des projets
-    <small>arrêté au 07.10.2018</small>
-  </h1>
-  <ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
-    <li class="active">Projets</li>
-  </ol>
-</div>
+<app-contentheader></app-contentheader>
 
 <!-- Main content -->
 <div class="content">
@@ -45,7 +35,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let product of productlist">
-                <td><a routerLink="/product/{{product.idproduct}}">{{product.nameproduct}}</a></td>
+              <td><a routerLink="/product" [queryParams]="{ id: product.idproduct}">{{product.nameproduct}}</a></td>
               <td>{{product.enabledproduct}}</td>
               <!--<td> <a routerLink="/product/{{vocav.idproduct}}">Modify</a></td>-->
               <td *ngIf="inverserSuppressionActive"> <a (click)="supprimer(product.idproduct)"  class="btn btn-sm btn-default btn-flat">

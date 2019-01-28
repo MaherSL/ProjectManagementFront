@@ -30,7 +30,9 @@ export class ViewComponent implements OnInit {
   ngOnInit() {
     this.tview = new Tview();
     //1ere methode
-    this.idviewSelected = +this.activatedRoute.snapshot.paramMap.get('id');
+    //this.idviewSelected = +this.activatedRoute.snapshot.paramMap.get('id');
+    if (this.activatedRoute.snapshot.queryParamMap.get("id")!=null)
+      this.idviewSelected = parseFloat(this.activatedRoute.snapshot.queryParamMap.get("id"))
     this.registerForm = this.formBuilder.group({
       idview: [''],
       nameview: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
@@ -78,8 +80,6 @@ ngOnInit() {
         error => { this.alertService.error("Erreur : "+JSON.stringify(error)); }
       );
     }
-
-
   }
 
   // convenience getter for easy access to form fields

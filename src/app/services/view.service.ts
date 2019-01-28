@@ -24,7 +24,7 @@ export class ViewService {
   }
 
   getById(id: number) {
-    return this.http.get<Tview>(environment.apiUrl + "/view/" + id);
+    return this.http.get<Tview>(environment.apiUrl + "/view?id=" + id);
   }
 
   getByProgview(progview: string) {

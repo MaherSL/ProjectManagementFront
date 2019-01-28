@@ -37,7 +37,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let view of viewlist">
-              <td><a routerLink="/view/{{view.idview}}">{{view.nameview}}</a></td>
+              <td><a routerLink="/view?id={{view.idview}}">{{view.nameview}}</a></td>
               <td>{{view.progview}}</td>
               <td>
                   <span *ngIf="view.enabledview==1">Actif</span><span *ngIf="view.enabledview!=1">Inactif</span>

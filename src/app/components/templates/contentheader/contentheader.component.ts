@@ -16,11 +16,14 @@ export class ContentheaderComponent implements OnInit {
   ngOnInit() {
     let url: string = this.router.url;
     //console.log("url="+url);
-
+    if (url.includes("?"))
+    {
+      url=url.substr(0,url.indexOf('?'));
+    }
     this.viewService.getByProgview(url).subscribe(
       res => {
         if (res != null) this.nameView = res.nameview;
-        else this.nameView = "-";
+        else this.nameView = "-"+url;
       },
       error => { this.alertService.error("Erreur : " + JSON.stringify(error)); }
     );

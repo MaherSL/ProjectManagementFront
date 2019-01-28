@@ -15,7 +15,7 @@ export class ProductService {
   }
 
   getById(id: number) {
-    return this.http.get<Tproduct>(environment.apiUrl + "/product/" + id);
+    return this.http.get<Tproduct>(environment.apiUrl + "/product?id=" + id);
   }
 
   save(Trole: Tproduct) {
@@ -28,6 +28,10 @@ export class ProductService {
 
   delete(id: number) {
     return this.http.delete(environment.apiUrl + "/product/" + id);
+  }
+
+  getByName(nameproduct: string) {
+    return this.http.get<Tproduct>(environment.apiUrl + "/product?nameproduct=" + nameproduct);
   }
 
 }
