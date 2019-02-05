@@ -7,7 +7,9 @@ AFAIRE
 
 ENCOURS
 
-  () Ajouter validateur dans product avec utilisation webservice
+  () Ajouter validateur synchrone et asynchrone dans product component
+  https://stackblitz.com/angular/xlxmyndpnon?file=src%2Fapp%2Fshared%2Falter-ego.directive.ts
+  https://stackblitz.com/angular/xlxmyndpnon
 
 FAIT
   T1. Recherche par critère d'une table maitre [Open,Reporter,Close]=[2019.01.08,MSl,2019.01.15]

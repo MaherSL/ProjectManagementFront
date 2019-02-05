@@ -19,7 +19,8 @@
             <i class="fa fa-wrench"></i></button>
           <ul class="dropdown-menu" role="menu">
             <li>
-              <a (click)="inverserSuppressionActive=!inverserSuppressionActive">{{inverserSuppressionActive ? 'Désac. suppr.' : 'Activer suppr.'}}</a>
+              <a (click)="inverserSuppressionActive=!inverserSuppressionActive">{{inverserSuppressionActive ? 'Désac.
+                suppr.' : 'Activer suppr.'}}</a>
             </li>
             <!--<li><a href="#">Imprimer</a></li>
             <li><a href="#">explorer</a></li>
@@ -37,14 +38,34 @@
           <div class="form-group" [ngClass]="{'has-error': submitted && f.nameproduct.errors}">
             <label for="nameproduct">Nom</label>
             <input type="text" formControlName="nameproduct" class="form-control" />
+
+            <div *ngIf="f.nameproduct.pending">Validation en cours...</div>
             <div *ngIf="f.nameproduct.errors" class="help-block">
               <div *ngIf="f.nameproduct.errors.required">Nom obligatoire</div>
               <div *ngIf="f.nameproduct.errors.minlength">longueur minimale de 3</div>
               <div *ngIf="f.nameproduct.errors.maxlength">longueur maximale est atteinte</div>
-              <div *ngIf="f.nameproduct.errors && f.nameproduct.errors.productTaken">
-                😢 Oh noes, ce nom produit est déja utilisé!
+              <div *ngIf="f.nameproduct.errors.productValueError">Valeur invalide pour ce champ(!=false)</div>
+
+            </div>
+            <div *ngIf="f.nameproduct.invalid" class="help-block">
+              <div *ngIf="f.nameproduct.errors?.uniqueProduct">
+                Nom du produit déja saisi
               </div>
             </div>
+            <div>
+              Errors : {{registerForm.errors | json}}
+            </div>
+            <!--<div *ngIf="f.nameproduct.errors" class="help-block">
+              <div *ngIf="f.nameproduct.errors.required">Nom obligatoire</div>
+              <div *ngIf="f.nameproduct.errors.minlength">longueur minimale de 3</div>
+              <div *ngIf="f.nameproduct.errors.maxlength">longueur maximale est atteinte</div>
+              <div *ngIf="f.nameproduct.errors.forbiddenName">
+                Name cannot be Bob.
+              </div>
+              <div *ngIf="f.nameproduct.errors && f.nameproduct.errors.productTaken">
+                aaa {{afficherErreur('productTaken')}}
+              </div>
+            </div>-->
           </div>
 
 
@@ -68,5 +89,3 @@
   </div>
   <!-- /.table-responsive -->
 </div>
-
-

@@ -73,8 +73,9 @@ import { TryComponent } from './components/try/try.component';
     TicketFilterPipe,
     ContentheaderComponent,
      ConfirmModalComponent,
-     
-     TryComponent
+
+     TryComponent,
+
   ],
   imports: [
     BrowserModule,
