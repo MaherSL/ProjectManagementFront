@@ -31,7 +31,8 @@
             <i class="fa fa-wrench"></i></button>
           <ul class="dropdown-menu" role="menu">
             <li>
-              <a (click)="inverserSuppressionActive=!inverserSuppressionActive">{{inverserSuppressionActive ? 'Désac. suppr.' : 'Activer suppr.'}}</a>
+              <a (click)="inverserSuppressionActive=!inverserSuppressionActive">{{inverserSuppressionActive ? 'Désac.
+                suppr.' : 'Activer suppr.'}}</a>
             </li>
             <!--<li><a href="#">Imprimer</a></li>
             <li><a href="#">explorer</a></li>
@@ -48,10 +49,10 @@
           <input type="hidden" formControlName="idview" class="form-control" />
           <div class="form-group" [ngClass]="{'has-error': submitted && f.nameview.errors}">
             <label for="nameview">Nom</label>
-            <input type="text" formControlName="nameview" class="form-control" required uniqueNameview />
+            <input type="text" formControlName="nameview" class="form-control" />
             <div *ngIf="f.nameview.errors" class="help-block">
-                <div *ngIf="f.nameview.errors['required']"> Name is required</div>
-                <div *ngIf="f.nameview.errors['uniqueNameview']"> Name already exists</div>
+              <div *ngIf="f.nameview.errors['required']"> Name is required</div>
+              <div *ngIf="f.nameview.errors['uniqueNameview']"> Name already exists</div>
               <div *ngIf="f.nameview.errors.required">Nom obligatoire</div>
               <div *ngIf="f.nameview.errors.minlength">longueur minimale de 3</div>
               <div *ngIf="f.nameview.errors.maxlength">longueur maximale est atteinte</div>
@@ -87,4 +88,3 @@
   </div>
   <!-- /.table-responsive -->
 </div>
-

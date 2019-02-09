@@ -5,6 +5,7 @@ import { ViewService } from 'src/app/services/view.service';
 import { AlertService } from 'src/app/services/alert.service';
 import { first, switchMap } from 'rxjs/operators';
 import { Tview } from 'src/app/entity/Tview';
+import { UniqueNameviewValidatorDirective } from 'src/app/unique-nameview-validator.directive';
 //import { AlertService, UserService } from '../_services';
 
 @Component({
@@ -25,7 +26,8 @@ export class ViewComponent implements OnInit {
     private viewService: ViewService,
     private alertService: AlertService,
     private activatedRoute: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private uniqueNameviewValidatorDirective:UniqueNameviewValidatorDirective) { }
 
   ngOnInit() {
     this.tview = new Tview();
@@ -33,7 +35,8 @@ export class ViewComponent implements OnInit {
     this.idviewSelected = +this.activatedRoute.snapshot.paramMap.get('id');
     this.registerForm = this.formBuilder.group({
       idview: [''],
-      nameview: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+      nameview: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)],
+      this.uniqueNameviewValidatorDirective.validate.bind(this.uniqueNameviewValidatorDirective)],
       progview: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
       enabledview: ['', Validators.required]
     }, { updateOn: 'blur' });

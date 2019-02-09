@@ -41,8 +41,7 @@ import { AppMaterialModule} from 'src/app/app-material/app-material.module';
 
 import { TryComponent } from './components/try/try.component';
 import { EnabledProdValidator } from './enabledProdValidator';
-import { NameproductValidator } from './nameproductValidator';
-import { UniqueNameviewValidatorDirective } from './unique-nameview-validator.directive';
+import { NameproductValidator } from './nameproductValidator'
 
 
 @NgModule({
@@ -81,9 +80,7 @@ import { UniqueNameviewValidatorDirective } from './unique-nameview-validator.di
      
      TryComponent,
      
-     
-     UniqueNameviewValidatorDirective
-  ],
+      ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

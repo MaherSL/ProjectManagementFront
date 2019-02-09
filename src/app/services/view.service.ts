@@ -32,7 +32,7 @@ private url ='http://localhost:8181/view';
 
   //essai unique name view
   getViewByName(nameview: string){
-    return this.http.get<Tview>(environment.apiUrl +"/view/?nameview="+nameview);
+    return this.http.get<Tview>(environment.apiUrl +"/view?nameview="+nameview);
   }
 
   getByProgview(progview: string) {
