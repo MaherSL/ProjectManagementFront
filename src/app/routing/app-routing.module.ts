@@ -1,3 +1,4 @@
+import { DashboardComponent } from './../components/dashboard/dashboard.component';
 import { SyspagenotfoundComponent } from './../syspagenotfound/syspagenotfound.component';
 import { LoginComponent } from './../components/login/login.component';
 import { SpaceComponent } from './../components/space/space.component';
@@ -106,6 +107,11 @@ const routes: Routes = [
     component:ProductComponent,
     canActivate: [AuthGuard]
   },
+  {
+    path: 'dashboard',
+    component:DashboardComponent,
+    canActivate: [AuthGuard]
+  },
 
 
   {
@@ -152,7 +158,7 @@ const routes: Routes = [
   canActivate: [AuthGuard]
 },
   { path: '**', component: SyspagenotfoundComponent },
- 
+
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

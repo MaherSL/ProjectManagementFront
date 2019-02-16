@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Tticket } from '../entity/Tticket';
 import { SearchCriteria } from '../class/SearchCriteria';
+import { Graph2d } from '../class/Graph2d';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,10 @@ export class TicketService {
 
   getAll() {
     return this.http.get<Tticket[]>(environment.apiUrl + "/ticket/ticketlist");
+  }
+
+  getCount() {
+    return this.http.get<Graph2d[]>(environment.apiUrl + "/ticket/countgroupmonth");
   }
 
   getById(id: number) {

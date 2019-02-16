@@ -1,3 +1,4 @@
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { FormiComponent } from './components/formi/formi.component';
 import { AlertService } from './services/alert.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -40,6 +41,7 @@ import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.
 import { AppMaterialModule} from 'src/app/app-material/app-material.module';
 
 import { TryComponent } from './components/try/try.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +78,8 @@ import { TryComponent } from './components/try/try.component';
 
      TryComponent,
 
+     DashboardComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -84,7 +88,8 @@ import { TryComponent } from './components/try/try.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    AppMaterialModule
+    AppMaterialModule,
+    ChartsModule
   ],
   providers: [AuthGuard, AlertService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
