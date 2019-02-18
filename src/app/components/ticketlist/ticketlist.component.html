@@ -1,10 +1,11 @@
 <app-contentheader></app-contentheader>
+
 <!--<app-datatabl></app-datatabl>-->
 <!-- Main content -->
 <div class="content">
   <div class="box box-primary">
     <div class="box-header with-border">
-      <h3 class="box-title">Liste des tickets</h3>
+      <h3 class="box-title">Ticket List</h3>
       <div class="box-tools pull-right">
         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
         </button>
@@ -22,9 +23,10 @@
         <!-- <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>-->
       </div>
     </div>
-    <div class="form-group">
+    <!--fi
+      <div class="form-group">
       <input type="text" class="form-control" placeholder="Search by name Product" style="width: 300px" [(ngModel)]="searchTerm" />
-    </div>
+    </div>-->
 <!--begin try-->
 
     <!-- /.box-header -->
@@ -33,8 +35,10 @@
         <table class="table no-margin">
           <thead>
             <tr>
-              <th>Date</th>
-              <th>Status</th>
+              <th><input type="search" (input)="onFilterDate($event.target.value)" class="form-control input-sm"
+                style="width:90px" placeholder="Date Submitted"></th>
+              <th><input type="search" (input)="onFilterStatus($event.target.value)" class="form-control input-sm"
+                style="width: 100px;" placeholder="Status"></th>
               <!--<th>Product
                     class="form-control input-sm" style="width: 100%;" tabindex="-1" aria-hidden="true">
                       <option  [value]="product.idproduct" *ngFor="let product of productlist ">{{product.nameproduct}}</option>
@@ -43,14 +47,14 @@
               <th><input type="search" (input)="onFilterProduct($event.target.value)" class="form-control input-sm"
                 style="width: 100%;" placeholder="Product"></th>
              <th><input type="search" (input)="onFilterExternalcodea($event.target.value)" class="form-control input-sm"
-                style="width: 100%;" placeholder="Id Jira"></th>
+                style="width: 63px;" placeholder="ID Jira"></th>
 
               <th><input type="search" (input)="onFilterSummary($event.target.value)" class="form-control input-sm"
-                style="width: 100%;" placeholder="Summary"></th>
+                style="width: 120px;" placeholder="Summary"></th>
               <th><input type="search" (input)="onFilterReporter($event.target.value)" class="form-control input-sm"
-                style="width: 100%;" placeholder="Reporter"></th>
+                style="width: 80px;" placeholder="Reporter"></th>
               <th><input type="search" (input)="onFilterProductversion($event.target.value)" class="form-control input-sm"
-                style="width: 100%;" placeholder="Product Ver"></th>
+                style="width: 100px;" placeholder="Product Version"></th>
               <!-- <div class="form-group">
                   <label>Produit</label>
                   <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1"
@@ -64,20 +68,23 @@
                 </div>
 
               </th>-->
-
-              <th>Resolution</th>
-              <th>Fixed In Version</th>
-              <th>New Test</th>
-              <th>Test Name</th>
-              <th>salesforce case number</th>
-              <th>salesforce case number</th>
-              <th>salesforce case number</th>
+              <th><input type="search" (input)="onFilterResolution($event.target.value)" class="form-control input-sm"
+                style="width: 80px;" placeholder="Resolution"></th>
+                <th><input type="search" (input)="onFilterNewTest($event.target.value)" class="form-control input-sm"
+                  style="width: 130px;" placeholder="New Test"></th>
+                  <th><input type="search" (input)="onFilterTestName($event.target.value)" class="form-control input-sm"
+                    style="width: 100px;" placeholder="Test Name"></th>
+                    <th><input type="search" (input)="onFilterSlsCaseNumber($event.target.value)" class="form-control input-sm"
+                      style="width: 150px;" placeholder="Salesforce Case Number"></th>
+                      <th><input type="search" (input)="onFilterSlsCaseId($event.target.value)" class="form-control input-sm"
+                        style="width: 150px;" placeholder="Salesforce Case Id"></th>
+              
               <!--<th>Date Version</th>-->
               <th *ngIf="inverserSuppressionActive">Supp</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let ticket of ticketlist | ticketFilter:searchTerm">
+            <tr *ngFor="let ticket of ticketlist | ticketFilter:searchTermn | paginate : { itemsPerPage: 5, currentPage: p } ">
               <td>{{ticket.dateticket}}</td>
               <td>{{ticket.vocticketstatus.nameword}}</td>
               <!--name product as a list to use it later-->
@@ -88,15 +95,27 @@
                         <option  [value]="product.idproduct" *ngFor="let product of productList ">{{product.nameproduct}}</option>
                       </select>
               </td>-->
+              <!--<td><a routerLink="/product" [queryParams]="{ id: product.idproduct}">{{product.nameproduct}}</a></td>-->
+
               <td><a class="changecolor" routerLink="/ticket/{{ticket.idticket}}" data-toggle="popover" title="Modify ticket"
-                  data-content="Some content inside the popover">{{ticket.tproduct.nameproduct}}</a></td>
+                  data-content="Some content inside the popover"  >{{ticket.tproduct.nameproduct}}</a></td>
               <td>
+
+                <!--2eme possibilité
+                 routerLink="/ticket"  [queryParams]="{ id: ticket.idticket}"-->
                 <!--<div class="group">
                       <input #name matInput/>
                       <a (click)="editName()">{{ticket.externalcodea}}</a>-->
                 {{ticket.externalcodea}}
               </td>
-              <td>{{ticket.summary}}</td>
+
+              
+              
+                  
+               
+                <td><div class="md-form">
+                    <textarea type="text" class="md-textarea form-control" rows="2">{{ticket.summary}}</textarea> </div></td>
+             <!-- <td><textarea style="width: 120px">{{ticket.summary}}</textarea></td>-->
               <td>{{ticket.treporter.tperson.nameperson | uppercase}}</td>
               <td>{{ticket.tproductversion.numberversion}}</td>
               <td>{{ticket.vocticketresol.nameword}}</td>
@@ -117,8 +136,44 @@
               </td>
             </tr>
           </tbody>
+
+
+
+          
+                    
         </table>
+        <div style="padding-left: 700px">
+        <pagination-controls  class="my-pagination" (pageChange)="p = $event"
+          autoHide="true"
+                      responsive="true"
+                      previousLabel="Previous"
+                      nextLabel="Next"
+                      screenReaderPaginationLabel="Pagination"
+                      screenReaderPageLabel="page"
+                      screenReaderCurrentLabel="You're on page"></pagination-controls>
+                    </div>     
       </div>
+
+      <!--<div style="padding-left:600px " class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+        <ul class="pagination"><li class="paginate_button previous disabled" id="example2_previous">
+          <a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0">Previous</a></li>
+          <li class="paginate_button active"><a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0">1</a></li>
+          <li class="paginate_button "><a href="http://localhost:4200/ticketlist" aria-controls="example2" data-dt-idx="2" tabindex="0">2</a></li>
+          <li class="paginate_button "><a href="http://localhost:4200/ticketlist" aria-controls="example2" data-dt-idx="3" tabindex="0">3</a></li>
+          <li class="paginate_button "><a href="http://localhost:4200/ticketlist" aria-controls="example2" data-dt-idx="4" tabindex="0">4</a></li>
+          <li class="paginate_button "><a href="http://localhost:4200/ticketlist" aria-controls="example2" data-dt-idx="5" tabindex="0">5</a></li>
+          <li class="paginate_button "><a href="http://localhost:4200/ticketlist" aria-controls="example2" data-dt-idx="6" tabindex="0">6</a></li>
+          <li class="paginate_button next" id="example2_next"><a href="#" aria-controls="example2" data-dt-idx="7" tabindex="0">Next</a></li>
+        </ul>
+        
+      </div>-->
+
+
+
+
+
+
+
       <!-- /.table-responsive -->
     </div>
     <!-- <div>

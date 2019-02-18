@@ -1,4 +1,14 @@
 .changecolor:hover{
-    color: rgb(15, 19, 235);
+    color: #ECF0F5;
 
 }
+
+.my-pagination /deep/ .ngx-pagination .current {
+    background:#3C8DBC;
+
+  }
+  
+  .paginationS{
+      width: 900px;
+      
+  }

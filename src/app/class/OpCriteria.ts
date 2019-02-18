@@ -2,6 +2,6 @@ export enum OpCriteria {
   equals="equals",
   like="like",
   lessThan="lessThan",
-  greaterThan="greaterThen",
+  greaterThan="greaterThan",
   likeIgnoreCase="likeIgnoreCase"
 }

@@ -42,7 +42,8 @@ import { AppMaterialModule} from 'src/app/app-material/app-material.module';
 
 import { TryComponent } from './components/try/try.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-
+//pagination
+import {NgxPaginationModule} from 'ngx-pagination';
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,7 +90,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     HttpClientModule,
     ReactiveFormsModule,
     AppMaterialModule,
-    ChartsModule
+    ChartsModule,
+    NgxPaginationModule
   ],
   providers: [AuthGuard, AlertService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

@@ -22,7 +22,7 @@ export class TicketlistComponent implements OnInit {
   /*@ViewChild("name") nameField: ElementRef;
   editName(): void {
     this.nameField.nativeElement.focus();}*/
-
+    //dtOptions: DataTables.Settings = {};
   private searchTerm: string;
   private searchMap:Map<String,SearchCriteria> = new Map();
   private ticketlist: Tticket[];
@@ -37,6 +37,10 @@ export class TicketlistComponent implements OnInit {
   ngOnInit() {
     this.getAll();
     this.getAllProduct();
+    /*this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 2
+    };*/
 
   }
   getAll() {
@@ -77,6 +81,34 @@ export class TicketlistComponent implements OnInit {
     this.getByCriterias();
 
   }*/
+  /*onFilterDateSub(nameproduct:string)
+  {
+    let searchCriteria_ = new SearchCriteria("tproduct.nameproduct",OpCriteria.likeIgnoreCase,"%"+nameproduct+"%");
+    this.searchMap.set(searchCriteria_.key,searchCriteria_);
+    this.getByCriterias();
+
+  }*/
+  onFilterDate(date:String)
+  {
+    let searchCriteria_ = new SearchCriteria("dateticket",OpCriteria.likeIgnoreCase,"%"+date+"%");
+    this.searchMap.set(searchCriteria_.key,searchCriteria_);
+    this.getByCriterias();
+
+  }
+
+
+
+
+  onFilterStatus(status:string)
+  {
+    let searchCriteria_ = new SearchCriteria("vocticketstatus.nameword",OpCriteria.likeIgnoreCase,"%"+status+"%");
+    this.searchMap.set(searchCriteria_.key,searchCriteria_);
+    this.getByCriterias();
+
+  }
+
+
+
   onFilterProduct(nameproduct:string)
   {
     let searchCriteria_ = new SearchCriteria("tproduct.nameproduct",OpCriteria.likeIgnoreCase,"%"+nameproduct+"%");
@@ -114,6 +146,15 @@ export class TicketlistComponent implements OnInit {
     this.getByCriterias();
 
   }
+  onFilterResolution(resolution:string)
+  {
+    let searchCriteria_ = new SearchCriteria("vocticketresol.name",OpCriteria.likeIgnoreCase,"%"+resolution+"%");
+    this.searchMap.set(searchCriteria_.key,searchCriteria_);
+    this.getByCriterias();
+
+  }
+
+
 
   getByCriterias() {
     var arr = Array.from(this.searchMap.values());
@@ -134,6 +175,16 @@ export class TicketlistComponent implements OnInit {
     // I want to do something here for new selectedDevice, but what I
     // got here is always last selection, not the one I just select.
 }*/
+
+//sorting
+key: string = 'name'; //set default
+reverse: boolean = false;
+sort(key){
+  this.key = key;
+  this.reverse = !this.reverse;
+}
+p: number = 1;
+
 
 }
 
