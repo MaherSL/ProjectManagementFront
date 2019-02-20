@@ -16,8 +16,12 @@ export class TicketService {
     return this.http.get<Tticket[]>(environment.apiUrl + "/ticket/ticketlist");
   }
 
-  getCount() {
+  getCountgroupmonth() {
     return this.http.get<Graph2d[]>(environment.apiUrl + "/ticket/countgroupmonth");
+  }
+
+  getCountgroupproductstatus() {
+    return this.http.get<Graph2d[]>(environment.apiUrl + "/ticket/countgroupproductstatus");
   }
 
   getById(id: number) {
