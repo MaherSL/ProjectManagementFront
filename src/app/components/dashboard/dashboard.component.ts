@@ -10,14 +10,18 @@ import { OnInit, Component } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  colors = ["#FF6384", "#F29220", "#3cba9f", "#4365B0", "#D00", "#4BC0C0", "#FFCE56", "#E7E9ED", "#36A2EB"];
+  colors = ["#FF6384","#4BC0C0","#FFCE56","#E7E9ED","#36A2EB","#F29220", "#3cba9f", "#4365B0", "#D00"];
+
   linechart = [];
   barchart = [];
+  groupbarchart = [];
+
   constructor(private ticketService: TicketService) { }
 
   ngOnInit() {
     this.initLineChart();
     this.initBarChart();
+    this.initGroupBarChart();
 
   }
   initLineChart() {
@@ -80,7 +84,7 @@ export class DashboardComponent implements OnInit {
             values[status.length - 1][i] = 0;
           }
         }
-        console.log("values[" + status.indexOf(y.groupe) + "][" + products.indexOf(y.ligne) + "] = " + y.colonne);
+        //console.log("values[" + status.indexOf(y.groupe) + "][" + products.indexOf(y.ligne) + "] = " + y.colonne);
         values[status.indexOf(y.groupe)][products.indexOf(y.ligne)] = y.colonne;
       });
 
@@ -99,25 +103,6 @@ export class DashboardComponent implements OnInit {
       }
       //console.log("status=" + JSON.stringify(datasets));
 
-      var data = {
-        labels: ["Data1", "Data2", "Data3"],//products
-        datasets: [{
-          label: "Apples",
-          backgroundColor: "#F29220",
-          borderColor: "#F29220",
-          data: [40, 20, 30]
-        }, {
-          label: "Bananas",
-          backgroundColor: "#4365B0",
-          borderColor: "#4365B0",
-          data: [60, 80, 70]
-        }, {
-          label: "Cookies",
-          backgroundColor: "#D00",
-          borderColor: "#D00",
-          data: [10, 5, 10]
-        }]
-      };
       var g2data = {
         labels: labels,
         datasets: datasets
@@ -138,6 +123,125 @@ export class DashboardComponent implements OnInit {
             }],
           }
         }
+      });
+
+    });
+  }
+
+  initGroupBarChart() {
+    var reportertype = [];
+    var resolution = [];
+    var values: number[][] = [];//values[resolution][reporter]
+    var datasets = [];
+    var labels = [];
+    this.ticketService.getCcountfxornbgrpreportertype().subscribe((res: Graph2d[]) => {
+      res.forEach(y => {
+        if (!resolution.includes(y.ligne)) {
+          //console.log("add groupe" + y.groupe);
+          resolution.push(y.ligne);
+          values[resolution.length - 1] = [];
+          for (var i = 0; i < reportertype.length; i++) {
+            values[resolution.length - 1][i] = 0;
+          }
+        }
+        if (!reportertype.includes(y.groupe)) {
+          reportertype.push(y.groupe);
+          for (var i = 0; i < resolution.length; i++) {
+            values[i][reportertype.length - 1] = 0;
+          }
+        }
+        console.log("GroupBarChart values[" + resolution.indexOf(y.ligne) + "][" + reportertype.indexOf(y.groupe) + "] = " + y.colonne);
+        values[resolution.indexOf(y.ligne)][reportertype.indexOf(y.groupe)] = y.colonne;
+      });
+
+      //Ajout de libelle
+      for (var i = 0; i < reportertype.length; i++) {
+        if (reportertype[i] == '0')
+          reportertype[i] = '0;CLIENT';
+        else if (reportertype[i] == '1')
+          reportertype[i] = '1;INTERNAL';
+        else
+          reportertype[i] = reportertype[i] + ';XXX';
+      }
+
+      reportertype.forEach(y => {
+        labels.push(this.getColumn(y, 2));
+      });
+
+      for (var i = 0; i < resolution.length; i++) {
+        var color = this.colors[i % this.colors.length];
+        datasets.push({
+          label: this.getColumn(resolution[i], 2),
+          backgroundColor: color,
+          borderColor: color,
+          data: values[i]
+        });
+      }
+      //console.log("datasets=" + JSON.stringify(datasets));
+
+      var g3data = {
+        labels: labels,
+        datasets: datasets
+      };
+
+      /*
+      Chart de groupement de bar
+      var data = {
+        labels: ["Chocolate", "Vanilla", "Strawberry"],
+        datasets: [
+            {
+                label: "Harpo",
+                fillColor: "blue",
+                data: [3,7,4]
+            },
+            {
+                label: "Chico",
+                fillColor: "red",
+                data: [4,3,5]
+            },
+            {
+                label: "Groucho",
+                fillColor: "green",
+                data: [7,2,6]
+            }
+        ]
+    };*/
+
+
+      this.groupbarchart = new Chart('canvas3', {
+        type: 'bar',
+        data: g3data
+        /*options: {
+          responsive: true,
+          legend: {
+            display: true,
+            position: "top"
+          },
+          title: {
+            display: true,
+            text: 'Chart.js Bar Chart - Stacked'
+          },
+          tooltips: {
+            mode: 'index',
+            intersect: false
+          },
+
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }
+          /*scales: {
+            xAxes: [{
+              stacked: true,
+            }],
+            yAxes: [{
+              stacked: true
+            }
+          ]
+          }
+      }*/
       });
 
     });
@@ -182,7 +286,7 @@ export class DashboardComponent implements OnInit {
     var ifin;
     ideb = this.getPosition(data, ";", pos - 1);
     ifin = this.getPosition(data, ";", pos);
-    console.log("data=" + data + ",pos=" + pos + ",ideb=" + ideb + ",ifin=" + ifin);
+    //console.log("data=" + data + ",pos=" + pos + ",ideb=" + ideb + ",ifin=" + ifin);
     if (ideb == -1 && ifin == -1)
       return "";
     if (ideb == -1) {

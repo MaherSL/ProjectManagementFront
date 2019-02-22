@@ -24,6 +24,10 @@ export class TicketService {
     return this.http.get<Graph2d[]>(environment.apiUrl + "/ticket/countgroupproductstatus");
   }
 
+  getCcountfxornbgrpreportertype() {
+    return this.http.get<Graph2d[]>(environment.apiUrl + "/ticket/countfxornbgrpreportertype");
+  }
+
   getById(id: number) {
     return this.http.get<Tticket>(environment.apiUrl + "/ticket/" + id);
   }

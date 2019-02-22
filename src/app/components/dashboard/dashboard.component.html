@@ -43,7 +43,7 @@
     <div class="col-md-6">
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title">Stacked Bar chart</h3>
+          <h3 class="box-title">Issues Status</h3>
 
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -54,6 +54,24 @@
         <div class="box-body">
           <div *ngIf="barchart">
             <canvas id="canvas2">{{ barchart }}</canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Internal vs Client issues</h3>
+
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+          </div>
+        </div>
+        <div class="box-body">
+          <div *ngIf="groupbarchart">
+            <canvas id="canvas3">{{ groupbarchart }}</canvas>
           </div>
         </div>
       </div>
