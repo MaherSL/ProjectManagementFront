@@ -7,7 +7,7 @@
 -->
 <!--<app-contentheader></app-contentheader>-->
 <!-- Main content -->
-<app-selectm></app-selectm>
+<!--<app-selectm></app-selectm>-->
 <div class="content">
   <div class="box box-primary">
     <div class="box-header with-border">
@@ -38,10 +38,10 @@
           <input type="hidden" formControlName="idticket" class="form-control" />
 
 
-          <input list=ticket>
+          <!--<input list=ticket>
           <datalist id=ticket>
             <option *ngFor="let ticket of ticketlist" [ngValue]="ticket">{{ticket.summary}}</option>
-          </datalist>
+          </datalist>-->
 
           <div class="container">
             <div class="row">
@@ -59,9 +59,12 @@
                     <div class="input-group-addon">
                       <i class="fa fa-calendar"></i>
                     </div>
-                    <div>
+                    <ngx-select  [items]="ticketlist" optionValueField='idticket' (selectionChanges)="doSelectOptions($event)"
+                  optionTextField='dateticket' [defaultValue]="tticket.idticket"></ngx-select>
+                    <!--<div>
                       <input type="Date" id="try" class="form-control" formControlName="dateticket" />
-                    </div>
+                    </div>-->
+                    
                     <div *ngIf="submitted && f.dateticket.errors" class="help-block">
                       <div *ngIf="f.dateticket.errors.required">Date ticket obligatoire</div>
                     </div>
@@ -88,17 +91,16 @@
               <div class="col-md-3">
                 <div class="form-group" [ngClass]="{'has-error': submitted && f.tproduct.errors}">
                   <label for="tproduct">Product Name</label>
-                  <!-- <Select class="form-control" id="tproduct">
+                  <!--ca marche simple select
+                     <Select class="form-control" id="tproduct">
                       <option *ngFor="let product of productList" [ngValue]="tticket.tproduct">{{product.nameproduct}}</option>
-                    </Select>
-                  -->
+                    </Select>-->
+                  
                   <!-- <ngx-select [formControl]="ngxControl" [allowClear]="true" [defaultValue]="tticket.tproduct"
                       [items]="productList" placeholder="No product selected" (typed)="inputTyped('ngx-select', $event)"
                       (focus)="doFocus()" (blur)="doBlur()" (open)="doOpen()" (close)="doClose()" (select)="doSelect($event)"
                       (remove)="doRemove($event)" (selectionChanges)="doSelectOptions($event)">
-
-                    </ngx-select>
--->
+                    </ngx-select>-->
 
                   <!--</ngx-select>-->
                   <ngx-select [items]="productList" optionValueField='idproduct' (selectionChanges)="doSelectOptions($event)"
@@ -153,9 +155,11 @@
               <div class="col-md-3">
                 <div class="form-group" [ngClass]="{'has-error': submitted && f.externalcodea.errors}">
                   <label for="externalcodea">Id Jira</label>
-                  <Select class="form-control" id="externalcodea">
+                  <ngx-select [items]="ticketlist" optionValueField='idticket' (selectionChanges)="doSelectOptions($event)"
+                    optionTextField='externalcodea' [defaultValue]="tticket.idticket"></ngx-select>
+                  <!--<Select class="form-control" id="externalcodea">
                     <option *ngFor="let ticket of ticketlist" [ngValue]="ticket">{{ticket.externalcodea}}</option>
-                  </Select>
+                  </Select>-->
                   <div *ngIf="submitted && f.externalcodea.errors" class="help-block">
                     <div *ngIf="f.externalcodea.errors.required">code externe obligatoire</div>
                   </div>
@@ -177,22 +181,29 @@
               <div class="col-md-4">
                 <div class="form-group" [ngClass]="{'has-error': submitted && f.summary.errors}">
                   <label for="summary">Summary</label>
-                  <Select class="form-control" id="summary">
+                  <ngx-select [items]="ticketlist" optionValueField='idticket' (selectionChanges)="doSelectOptions($event)"
+                    optionTextField='summary' [defaultValue]="tticket.idticket"></ngx-select>
+                 <!-- <Select class="form-control" id="summary">
                     <option *ngFor="let ticket of ticketlist" [ngValue]="ticket">{{ticket.summary}}</option>
-                  </Select>
+                  </Select>-->
                   <div *ngIf="f.summary.errors" class="help-block">
                   </div>
                 </div>
               </div>
-
+              <!--<ngx-select [items]="productList" optionValueField='idproduct' (selectionChanges)="doSelectOptions($event)"
+              optionTextField='nameproduct' [defaultValue]="tticket.tproduct.idproduct"></ngx-select>
+-->
 
               <div class="col-md-3">
                 <div class="form-group" [ngClass]="{'has-error': submitted && f.externalcodea.errors}">
-                  <label for="reportername">Reporter</label>
-                  <Select class="form-control" id="reportername">
+                  <label for="nameperson">Reporter</label>
+                  
+                  <ngx-select [items]="personList" optionValueField='idperson' (selectionChanges)="doSelectOptions($event)"
+                  optionTextField='nameperson' [defaultValue]="tticket.treporter.tperson.idperson"></ngx-select>
+                 <!-- <Select class="form-control" id="reportername">
                     <option *ngFor="let ticket of ticketlist" [ngValue]="ticket">{{ticket.treporter.tperson.nameperson
                       | uppercase}}</option>
-                  </Select>
+                  </Select>-->
                   <div *ngIf="submitted && f.externalcodea.errors" class="help-block">
                     <div *ngIf="f.externalcodea.errors.required">code externe obligatoire</div>
                   </div>
@@ -206,9 +217,11 @@
               <div class="col-md-3">
                 <div class="form-group" [ngClass]="{'has-error': submitted && f.externalcodea.errors}">
                   <label for="productversion">Product Version</label>
-                  <Select class="form-control" id="productversion">
+                  <ngx-select [items]="productList" optionValueField='idproduct' (selectionChanges)="doSelectOptions($event)"
+                  optionTextField='productversion' [defaultValue]="tticket.tproduct.idproduct"></ngx-select>
+                  <!--<Select class="form-control" id="productversion">
                     <option *ngFor="let ticket of ticketlist" [ngValue]="ticket">{{ticket.tproductversion.numberversion}}</option>
-                  </Select>
+                  </Select>-->
                   <div *ngIf="submitted && f.externalcodea.errors" class="help-block">
                     <div *ngIf="f.externalcodea.errors.required">code externe obligatoire</div>
                   </div>
@@ -218,9 +231,11 @@
               <div class="col-md-4">
                 <div class="form-group" [ngClass]="{'has-error': submitted && f.externalcodea.errors}">
                   <label for="resolutioname">Resolution</label>
-                  <Select class="form-control" id="resolutioname">
+                  <ngx-select [items]="productList" optionValueField='idproduct' (selectionChanges)="doSelectOptions($event)"
+                  optionTextField='productversion' [defaultValue]="tticket.tproduct.idproduct"></ngx-select>
+                  <!--<Select class="form-control" id="resolutioname">
                     <option *ngFor="let ticket of ticketlist" [ngValue]="ticket">{{ ticket.vocticketresol.nameword}}</option>
-                  </Select>
+                  </Select>-->
                   <div *ngIf="submitted && f.externalcodea.errors" class="help-block">
                     <div *ngIf="f.externalcodea.errors.required">code externe obligatoire</div>
                   </div>

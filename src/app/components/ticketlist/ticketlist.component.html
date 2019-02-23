@@ -84,7 +84,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let ticket of ticketlist | ticketFilter:searchTermn | paginate : { itemsPerPage: 5, currentPage: p } ">
+            <tr *ngFor="let ticket of ticketlist | ticketFilter:searchTermn | paginate : { itemsPerPage: 8, currentPage: p } ">
               <td>{{ticket.dateticket}}</td>
               <td>{{ticket.vocticketstatus.nameword}}</td>
               <!--name product as a list to use it later-->
@@ -114,7 +114,7 @@
                   
                
                 <td><div class="md-form">
-                    <textarea type="text" class="md-textarea form-control" rows="2">{{ticket.summary}}</textarea> </div></td>
+                    <textarea type="text" class="md-textarea form-control" rows="1">{{ticket.summary}}</textarea> </div></td>
              <!-- <td><textarea style="width: 120px">{{ticket.summary}}</textarea></td>-->
               <td>{{ticket.treporter.tperson.nameperson | uppercase}}</td>
               <td>{{ticket.tproductversion.numberversion}}</td>

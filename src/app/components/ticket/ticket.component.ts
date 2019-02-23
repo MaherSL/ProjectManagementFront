@@ -9,6 +9,7 @@ import { first } from 'rxjs/operators';
 import { ProductService } from 'src/app/services/product.service';
 import { Tproduct } from 'src/app/entity/Tproduct';
 import { INgxSelectOption } from 'ngx-select-ex';
+//import { Tperson } from 'src/app/entity/Tperson';
 
 @Component({
   selector: 'app-ticket',
@@ -24,7 +25,7 @@ export class TicketComponent implements OnInit {
   private isSuppressionActive: boolean = false;
   private ticketlist: Tticket[] = [];
   private productList: Tproduct[] = [];
-
+  //private personList: Tperson[] = [];
 
 
   public items:Array<string> = ['Amsterdam', 'Antwerp', 'Athens', 'Barcelona',
@@ -102,8 +103,11 @@ export class TicketComponent implements OnInit {
   ngOnInit() {
     this.tticket = new Tticket();
     this.productService.getAll().subscribe(res => {
-      this.productList = res;
-    });
+      this.productList = res; });
+      //this.personService.getAll().subscribe(res =>{
+
+    // this.personList = res; });
+   
     //1ere methode
     this.idticketSelected = +this.activatedRoute.snapshot.paramMap.get('id');
     this.registerForm = this.formBuilder.group({
