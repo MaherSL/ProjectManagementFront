@@ -1,4 +1,5 @@
 export interface Graph2d {
-  ligne: String;
-  colonne: Number;
+  groupe: string;
+  ligne: string;
+  colonne: number;
 }
