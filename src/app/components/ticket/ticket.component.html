@@ -5,8 +5,9 @@
     200k visitors see it!</a><a class="btn btn-default btn-sm" style="background: rgb(255, 255, 255); border: 0px; border-image: none; color: rgb(243, 156, 18); font-weight: 600; margin-top: -5px; box-shadow: none;"
     href="https://themequarry.com">Let's Do It!</a></div>
 -->
-<app-contentheader></app-contentheader>
+<!--<app-contentheader></app-contentheader>-->
 <!-- Main content -->
+<app-selectm></app-selectm>
 <div class="content">
   <div class="box box-primary">
     <div class="box-header with-border">
@@ -19,7 +20,8 @@
             <i class="fa fa-wrench"></i></button>
           <ul class="dropdown-menu" role="menu">
             <li>
-              <a (click)="inverserSuppressionActive=!inverserSuppressionActive">{{inverserSuppressionActive ? 'Désac. suppr.' : 'Activer suppr.'}}</a>
+              <a (click)="inverserSuppressionActive=!inverserSuppressionActive">{{inverserSuppressionActive ? 'Désac.
+                suppr.' : 'Activer suppr.'}}</a>
             </li>
             <!--<li><a href="#">Imprimer</a></li>
             <li><a href="#">explorer</a></li>
@@ -35,152 +37,86 @@
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
           <input type="hidden" formControlName="idticket" class="form-control" />
 
-         <!-- <div>
-            <label>ID: </label>
-            <select (change)="filterForeCasts($event.target.value)">
-                <option value="0" class="form-control">{{ticket.tproduct.nameproduct}}</option>
-               <option *ngFor="let ticket of ticketlist" value={{ticket.tproduct.nameproduct}}>
-                    {{ticket.tproduct.nameproduct}}
-                </option>
-            </select>
-        </div>-->
 
-        <!--<div class="row">
-          <app-header></app-header>
-          </div>
+          <input list=ticket>
+          <datalist id=ticket>
+            <option *ngFor="let ticket of ticketlist" [ngValue]="ticket">{{ticket.summary}}</option>
+          </datalist>
+
           <div class="container">
-
-          -->
-          <!--<div class="row">-->
-          <!--<div [hidden]="allTasks.length>0" class="progress">
-          <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-          <span class="sr-only">45% Complete</span>
-          </div>
-          </div>-->
-          <!--search bar-->
-          <!--<div class="input-group">
-          <span class="input-group-btn">
-          <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-          </span>
-          <input type="text" (keyup)="0" #input1 class="form-control" placeholder="Search for...">
-          </div>-->
-          <!--</div>-->
-          <!--
-          <div class="row">-->
-         <!--
-          <table class="table">
-          <thead>
-          <th></th>
-          <th>Name Product</th>    
-          <th>Name Repoter</th>   Id Title
-          <th>Status</th>
-          <th>Action</th>
-          </thead>
-         
-          <tr *ngFor="let ticket of (allTasks|filter:input1.value|paginate: { itemsPerPage: 5, currentPage: page } )">
-          <td>
-          <input type="checkbox" (change)="checkbox(item)"></td>
-          <td>{{item.Id}}</td>
-          <td>{{item.Title}}</td>
-          <td><span [ngClass]="{'donestatus': item.Status=='done','pendingstatus': item.Status=='pending'}" >{{item.Status}}</span></td>
-          <td>
-          <button (click)='updateStatus(item)' type="button" class="btn btn-default" aria-label="Left Align">
-          <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-          </button>
-          <button (click)='deleteStatus(item)' type="button" class="btn btn-default" aria-label="Left Align">
-          <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-          </button></td>
-          </tr>
-          </table>
-          <button (click)="deleteAll()" >Click</button>
-          <div class="has-text-centered">
-          <pagination-controls (pageChange)="page = $event"></pagination-controls>
-          </div>
-          </div>
-          </div>-->
-          
-          <input type="hidden" formControlName="idproduct" class="form-control" />
-          <div class="form-group" [ngClass]="{'has-error': submitted && f.nameproduct.errors}">
-            <label for="nameproduct">Nom</label>
-            <input type="text" formControlName="nameproduct" class="form-control" />
-
-            <div *ngIf="f.nameproduct.pending">Validation en cours...</div>
-            <div *ngIf="f.nameproduct.errors" class="help-block">
-              <div *ngIf="f.nameproduct.errors.required">Nom obligatoire</div>
-              <div *ngIf="f.nameproduct.errors.minlength">longueur minimale de 3</div>
-              <div *ngIf="f.nameproduct.errors.maxlength">longueur maximale est atteinte</div>
-              <div *ngIf="f.nameproduct.errors.productValueError">Valeur invalide pour ce champ(!=false)</div>
-
-            </div>
-            <div *ngIf="f.nameproduct.invalid" class="help-block">
-              <div *ngIf="f.nameproduct.errors?.uniqueProduct">
-                Nom du produit déja saisi
-              </div>
-            </div>
-            <div>
-              Errors : {{registerForm.errors | json}}
-            </div>
-          </div>
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-          <div class="form-group" [ngClass]="{'has-error': submitted && f.tproduct.errors}">
-            <label for="tproduct">PRODUCT Name</label>
-            <input type="Tproduct" formControlName="tproduct" class="form-control" />
-            <div *ngIf="f.tproduct.errors" class="help-block">
-              <div *ngIf="f.tproduct.errors.required">tproduct obligatoire</div>
-              <div *ngIf="f.tproduct.errors.minlength">longueur minimale de 3</div>
-              <div *ngIf="f.tproduct.errors.maxlength">longueur maximale est atteinte</div>
-            </div>
-          </div>
-
-          <div class="form-group" [ngClass]="{'has-error': submitted && f.tproduct.errors}">
-            <label for="treporter">TREPORTER</label>
-            <input type="Treporter" formControlName="treporter" class="form-control" />
-            <div *ngIf="f.treporter.errors" class="help-block">
-              <div *ngIf="f.treporter.errors.required">treporter obligatoire</div>
-              <div *ngIf="f.treporter.errors.minlength">longueur minimale de 3</div>
-              <div *ngIf="f.treporter.errors.maxlength">longueur maximale est atteinte</div>
-            </div>
-          </div>
-
-          <div class="form-group" [ngClass]="{'has-error': submitted && f.vocticketstatus.errors}">
-            <label for="vocticketstatus">STATUT</label>
-            <input type="Tvocabword" formControlName="vocticketstatus" class="form-control" />
-            <div *ngIf="f.vocticketstatus.errors" class="help-block">
-              <div *ngIf="f.vocticketstatus.errors.required">statut obligatoire</div>
-              <div *ngIf="f.vocticketstatus.errors.minlength">longueur minimale de 3</div>
-              <div *ngIf="f.vocticketstatus.errors.maxlength">longueur maximale est atteinte</div>
-            </div>
-          </div>
-
-          <div class="form-group" [ngClass]="{'has-error': submitted && f.dateticket.errors}">
-              <label for="dateticket">Date Ticket:</label>
-
-              <div class="input-group">
-                <div class="input-group-addon">
-                  <i class="fa fa-calendar"></i>
-                </div>
-                <div  >
-                <input type="Date" id="try" class="form-control" formControlName="dateticket"  />
-              </div>
-                <div *ngIf="submitted && f.dateticket.errors" class="help-block">
-                    <div *ngIf="f.dateticket.errors.required">Date ticket obligatoire</div>
+            <div class="row">
+              <div class="col-md-3">
+                <!--<select multiple="multiple" data-toggle="select">
+                      <option value="1">January</option>
+                      <option value="1">Februrary</option>
+                      <option value="12">December</option>
+                  </select>-->
+                <!--<ngx-select-dropdown [config]="config" [options]="dropdownOptions" 
+                  [(ngModel)]="dataModel" [multiple]="true" ></ngx-select-dropdown>-->
+                <div class="form-group" [ngClass]="{'has-error': submitted && f.dateticket.errors}">
+                  <label for="dateticket">Date Submitted:</label>
+                  <div class="input-group">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                    <div>
+                      <input type="Date" id="try" class="form-control" formControlName="dateticket" />
+                    </div>
+                    <div *ngIf="submitted && f.dateticket.errors" class="help-block">
+                      <div *ngIf="f.dateticket.errors.required">Date ticket obligatoire</div>
+                    </div>
                   </div>
+                </div>
               </div>
-            </div>
 
+              <div class="col-md-4">
+                <div class="form-group" [ngClass]="{'has-error': submitted && f.status.errors}">
+                  <label for="status">Status</label>
+                  <div class="input-group">
+                    <Select class="form-control">
+                      <option *ngFor="let ticket of ticketlist" [ngValue]="ticket">{{ticket.vocticketstatus.nameword}}</option>
+                    </Select>
+                    <div *ngIf="f.status.errors" class="help-block">
+                      <div *ngIf="f.status.errors.required">Mandatory status</div>
+                      <div *ngIf="f.status.errors.minlength">longueur minimale de 3</div>
+                      <div *ngIf="f.status.errors.maxlength">longueur maximale est atteinte</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-group" [ngClass]="{'has-error': submitted && f.tproduct.errors}">
+                  <label for="tproduct">Product Name</label>
+                  <!-- <Select class="form-control" id="tproduct">
+                      <option *ngFor="let product of productList" [ngValue]="tticket.tproduct">{{product.nameproduct}}</option>
+                    </Select>
+                  -->
+                  <!-- <ngx-select [formControl]="ngxControl" [allowClear]="true" [defaultValue]="tticket.tproduct"
+                      [items]="productList" placeholder="No product selected" (typed)="inputTyped('ngx-select', $event)"
+                      (focus)="doFocus()" (blur)="doBlur()" (open)="doOpen()" (close)="doClose()" (select)="doSelect($event)"
+                      (remove)="doRemove($event)" (selectionChanges)="doSelectOptions($event)">
+
+                    </ngx-select>
+-->
+
+                  <!--</ngx-select>-->
+                  <ngx-select [items]="productList" optionValueField='idproduct' (selectionChanges)="doSelectOptions($event)"
+                    optionTextField='nameproduct' [defaultValue]="tticket.tproduct.idproduct"></ngx-select>
+
+                  <!-- NG2-SELECT OK1 <ng-select [allowClear]="true" [items]="items" [disabled]="false" placeholder="No product selected"
+                    >-->
+
+                  <!-- NG2-SELECT OK1 <ng-select [allowClear]="true" [items]="items" [disabled]="disabled" (data)="refreshValue($event)"
+                      (selected)="selected($event)" (removed)="removed($event)" (typed)="typed($event)" placeholder="No city selected">
+                    </ng-select>
+                    -->
+                  <div *ngIf="submitted && f.tproduct.errors" class="help-block">
+                    <div *ngIf="f.tproduct.errors.required">Mandatory name Product </div>
+                  </div>
+                </div>
+              </div>
+              <!--<div class="col-md-2">
           <div class="form-group" [ngClass]="{'has-error': submitted && f.externalcodea.errors}">
             <label for="externalcodea">Code Externe</label>
             <input type="number"  min="0" max="1" formControlName="externalcodea" class="form-control" />
@@ -188,48 +124,164 @@
               <div *ngIf="f.externalcodea.errors.required">code externe obligatoire</div>
             </div>
           </div>
-
-          <div class="form-group" [ngClass]="{'has-error': submitted && f.summary.errors}">
+ </div>-->
+              <!-- <div class="form-group" [ngClass]="{'has-error': submitted && f.summary.errors}">
             <label for="summary">Description</label>
             <textarea type="string"  min="0" max="1" formControlName="externalcodea" class="form-control" placeholder="type the description" ></textarea>
             <div *ngIf="submitted && f.summary.errors" class="help-block">
               <div *ngIf="f.summary.errors.required">Description obligatoire</div>
             </div>
           </div>
-
-<!--remember me
+-->
+              <!--remember me
           <div class="checkbox">
               <label>
               <input #idticket [(ngModel)]="idticket.selected" type="checkbox" data-toggle="toggle">Benutername speichern
               </label></div>-->
 
-             <!-- <select (change)="filterForeCasts($event.target.value)">
+              <!-- <select (change)="filterForeCasts($event.target.value)">
                   <option value="0" class="form-control">{{ticket.idticket}}</option>
                   <option *ngFor="let ticket of ticketlist" value={{ticket.idticket}}>
                       
                   </option>
               </select>-->
+            </div>
+          </div>
 
-              
-
-
-
-
-
-
-
-              <div class="form-group">
-                  <button [disabled]="loading" class="btn btn-primary">Enregistrer</button>
-                  <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-                  <a routerLink="/ticketlist" class="btn btn-link">Annuler</a>
-                  <a routerLink="/ticket" class="btn btn-sm btn-info btn-flat pull-right">Ajouter page</a>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="form-group" [ngClass]="{'has-error': submitted && f.externalcodea.errors}">
+                  <label for="externalcodea">Id Jira</label>
+                  <Select class="form-control" id="externalcodea">
+                    <option *ngFor="let ticket of ticketlist" [ngValue]="ticket">{{ticket.externalcodea}}</option>
+                  </Select>
+                  <div *ngIf="submitted && f.externalcodea.errors" class="help-block">
+                    <div *ngIf="f.externalcodea.errors.required">code externe obligatoire</div>
+                  </div>
                 </div>
+              </div>
+              <!-- <div class="column small-12 large-2">
+                <label class="sbw_light">Title:</label><br />
+                <select [(ngModel)]="passenger.Title">
+                   <option *ngFor="#title of titleArray" [value]="title.Value">{{title.Text}}</option>
+                </select>
+            </div>-->
+
+              <!--<option *ngFor="let title of titleArray" 
+            [value]="title.Value" 
+            [attr.selected]="passenger.Title==title.Text ? true : null">
+          {{title.Text}}
+        </option>-->
+
+              <div class="col-md-4">
+                <div class="form-group" [ngClass]="{'has-error': submitted && f.summary.errors}">
+                  <label for="summary">Summary</label>
+                  <Select class="form-control" id="summary">
+                    <option *ngFor="let ticket of ticketlist" [ngValue]="ticket">{{ticket.summary}}</option>
+                  </Select>
+                  <div *ngIf="f.summary.errors" class="help-block">
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-md-3">
+                <div class="form-group" [ngClass]="{'has-error': submitted && f.externalcodea.errors}">
+                  <label for="reportername">Reporter</label>
+                  <Select class="form-control" id="reportername">
+                    <option *ngFor="let ticket of ticketlist" [ngValue]="ticket">{{ticket.treporter.tperson.nameperson
+                      | uppercase}}</option>
+                  </Select>
+                  <div *ngIf="submitted && f.externalcodea.errors" class="help-block">
+                    <div *ngIf="f.externalcodea.errors.required">code externe obligatoire</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="container">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="form-group" [ngClass]="{'has-error': submitted && f.externalcodea.errors}">
+                  <label for="productversion">Product Version</label>
+                  <Select class="form-control" id="productversion">
+                    <option *ngFor="let ticket of ticketlist" [ngValue]="ticket">{{ticket.tproductversion.numberversion}}</option>
+                  </Select>
+                  <div *ngIf="submitted && f.externalcodea.errors" class="help-block">
+                    <div *ngIf="f.externalcodea.errors.required">code externe obligatoire</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group" [ngClass]="{'has-error': submitted && f.externalcodea.errors}">
+                  <label for="resolutioname">Resolution</label>
+                  <Select class="form-control" id="resolutioname">
+                    <option *ngFor="let ticket of ticketlist" [ngValue]="ticket">{{ ticket.vocticketresol.nameword}}</option>
+                  </Select>
+                  <div *ngIf="submitted && f.externalcodea.errors" class="help-block">
+                    <div *ngIf="f.externalcodea.errors.required">code externe obligatoire</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-group" [ngClass]="{'has-error': submitted && f.externalcodea.errors}">
+                  <label for="externalcodea">New Test</label>
+                  <input type="number" min="0" max="1" formControlName="externalcodea" class="form-control" />
+                  <div *ngIf="submitted && f.externalcodea.errors" class="help-block">
+                    <div *ngIf="f.externalcodea.errors.required">code externe obligatoire</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="container">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="form-group" [ngClass]="{'has-error': submitted && f.externalcodea.errors}">
+                  <label for="externalcodea">Test Name</label>
+                  <input type="number" min="0" max="1" formControlName="externalcodea" class="form-control" />
+                  <div *ngIf="submitted && f.externalcodea.errors" class="help-block">
+                    <div *ngIf="f.externalcodea.errors.required">code externe obligatoire</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group" [ngClass]="{'has-error': submitted && f.externalcodea.errors}">
+                  <label for="externalcodea">Salesforce Case Name</label>
+                  <input type="number" min="0" max="1" formControlName="externalcodea" class="form-control" />
+                  <div *ngIf="submitted && f.externalcodea.errors" class="help-block">
+                    <div *ngIf="f.externalcodea.errors.required">code externe obligatoire</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-group" [ngClass]="{'has-error': submitted && f.externalcodea.errors}">
+                  <label for="externalcodea">Salesforce Case Id</label>
+                  <input type="number" min="0" max="1" formControlName="externalcodea" class="form-control" />
+                  <div *ngIf="submitted && f.externalcodea.errors" class="help-block">
+                    <div *ngIf="f.externalcodea.errors.required">code externe obligatoire</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </form>
+        <div class="form-group">
+          <button [disabled]="loading" class="btn btn-primary">Enregistrer</button>
+          <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+          <a routerLink="/ticketlist" class="btn btn-link">Annuler</a>
+          <a routerLink="/ticket" class="btn btn-sm btn-info btn-flat pull-right">Ajouter page</a>
+        </div>
       </div>
     </div>
 
   </div>
   <!-- /.table-responsive -->
 </div>
-
-

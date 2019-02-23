@@ -13,5 +13,6 @@ export class Tticket {
     dateticket: Date;
     externalcodea: string;
     summary: string;
+    vocticketstatus: Tvocabword;
 
 }

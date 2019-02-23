@@ -44,6 +44,12 @@ import { TryComponent } from './components/try/try.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 //pagination
 import {NgxPaginationModule} from 'ngx-pagination';
+//ngx select
+import { NgxSelectModule } from 'ngx-select-ex';
+import { SelectmComponent } from './components/selectm/selectm.component';
+//import { SelectDropDownModule } from 'ngx-select-dropdown';
+//import { SelectmComponent } from './components/selectm/selectm.component';
+import {SelectModule} from 'ng2-select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,6 +87,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
 
      DashboardComponent,
 
+    //SelectDropDownModule,
+     SelectmComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -91,7 +100,10 @@ import {NgxPaginationModule} from 'ngx-pagination';
     ReactiveFormsModule,
     AppMaterialModule,
     ChartsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgxSelectModule,
+    SelectModule
+    //SelectDropDownModule
   ],
   providers: [AuthGuard, AlertService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

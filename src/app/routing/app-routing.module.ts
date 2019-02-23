@@ -24,6 +24,7 @@ import { TicketComponent } from '../components/ticket/ticket.component';
 import { TicketlistComponent } from '../components/ticketlist/ticketlist.component';
 
 import { TryComponent } from '../components/try/try.component';
+import { SelectmComponent } from '../components/selectm/selectm.component';
 
 
 
@@ -37,6 +38,11 @@ const routes: Routes = [
   {
     path: 'index',
     component: IndexComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'selectm',
+    component: SelectmComponent,
     canActivate: [AuthGuard]
   },
   {
