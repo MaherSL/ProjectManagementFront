@@ -3,6 +3,7 @@ import { HttpClient } from 'selenium-webdriver/http';
 import { Chart } from 'chart.js';
 import { Graph2d } from 'src/app/class/Graph2d';
 import { OnInit, Component } from '@angular/core';
+import * as c3 from 'c3';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,11 +11,12 @@ import { OnInit, Component } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  colors = ["#FF6384","#4BC0C0","#FFCE56","#E7E9ED","#36A2EB","#F29220", "#3cba9f", "#4365B0", "#D00"];
+  colors = ["#FF6384", "#4BC0C0", "#FFCE56", "#E7E9ED", "#36A2EB", "#F29220", "#3cba9f", "#4365B0", "#D00"];
 
   linechart = [];
   barchart = [];
   groupbarchart = [];
+  c3chart: any;
 
   constructor(private ticketService: TicketService) { }
 
@@ -22,7 +24,21 @@ export class DashboardComponent implements OnInit {
     this.initLineChart();
     this.initBarChart();
     this.initGroupBarChart();
-
+    this.initc3chart();
+  }
+  initc3chart() {
+    this.c3chart = c3.generate({
+      bindto: '#c3chart',
+      size: {
+        height: 240
+      },
+      data: {
+        columns: [
+          ['data1', 30, 200, 100, 400, 150, 250],
+          ['data2', 50, 20, 10, 40, 15, 25]
+        ]
+      }
+    });
   }
   initLineChart() {
     var nombre = [];
@@ -207,10 +223,20 @@ export class DashboardComponent implements OnInit {
         ]
     };*/
 
+      console.log("g3data=" + JSON.stringify(g3data));
 
       this.groupbarchart = new Chart('canvas3', {
         type: 'bar',
-        data: g3data
+        data: g3data,
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
+        }
         /*options: {
           responsive: true,
           legend: {
@@ -243,7 +269,7 @@ export class DashboardComponent implements OnInit {
           }
       }*/
       });
-
+      console.log("this.groupbarchart=" + JSON.stringify(this.groupbarchart));
     });
   }
   public pieChartLabels: string[] = ["Pending", "InProgress", "OnHold", "Complete", "Cancelled"];
