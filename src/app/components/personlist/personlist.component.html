@@ -1,0 +1,56 @@
+<app-contentheader></app-contentheader>
+
+<!-- Main content -->
+<div class="content">
+  <div class="box box-primary">
+    <div class="box-header with-border">
+      <h3 class="box-title">Liste des person</h3>
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+        </button>
+        <div class="btn-group">
+          <button type="button" class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-wrench"></i></button>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a (click)="inverserSuppressionActive=!inverserSuppressionActive">
+                {{inverserSuppressionActive ? 'Désac. suppr.' : 'Activer suppr.'}}</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>-->
+      </div>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <div class="table-responsive">
+        <table class="table no-margin">
+          <thead>
+            <tr>
+              <th>Nom</th>
+              <th>Etat</th>
+              <th *ngIf="inverserSuppressionActive">Supp</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let person of personlist">
+              <td><a routerLink="/person" [queryParams]="{ id: person.idperson}">{{person.nameperson}}</a></td>
+              <td>{{person.enabledperson}}</td>
+              <!--<td> <a routerLink="/person/{{vocav.idperson}}">Modify</a></td>-->
+              <td *ngIf="inverserSuppressionActive"> <a (click)="supprimer(person.idperson)"  class="btn btn-sm btn-default btn-flat">
+                Del</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- /.table-responsive -->
+    </div>
+    <!-- /.box-body -->
+    <div class="box-footer clearfix">
+      <a routerLink="/person" class="btn btn-sm btn-info btn-flat pull-left">Ajouter person</a>
+    </div>
+    <!-- /.box-footer -->
+    <!-- /.box-footer -->
+  </div>
+</div>

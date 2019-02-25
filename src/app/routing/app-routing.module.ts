@@ -25,6 +25,7 @@ import { TicketlistComponent } from '../components/ticketlist/ticketlist.compone
 
 import { TryComponent } from '../components/try/try.component';
 import { SelectmComponent } from '../components/selectm/selectm.component';
+import { SpreedsheetsexcelComponent } from '../components/spreedsheetsexcel/spreedsheetsexcel.component';
 
 
 
@@ -45,6 +46,14 @@ const routes: Routes = [
     component: SelectmComponent,
     canActivate: [AuthGuard]
   },
+  {
+    path: 'Spreedsheetsexcel',
+    component: SpreedsheetsexcelComponent,
+    canActivate: [AuthGuard]
+  },
+
+
+
   {
     path: 'space',
     component:SpaceComponent,

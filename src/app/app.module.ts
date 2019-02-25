@@ -50,6 +50,10 @@ import { SelectmComponent } from './components/selectm/selectm.component';
 //import { SelectDropDownModule } from 'ngx-select-dropdown';
 //import { SelectmComponent } from './components/selectm/selectm.component';
 import {SelectModule} from 'ng2-select';
+import { SpreedsheetsexcelComponent } from './components/spreedsheetsexcel/spreedsheetsexcel.component';
+
+import { SpreadSheetsModule } from "@grapecity/spread-sheets-angular";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,6 +93,7 @@ import {SelectModule} from 'ng2-select';
 
     //SelectDropDownModule,
      SelectmComponent,
+     SpreedsheetsexcelComponent,
 
   ],
   imports: [
@@ -102,7 +107,8 @@ import {SelectModule} from 'ng2-select';
     ChartsModule,
     NgxPaginationModule,
     NgxSelectModule,
-    SelectModule
+    SelectModule,
+    SpreadSheetsModule
     //SelectDropDownModule
   ],
   providers: [AuthGuard, AlertService,

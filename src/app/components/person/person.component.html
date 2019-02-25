@@ -1,0 +1,77 @@
+
+<app-contentheader></app-contentheader>
+<!-- Main content -->
+<div class="content">
+  <div class="box box-primary">
+    <div class="box-header with-border">
+      <h3 class="box-title">Person.(we must have here )namePerson</h3>
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+        </button>
+        <div class="btn-group">
+          <button type="button" class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-wrench"></i></button>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a (click)="inverserSuppressionActive=!inverserSuppressionActive">{{inverserSuppressionActive ? 'Désac.
+                suppr.' : 'Activer suppr.'}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <div class="table-responsive">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <input type="hidden" formControlName="idperson" class="form-control" />
+          <div class="form-group" [ngClass]="{'has-error': submitted && f.nameperson.errors}">
+            <label for="nameperson">Nom</label>
+            <input type="text" formControlName="nameperson" class="form-control" />
+
+            <div *ngIf="f.nameperson.pending">Validation en cours...</div>
+            <div *ngIf="f.nameperson.errors" class="help-block">
+              <div *ngIf="f.nameperson.errors.required">Nom obligatoire</div>
+              <div *ngIf="f.nameperson.errors.minlength">longueur minimale de 3</div>
+              <div *ngIf="f.nameperson.errors.maxlength">longueur maximale est atteinte</div>
+              <div *ngIf="f.nameperson.errors.personValueError">Valeur invalide pour ce champ(!=false)</div>
+
+            </div>
+            <div *ngIf="f.nameperson.invalid" class="help-block">
+              <div *ngIf="f.nameperson.errors?.uniquePerson">
+                Nom du produit déja saisi
+              </div>
+            </div>
+            <div>
+              Errors : {{registerForm.errors | json}}
+            </div>
+          </div>
+
+
+          <div class="form-group" [ngClass]="{'has-error': submitted && f.enabledperson.errors}">
+            <label for="enabledperson">Actif</label>
+            <input type="number" min="0" max="1" formControlName="enabledperson" class="form-control" />
+            <div *ngIf="submitted && f.enabledperson.errors" class="help-block">
+              <div *ngIf="f.enabledperson.errors.required">Etat (actif/inactif est obligatoire)</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <button [disabled]="loading" class="btn btn-primary">Enregistrer</button>
+            <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            <a routerLink="/personlist" class="btn btn-link">Annuler</a>
+            <a routerLink="/person" class="btn btn-sm btn-info btn-flat pull-right">Ajouter page</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!--input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
+
+<button type="button" class="btn btn-success btn-s" 
+  (click)="uploader.uploadAll()" 
+  [disabled]="!uploader.getNotUploadedItems().length" >
+      Upload an Image
+</button>-->
