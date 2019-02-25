@@ -53,6 +53,9 @@ import {SelectModule} from 'ng2-select';
 import { SpreedsheetsexcelComponent } from './components/spreedsheetsexcel/spreedsheetsexcel.component';
 
 import { SpreadSheetsModule } from "@grapecity/spread-sheets-angular";
+import { PersonComponent } from './components/person/person.component';
+import { PersonlistComponent } from './components/personlist/personlist.component';
+import { ReporterComponent } from './components/reporter/reporter.component';
 
 @NgModule({
   declarations: [
@@ -90,10 +93,12 @@ import { SpreadSheetsModule } from "@grapecity/spread-sheets-angular";
      TryComponent,
 
      DashboardComponent,
-
+     PersonComponent,
+     PersonlistComponent,
     //SelectDropDownModule,
      SelectmComponent,
      SpreedsheetsexcelComponent,
+     ReporterComponent,
 
   ],
   imports: [

@@ -48,11 +48,11 @@
           </div>
 
 
-          <div class="form-group" [ngClass]="{'has-error': submitted && f.enabledperson.errors}">
-            <label for="enabledperson">Actif</label>
-            <input type="number" min="0" max="1" formControlName="enabledperson" class="form-control" />
-            <div *ngIf="submitted && f.enabledperson.errors" class="help-block">
-              <div *ngIf="f.enabledperson.errors.required">Etat (actif/inactif est obligatoire)</div>
+          <div class="form-group" [ngClass]="{'has-error': submitted && f.emailperson.errors}">
+            <label for="emailperson">Email</label>
+            <input type="email"  formControlName="emailperson" class="form-control" />
+            <div *ngIf="submitted && f.emailperson.errors" class="help-block">
+              <div *ngIf="f.emailperson.errors.required">Etat (actif/inactif est obligatoire)</div>
             </div>
           </div>
           <div class="form-group">

@@ -62,7 +62,7 @@ export class PersonComponent implements OnInit {
       nameperson: ['',[Validators.required,Validators.minLength(3)],
       
       ],
-      enabledperson: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]]
+      emailperson: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]]
     }, {
       validator: this.validatePerson.bind(this)   ,updateOn: 'submit'});
     //{ updateOn: 'blur' }
@@ -145,10 +145,10 @@ export class PersonComponent implements OnInit {
   validatePerson(group : FormGroup) {
 
     console.log("nameperson="+group.get("nameperson").value);
-    console.log("enabledperson="+group.get("enabledperson").value);
+    console.log("emailperson="+group.get("emailperson").value);
     if (group.get("nameperson").value=="ab")
     {
-        if (group.get("enabledperson").value==1)
+        if (group.get("emailperson").value==1)
         {
             return {"invalidPerson": true};
         }

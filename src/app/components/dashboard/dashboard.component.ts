@@ -17,6 +17,7 @@ export class DashboardComponent implements OnInit {
   barchart = [];
   groupbarchart = [];
   c3chart: any;
+  //zingchart:any;
 
   constructor(private ticketService: TicketService) { }
 
@@ -25,7 +26,16 @@ export class DashboardComponent implements OnInit {
     this.initBarChart();
     this.initGroupBarChart();
     this.initc3chart();
+    //this.initzingchart();
   }
+
+  /*initzingchart(){
+
+  }*/
+
+
+
+
   initc3chart() {
     this.c3chart = c3.generate({
       bindto: '#c3chart',

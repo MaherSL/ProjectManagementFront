@@ -26,6 +26,8 @@ import { TicketlistComponent } from '../components/ticketlist/ticketlist.compone
 import { TryComponent } from '../components/try/try.component';
 import { SelectmComponent } from '../components/selectm/selectm.component';
 import { SpreedsheetsexcelComponent } from '../components/spreedsheetsexcel/spreedsheetsexcel.component';
+import { PersonlistComponent } from '../components/personlist/personlist.component';
+import { PersonComponent } from '../components/person/person.component';
 
 
 
@@ -120,6 +122,22 @@ const routes: Routes = [
   {
     path: 'product',
     component:ProductComponent,
+    canActivate: [AuthGuard]
+  },
+
+  {
+    path: 'personlist',
+    component:PersonlistComponent,
+    canActivate: [AuthGuard]},
+
+  {
+    path: 'person/:id',
+    component:PersonComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'person',
+    component:PersonComponent,
     canActivate: [AuthGuard]
   },
   {

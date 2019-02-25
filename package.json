@@ -43,6 +43,7 @@
     "ngx-select-dropdown": "^1.0.1",
     "ngx-select-ex": "^3.6.8",
     "rxjs": "^6.0.0",
+    "zingchart": "^2.8.5",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
