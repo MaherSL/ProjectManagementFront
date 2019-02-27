@@ -16,12 +16,14 @@
  .layout-boxed html,
  .layout-boxed body {
    height: 100%;
+   font-size: 12px;
  }
  body {
    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
    font-weight: 400;
    overflow-x: hidden;
    overflow-y: auto;
+   font-size: 12px
  }
  /* Layout */
  .wrapper {
@@ -594,7 +596,7 @@
    .sidebar-mini.sidebar-collapse .sidebar-menu > li > a > .pull-right,
    .sidebar-mini.sidebar-collapse .sidebar-menu li.header {
      display: none !important;
-     -webkit-transform: translateZ(0);
+    /* -webkit-transform: translateZ(0);*/
    }
    .sidebar-mini.sidebar-collapse .main-header .logo {
      width: 50px;

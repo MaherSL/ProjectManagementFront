@@ -1,5 +1,5 @@
 .changecolor:hover{
-    color: #ECF0F5;
+    color: rgb(23, 15, 92);
 
 }
 
@@ -12,3 +12,34 @@
       width: 900px;
       
   }
+
+  .nameproducttd{
+
+
+    white-space: nowrap; 
+  width: 80px; 
+  overflow: hidden;
+  text-overflow: "..."; 
+  display:inline-flex;
+  white-space: nowrap;
+}
+
+
+
+.summarytd{
+
+
+    white-space: nowrap; 
+  width: 80px; 
+  overflow: hidden;
+  text-overflow: "..."; 
+  display:inline-flex;
+  white-space: nowrap;
+        
+   /* width: 100px;
+    overflow: auto;
+    display:inline-flex;
+    white-space: nowrap;*/
+    
+      
+}

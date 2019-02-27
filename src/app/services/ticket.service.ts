@@ -40,6 +40,7 @@ export class TicketService {
     return this.http.post<Tticket>(environment.apiUrl + "/ticket/save", Trole);
   }
 
+  
   getByCriterias(criterias: SearchCriteria[]) {
     return this.http.post<Tticket[]>(environment.apiUrl + "/ticket/searchbycriteria", criterias);
   }

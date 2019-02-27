@@ -44,8 +44,9 @@ import { TryComponent } from './components/try/try.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 //pagination
 import {NgxPaginationModule} from 'ngx-pagination';
-//ngx select
+//ngx select and multipleselect
 import { NgxSelectModule } from 'ngx-select-ex';
+
 import { SelectmComponent } from './components/selectm/selectm.component';
 //import { SelectDropDownModule } from 'ngx-select-dropdown';
 //import { SelectmComponent } from './components/selectm/selectm.component';
@@ -112,6 +113,7 @@ import { ReporterComponent } from './components/reporter/reporter.component';
     ChartsModule,
     NgxPaginationModule,
     NgxSelectModule,
+
     SelectModule,
     SpreadSheetsModule
     //SelectDropDownModule

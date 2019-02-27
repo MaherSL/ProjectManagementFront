@@ -32,11 +32,14 @@
     <!-- /.box-header -->
     <div class="box-body">
       <div class="table-responsive">
+
+         
+
         <table class="table no-margin">
           <thead>
             <tr>
               <th><input type="search" (input)="onFilterDate($event.target.value)" class="form-control input-sm"
-                style="width:90px" placeholder="Date Submitted"></th>
+                style="width:113px" placeholder="Date Submitted"></th>
               <th><input type="search" (input)="onFilterStatus($event.target.value)" class="form-control input-sm"
                 style="width: 100px;" placeholder="Status"></th>
               <!--<th>Product
@@ -45,12 +48,12 @@
                     </select>
               </th>-->
               <th><input type="search" (input)="onFilterProduct($event.target.value)" class="form-control input-sm"
-                style="width: 100%;" placeholder="Product"></th>
+                style="width: 100px;" placeholder="Product"></th>
              <th><input type="search" (input)="onFilterExternalcodea($event.target.value)" class="form-control input-sm"
                 style="width: 63px;" placeholder="ID Jira"></th>
 
               <th><input type="search" (input)="onFilterSummary($event.target.value)" class="form-control input-sm"
-                style="width: 120px;" placeholder="Summary"></th>
+                style="width: 100px;" placeholder="Summary"></th>
               <th><input type="search" (input)="onFilterReporter($event.target.value)" class="form-control input-sm"
                 style="width: 80px;" placeholder="Reporter"></th>
               <th><input type="search" (input)="onFilterProductversion($event.target.value)" class="form-control input-sm"
@@ -84,7 +87,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let ticket of ticketlist | ticketFilter:searchTermn | paginate : { itemsPerPage: 8, currentPage: p } ">
+            <tr *ngFor="let ticket of ticketlist | ticketFilter:searchTermn | paginate : { itemsPerPage: 10, currentPage: p } ">
               <td>{{ticket.dateticket}}</td>
               <td>{{ticket.vocticketstatus.nameword}}</td>
               <!--name product as a list to use it later-->
@@ -97,8 +100,8 @@
               </td>-->
               <!--<td><a routerLink="/product" [queryParams]="{ id: product.idproduct}">{{product.nameproduct}}</a></td>-->
 
-              <td><a class="changecolor" routerLink="/ticket/{{ticket.idticket}}" data-toggle="popover" title="Modify ticket"
-                  data-content="Some content inside the popover"  >{{ticket.tproduct.nameproduct}}</a></td>
+              <td class="nameproducttd"><a class="changecolor" routerLink="/ticket/{{ticket.idticket}}" data-toggle="popover" title="Modify ticket"
+                  data-content="Some content inside the popover"  >{{ticket.tproduct.nameproduct |uppercase}}</a></td>
               <td>
 
                 <!--2eme possibilité
@@ -112,10 +115,11 @@
               
               
                   
-               
-                <td><div class="md-form">
-                    <textarea type="text" class="md-textarea form-control" rows="1">{{ticket.summary}}</textarea> </div></td>
-             <!-- <td><textarea style="width: 120px">{{ticket.summary}}</textarea></td>-->
+              <td class="summarytd">{{ticket.summary}}</td> 
+               <!-- <td><div class="md-form">
+                    <textarea type="text" class="md-textarea form-control" rows="1">{{ticket.summary}}</textarea> 
+                  </div></td>-->
+          
               <td>{{ticket.treporter.tperson.nameperson | uppercase}}</td>
               <td>{{ticket.tproductversion.numberversion}}</td>
               <td>{{ticket.vocticketresol.nameword}}</td>

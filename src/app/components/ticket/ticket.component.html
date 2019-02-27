@@ -1,13 +1,5 @@
-<!--<div style="background: rgb(243, 156, 18); padding: 20px 30px; font-size: 16px; font-weight: 600; z-index: 999999;"><a
-    title="Never show me this again!" class="float-right" style="color: rgb(255, 255, 255); font-size: 20px;" href="#"
-    data-toggle="tooltip" data-placement="left">×</a><a style="color: rgba(255, 255, 255, 0.9); text-decoration: none; margin-right: 10px; display: inline-block;"
-    href="https://themequarry.com">Ready to sell your theme? Submit your theme to our new marketplace now and let over
-    200k visitors see it!</a><a class="btn btn-default btn-sm" style="background: rgb(255, 255, 255); border: 0px; border-image: none; color: rgb(243, 156, 18); font-weight: 600; margin-top: -5px; box-shadow: none;"
-    href="https://themequarry.com">Let's Do It!</a></div>
--->
 <!--<app-contentheader></app-contentheader>-->
 <!-- Main content -->
-<!--<app-selectm></app-selectm>-->
 <div class="content">
   <div class="box box-primary">
     <div class="box-header with-border">
@@ -36,89 +28,64 @@
       <div class="table-responsive">
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
           <input type="hidden" formControlName="idticket" class="form-control" />
-
-
-          <!--<input list=ticket>
-          <datalist id=ticket>
-            <option *ngFor="let ticket of ticketlist" [ngValue]="ticket">{{ticket.summary}}</option>
-          </datalist>-->
-
-          <div class="container">
-            <div class="row">
-              <div class="col-md-3">
-                <!--<select multiple="multiple" data-toggle="select">
+          <div class="row">
+            <div class="col-md-3">
+              <!--<select multiple="multiple" data-toggle="select">
                       <option value="1">January</option>
                       <option value="1">Februrary</option>
                       <option value="12">December</option>
                   </select>-->
-                <!--<ngx-select-dropdown [config]="config" [options]="dropdownOptions"
+              <!--<ngx-select-dropdown [config]="config" [options]="dropdownOptions"
                   [(ngModel)]="dataModel" [multiple]="true" ></ngx-select-dropdown>-->
-                <div class="form-group" [ngClass]="{'has-error': submitted && f.dateticket.errors}">
-                  <label for="dateticket">Date Submitted:</label>
-                  <div class="input-group">
-                    <div class="input-group-addon">
-                      <i class="fa fa-calendar"></i>
-                    </div>
-                    <ngx-select  [items]="ticketlist" optionValueField='idticket' (selectionChanges)="doSelectOptions($event)"
-                  optionTextField='dateticket' [defaultValue]="tticket.idticket"></ngx-select>
-                    <!--<div>
+              <div class="form-group" [ngClass]="{'has-error': submitted && f.dateticket.errors}">
+                <label for="dateticket">Date Submitted:</label>
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <!--<ngx-select [items]="ticketlist" optionValueField='idticket' (selectionChanges)="doSelectOptions($event)"
+                    optionTextField='dateticket' [defaultValue]="tticket.idticket"></ngx-select>-->
+                  <div>
                       <input type="Date" id="try" class="form-control" formControlName="dateticket" />
-                    </div>-->
-
-                    <div *ngIf="submitted && f.dateticket.errors" class="help-block">
-                      <div *ngIf="f.dateticket.errors.required">Date ticket obligatoire</div>
                     </div>
+
+                  <div *ngIf="submitted && f.dateticket.errors" class="help-block">
+                    <div *ngIf="f.dateticket.errors.required">Date ticket obligatoire</div>
                   </div>
                 </div>
               </div>
-
-              <div class="col-md-4">
-                <div class="form-group" [ngClass]="{'has-error': submitted && f.status.errors}">
-                  <label for="status">Status</label>
-                  <div class="input-group">
-                    <Select class="form-control">
-                      <option *ngFor="let ticket of ticketlist" [ngValue]="ticket">{{ticket.vocticketstatus.nameword}}</option>
-                    </Select>
-                    <div *ngIf="f.status.errors" class="help-block">
-                      <div *ngIf="f.status.errors.required">Mandatory status</div>
-                      <div *ngIf="f.status.errors.minlength">longueur minimale de 3</div>
-                      <div *ngIf="f.status.errors.maxlength">longueur maximale est atteinte</div>
-                    </div>
-                  </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group" [ngClass]="{'has-error': submitted && f.vocticketstatus.errors}">
+                <label for="vocticketstatus">Status</label>
+                <ngx-select [items]="ticketstatusList" optionValueField='idvocabword' optionTextField='nameword'
+                  [defaultValue]="tticket.vocticketstatus.idvocabword"></ngx-select>
+                <div *ngIf="f.vocticketstatus.errors" class="help-block">
+                  <div *ngIf="f.vocticketstatus.errors.required">Mandatory status</div>
                 </div>
               </div>
+            </div>
 
-              <div class="col-md-3">
-                <div class="form-group" [ngClass]="{'has-error': submitted && f.tproduct.errors}">
-                  <label for="tproduct">Product Name</label>
-                  <!--ca marche simple select
-                     <Select class="form-control" id="tproduct">
-                      <option *ngFor="let product of productList" [ngValue]="tticket.tproduct">{{product.nameproduct}}</option>
-                    </Select>-->
-
-                  <!-- <ngx-select [formControl]="ngxControl" [allowClear]="true" [defaultValue]="tticket.tproduct"
-                      [items]="productList" placeholder="No product selected" (typed)="inputTyped('ngx-select', $event)"
-                      (focus)="doFocus()" (blur)="doBlur()" (open)="doOpen()" (close)="doClose()" (select)="doSelect($event)"
-                      (remove)="doRemove($event)" (selectionChanges)="doSelectOptions($event)">
-                    </ngx-select>-->
-
-                  <!--</ngx-select>-->
-                  <ngx-select [items]="productList" optionValueField='idproduct' (selectionChanges)="doSelectOptions($event)"
-                    optionTextField='nameproduct' [defaultValue]="tticket.tproduct.idproduct"></ngx-select>
-
-                  <!-- NG2-SELECT OK1 <ng-select [allowClear]="true" [items]="items" [disabled]="false" placeholder="No product selected"
+            <div class="col-md-3">
+              <div class="form-group" [ngClass]="{'has-error': submitted && f.tproduct.errors}">
+                <label for="tproduct">Product Name</label>
+                <ngx-select [items]="productList" optionValueField='idproduct' (selectionChanges)="doSelectOptions($event)"
+                  optionTextField='nameproduct' [defaultValue]="tticket.tproduct.idproduct"></ngx-select>
+                -
+                <!-- NG2-SELECT OK1 <ng-select [allowClear]="true" [items]="items" [disabled]="false" placeholder="No product selected"
                     >-->
 
-                  <!-- NG2-SELECT OK1 <ng-select [allowClear]="true" [items]="items" [disabled]="disabled" (data)="refreshValue($event)"
+                <!-- NG2-SELECT OK1 <ng-select [allowClear]="true" [items]="items" [disabled]="disabled" (data)="refreshValue($event)"
                       (selected)="selected($event)" (removed)="removed($event)" (typed)="typed($event)" placeholder="No city selected">
                     </ng-select>
                     -->
-                  <div *ngIf="submitted && f.tproduct.errors" class="help-block">
-                    <div *ngIf="f.tproduct.errors.required">Mandatory name Product </div>
-                  </div>
+                <div *ngIf="submitted && f.tproduct.errors" class="help-block">
+                  <div *ngIf="f.tproduct.errors.required">Mandatory name Product </div>
                 </div>
               </div>
-              <!--<div class="col-md-2">
+            </div>
+          </div>
+          <!--<div class="col-md-2">
           <div class="form-group" [ngClass]="{'has-error': submitted && f.externalcodea.errors}">
             <label for="externalcodea">Code Externe</label>
             <input type="number"  min="0" max="1" formControlName="externalcodea" class="form-control" />
@@ -127,7 +94,7 @@
             </div>
           </div>
  </div>-->
-              <!-- <div class="form-group" [ngClass]="{'has-error': submitted && f.summary.errors}">
+          <!-- <div class="form-group" [ngClass]="{'has-error': submitted && f.summary.errors}">
             <label for="summary">Description</label>
             <textarea type="string"  min="0" max="1" formControlName="externalcodea" class="form-control" placeholder="type the description" ></textarea>
             <div *ngIf="submitted && f.summary.errors" class="help-block">
@@ -135,152 +102,115 @@
             </div>
           </div>
 -->
-              <!--remember me
+          <!--remember me
           <div class="checkbox">
               <label>
               <input #idticket [(ngModel)]="idticket.selected" type="checkbox" data-toggle="toggle">Benutername speichern
               </label></div>-->
 
-              <!-- <select (change)="filterForeCasts($event.target.value)">
+          <!-- <select (change)="filterForeCasts($event.target.value)">
                   <option value="0" class="form-control">{{ticket.idticket}}</option>
                   <option *ngFor="let ticket of ticketlist" value={{ticket.idticket}}>
 
                   </option>
               </select>-->
-            </div>
-          </div>
 
-          <div class="container">
-            <div class="row">
-              <div class="col-md-3">
-                <div class="form-group" [ngClass]="{'has-error': submitted && f.externalcodea.errors}">
-                  <label for="externalcodea">Id Jira</label>
-                  <div *ngIf="submitted && f.externalcodea.errors" class="help-block">
-                    <div *ngIf="f.externalcodea.errors.required">code externe obligatoire</div>
-                  </div>
+
+
+          <div class="row">
+            <div class="col-md-3">
+              <div class="form-group" [ngClass]="{'has-error': submitted && f.externalcodea.errors}">
+                <label for="externalcodea">Id Jira</label>
+                <input type="text" formControlName="externalcodea" class="form-control" />
+                <div *ngIf="submitted && f.externalcodea.errors" class="help-block">
+                  <div *ngIf="f.externalcodea.errors.required">code externe obligatoire</div>
                 </div>
               </div>
-              <!-- <div class="column small-12 large-2">
+            </div>
+            <!-- <div class="column small-12 large-2">
                 <label class="sbw_light">Title:</label><br />
                 <select [(ngModel)]="passenger.Title">
                    <option *ngFor="#title of titleArray" [value]="title.Value">{{title.Text}}</option>
                 </select>
             </div>-->
 
-              <!--<option *ngFor="let title of titleArray"
+            <!--<option *ngFor="let title of titleArray"
             [value]="title.Value"
             [attr.selected]="passenger.Title==title.Text ? true : null">
           {{title.Text}}
         </option>-->
 
-              <div class="col-md-4">
-                <div class="form-group" [ngClass]="{'has-error': submitted && f.summary.errors}">
-                  <label for="summary">Summary</label>
-                  <input type="text" formControlName="summary" class="form-control" />
-                 <!-- <Select class="form-control" id="summary">
+            <div class="col-md-4">
+              <div class="form-group" [ngClass]="{'has-error': submitted && f.summary.errors}">
+                <label for="summary">Summary</label>
+                <input type="text" formControlName="summary" class="form-control" />
+                <!-- <Select class="form-control" id="summary">
                     <option *ngFor="let ticket of ticketlist" [ngValue]="ticket">{{ticket.summary}}</option>
                   </Select>-->
-                  <div *ngIf="f.summary.errors" class="help-block">
-                  </div>
+                <div *ngIf="f.summary.errors" class="help-block">
                 </div>
               </div>
-              <div class="col-md-3">
-                <div class="form-group" [ngClass]="{'has-error': submitted && f.externalcodea.errors}">
-                  <label for="nameperson">Reporter</label>
-                  <input type="text" formControlName="externalcodea" class="form-control" />
-                  <div *ngIf="submitted && f.externalcodea.errors" class="help-block">
-                    <div *ngIf="f.externalcodea.errors.required">code externe obligatoire</div>
-                  </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group" [ngClass]="{'has-error': submitted && f.treporter.errors}">
+                <label for="treporter">Reporter</label>
+                <ngx-select [items]="rreporterList" optionValueField='key' optionTextField='value' [defaultValue]="tticket.treporter.idreporter">
+                  <!--<ng-template ngx-select-option let-option let-text="text">
+                      {{option.data.tperson.nameperson}} {{option.data.idreporter}} 
+                                     </ng-template>-->
+                </ngx-select>
+                <div *ngIf="submitted && f.treporter.errors" class="help-block">
+                  <div *ngIf="f.treporter.errors.required">Reporter obligatoire</div>
                 </div>
               </div>
             </div>
           </div>
+          <div class="row">
+            <div class="col-md-3">
+              <div class="form-group" [ngClass]="{'has-error': submitted && f.externalcodea.errors}">
+                <label for="tproductversion">Product Version</label>
 
-          <div class="container">
-            <div class="row">
-              <div class="col-md-3">
-                <div class="form-group" [ngClass]="{'has-error': submitted && f.externalcodea.errors}">
-                  <label for="productversion">Product Version</label>
-                  <ngx-select [items]="productList" optionValueField='idproduct' (selectionChanges)="doSelectOptions($event)"
-                  optionTextField='productversion' [defaultValue]="tticket.tproduct.idproduct"></ngx-select>
-                  <!--<Select class="form-control" id="productversion">
+                
+
+                <ngx-select [items]="productversionList"  [multiple]="true" optionValueField='idproductversion' optionTextField='numberversion' [defaultValue]="tticket.tproductversion.idproductversion">
+                    <!--<ng-template ngx-select-option let-option let-text="text">
+                        {{option.data.tperson.nameperson}} {{option.data.idreporter}} 
+                                       </ng-template>-->
+                  </ngx-select>
+                <!-- <ngx-select [items]="productList" optionValueField='idproduct' (selectionChanges)="doSelectOptions($event)"
+                optionTextField='productversion' [defaultValue]="tticket.tproduct.idproduct"></ngx-select>
+              <Select class="form-control" id="productversion">
                     <option *ngFor="let ticket of ticketlist" [ngValue]="ticket">{{ticket.tproductversion.numberversion}}</option>
                   </Select>-->
-                  <div *ngIf="submitted && f.externalcodea.errors" class="help-block">
-                    <div *ngIf="f.externalcodea.errors.required">code externe obligatoire</div>
-                  </div>
-                </div>
-              </div>
 
-              <div class="col-md-4">
-                <div class="form-group" [ngClass]="{'has-error': submitted && f.externalcodea.errors}">
-                  <label for="resolutioname">Resolution</label>
-                  <ngx-select [items]="productList" optionValueField='idproduct' (selectionChanges)="doSelectOptions($event)"
-                  optionTextField='productversion' [defaultValue]="tticket.tproduct.idproduct"></ngx-select>
-                  <!--<Select class="form-control" id="resolutioname">
-                    <option *ngFor="let ticket of ticketlist" [ngValue]="ticket">{{ ticket.vocticketresol.nameword}}</option>
-                  </Select>-->
-                  <div *ngIf="submitted && f.externalcodea.errors" class="help-block">
-                    <div *ngIf="f.externalcodea.errors.required">code externe obligatoire</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-3">
-                <div class="form-group" [ngClass]="{'has-error': submitted && f.externalcodea.errors}">
-                  <label for="externalcodea">New Test</label>
-                  <input type="number" min="0" max="1" formControlName="externalcodea" class="form-control" />
-                  <div *ngIf="submitted && f.externalcodea.errors" class="help-block">
-                    <div *ngIf="f.externalcodea.errors.required">code externe obligatoire</div>
-                  </div>
+                <div *ngIf="submitted && f.tproductversion.errors" class="help-block">
+                  <div *ngIf="f.tproductversion.errors.required">you can choose more than one version</div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="container">
-            <div class="row">
-              <div class="col-md-3">
-                <div class="form-group" [ngClass]="{'has-error': submitted && f.externalcodea.errors}">
-                  <label for="externalcodea">Test Name</label>
-                  <input type="number" min="0" max="1" formControlName="externalcodea" class="form-control" />
-                  <div *ngIf="submitted && f.externalcodea.errors" class="help-block">
-                    <div *ngIf="f.externalcodea.errors.required">code externe obligatoire</div>
-                  </div>
+            <div class="col-md-4">
+              <div class="form-group" [ngClass]="{'has-error': submitted && f.vocticketresol.errors}">
+                <label for="vocticketresol">Resolution</label>
+                <ngx-select [items]="ticketresolList" optionValueField='idvocabword' optionTextField='nameword'
+                  [defaultValue]="tticket.vocticketresol.idvocabword" ></ngx-select>
+                <div *ngIf="f.vocticketresol.errors" class="help-block">
+                  <div *ngIf="f.vocticketresol.errors.required">Mandatory status</div>
                 </div>
-              </div>
-
-              <div class="col-md-4">
-                <div class="form-group" [ngClass]="{'has-error': submitted && f.externalcodea.errors}">
-                  <label for="externalcodea">Salesforce Case Name</label>
-                  <input type="number" min="0" max="1" formControlName="externalcodea" class="form-control" />
-                  <div *ngIf="submitted && f.externalcodea.errors" class="help-block">
-                    <div *ngIf="f.externalcodea.errors.required">code externe obligatoire</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-3">
-                <div class="form-group" [ngClass]="{'has-error': submitted && f.externalcodea.errors}">
-                  <label for="externalcodea">Salesforce Case Id</label>
-                  <input type="number" min="0" max="1" formControlName="externalcodea" class="form-control" />
-                  <div *ngIf="submitted && f.externalcodea.errors" class="help-block">
-                    <div *ngIf="f.externalcodea.errors.required">code externe obligatoire</div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
-        </form>
-        <div class="form-group">
-          <button [disabled]="loading" class="btn btn-primary">Enregistrer</button>
-          <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-          <a routerLink="/ticketlist" class="btn btn-link">Annuler</a>
-          <a routerLink="/ticket" class="btn btn-sm btn-info btn-flat pull-right">Ajouter page</a>
-        </div>
       </div>
-    </div>
 
+
+      <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">Enregistrer</button>
+        <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+        <a routerLink="/ticketlist" class="btn btn-link">Annuler</a>
+        <a routerLink="/ticket" class="btn btn-sm btn-info btn-flat pull-right">Ajouter page</a>
+      </div>
+      </form>
+    </div>
   </div>
-  <!-- /.table-responsive -->
 </div>
+</div>
+<!-- /.table-responsive -->
