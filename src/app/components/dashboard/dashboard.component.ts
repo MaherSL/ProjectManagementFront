@@ -1,5 +1,4 @@
 import { TicketService } from 'src/app/services/ticket.service';
-import { HttpClient } from 'selenium-webdriver/http';
 import { Chart } from 'chart.js';
 import { Graph2d } from 'src/app/class/Graph2d';
 import { OnInit, Component } from '@angular/core';

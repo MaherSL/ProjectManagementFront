@@ -1,6 +1,5 @@
-
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, ValidationErrors } from '@angular/forms';
 import { Tticket } from '../../entity/Tticket';
 import { TicketService } from '../../services/ticket.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -45,12 +44,12 @@ private productversionList:Tproductversion[]=[];
     private vocabwordService: VocabwordService,
     private productService: ProductService,
     private reporterService:ReporterService,
-    private productversionService:ProductversionService, 
+    private productversionService:ProductversionService,
     private alertService: AlertService,
     private activatedRoute: ActivatedRoute,
     private router: Router) { }
 
-  
+
   private _disabledV: string = '0';
   private disabled: boolean = false;
 
@@ -74,7 +73,7 @@ private productversionList:Tproductversion[]=[];
   public typed(value: any): void {
     console.log('New search input: ', value);
   }
-  
+
   public doSelectOptions = (options: INgxSelectOption[]) => console.log('SingleDemoComponent.doSelectOptions', options);
   ngOnInit() {
     this.tticket = new Tticket();
@@ -84,7 +83,7 @@ private productversionList:Tproductversion[]=[];
     this.tticket.tproductversion=new Tproductversion();
     this.tticket.treporter=new Treporter();
     this.tticket.treporter.tperson=new Tperson();
-    
+
 
 this.tticket.tproductversion = new Tproductversion();
 
@@ -119,18 +118,20 @@ this.tticket.tproductversion = new Tproductversion();
     // this.personList = res; });
 
     //1ere methode
-    this.idticketSelected = +this.activatedRoute.snapshot.paramMap.get('id');
+    if (this.activatedRoute.snapshot.queryParamMap.get("id") != null)
+      this.idticketSelected = parseFloat(this.activatedRoute.snapshot.queryParamMap.get("id"))
+
+//    this.idticketSelected = +this.activatedRoute.snapshot.paramMap.get('id');
     this.registerForm = this.formBuilder.group({
       idticket: [''],
-      dateticket: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+      dateticket: ['', Validators.required],
       tproduct: ['', Validators.required],
       vocticketstatus: ['', Validators.required],
       vocticketresol: ['', Validators.required],
       treporter: ['', Validators.required],
       tproductversion: ['', Validators.required],
-      externalcodea: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
-      enabledticket: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
-      summary: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]]
+      externalcodea: ['', [Validators.required,  Validators.maxLength(50)]],
+      summary: ['', [Validators.required, Validators.maxLength(50)]]
     }, { updateOn: 'blur' });
     //updateOn:'submit"'
 
@@ -159,15 +160,30 @@ this.tticket.tproductversion = new Tproductversion();
   // convenience getter for easy access to form fields
   get f() { return this.registerForm.controls; }
 
+  getFormValidationErrors() {
+    Object.keys(this.registerForm.controls).forEach(key => {
 
+    const controlErrors: ValidationErrors = this.registerForm.get(key).errors;
+    if (controlErrors != null) {
+          Object.keys(controlErrors).forEach(keyError => {
+            console.log('Key control: ' + key + ', keyError: ' + keyError + ', err value: ', controlErrors[keyError]);
+          });
+        }
+      });
+    }
 
   onSubmit() {
+    console.log("abc");
     this.submitted = true;
-
+    console.log("invalid="+this.registerForm.invalid);
+    this.getFormValidationErrors();
+    console.log("end");
     // stop here if form is invalid
     if (this.registerForm.invalid) {
       return;
     }
+
+
 
     this.loading = true;
     this.ticketService.save(this.registerForm.value)
@@ -177,8 +193,7 @@ this.tticket.tproductversion = new Tproductversion();
           this.alertService.success('Enregistrement fait avec succès');
           this.loading = false;
           this.tticket=data;
-          this.registerForm.patchValue(this.tticket);
-          //        this.router.navigate(['/login']);
+          //this.registerForm.patchValue(this.tticket);
         },
         error => {
           this.alertService.error(JSON.stringify(error));

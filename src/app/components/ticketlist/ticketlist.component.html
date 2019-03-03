@@ -27,37 +27,37 @@
       <div class="form-group">
       <input type="text" class="form-control" placeholder="Search by name Product" style="width: 300px" [(ngModel)]="searchTerm" />
     </div>-->
-<!--begin try-->
+    <!--begin try-->
 
     <!-- /.box-header -->
     <div class="box-body">
       <div class="table-responsive">
 
-         
+
 
         <table class="table no-margin">
           <thead>
             <tr>
               <th><input type="search" (input)="onFilterDate($event.target.value)" class="form-control input-sm"
-                style="width:113px" placeholder="Date Submitted"></th>
+                  style="width:113px" placeholder="Date Submitted"></th>
               <th><input type="search" (input)="onFilterStatus($event.target.value)" class="form-control input-sm"
-                style="width: 100px;" placeholder="Status"></th>
+                  style="width: 100px;" placeholder="Status"></th>
               <!--<th>Product
                     class="form-control input-sm" style="width: 100%;" tabindex="-1" aria-hidden="true">
                       <option  [value]="product.idproduct" *ngFor="let product of productlist ">{{product.nameproduct}}</option>
                     </select>
               </th>-->
               <th><input type="search" (input)="onFilterProduct($event.target.value)" class="form-control input-sm"
-                style="width: 100px;" placeholder="Product"></th>
-             <th><input type="search" (input)="onFilterExternalcodea($event.target.value)" class="form-control input-sm"
-                style="width: 63px;" placeholder="ID Jira"></th>
+                  style="width: 100px;" placeholder="Product"></th>
+              <th><input type="search" (input)="onFilterExternalcodea($event.target.value)"
+                  class="form-control input-sm" style="width: 63px;" placeholder="ID Jira"></th>
 
               <th><input type="search" (input)="onFilterSummary($event.target.value)" class="form-control input-sm"
-                style="width: 100px;" placeholder="Summary"></th>
+                  style="width: 100px;" placeholder="Summary"></th>
               <th><input type="search" (input)="onFilterReporter($event.target.value)" class="form-control input-sm"
-                style="width: 80px;" placeholder="Reporter"></th>
-              <th><input type="search" (input)="onFilterProductversion($event.target.value)" class="form-control input-sm"
-                style="width: 100px;" placeholder="Product Version"></th>
+                  style="width: 80px;" placeholder="Reporter"></th>
+              <th><input type="search" (input)="onFilterProductversion($event.target.value)"
+                  class="form-control input-sm" style="width: 100px;" placeholder="Product Version"></th>
               <!-- <div class="form-group">
                   <label>Produit</label>
                   <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1"
@@ -72,22 +72,23 @@
 
               </th>-->
               <th><input type="search" (input)="onFilterResolution($event.target.value)" class="form-control input-sm"
-                style="width: 80px;" placeholder="Resolution"></th>
-                <th><input type="search" (input)="onFilterNewTest($event.target.value)" class="form-control input-sm"
+                  style="width: 80px;" placeholder="Resolution"></th>
+              <th><input type="search" (input)="onFilterNewTest($event.target.value)" class="form-control input-sm"
                   style="width: 130px;" placeholder="New Test"></th>
-                  <th><input type="search" (input)="onFilterTestName($event.target.value)" class="form-control input-sm"
-                    style="width: 100px;" placeholder="Test Name"></th>
-                    <th><input type="search" (input)="onFilterSlsCaseNumber($event.target.value)" class="form-control input-sm"
-                      style="width: 150px;" placeholder="Salesforce Case Number"></th>
-                      <th><input type="search" (input)="onFilterSlsCaseId($event.target.value)" class="form-control input-sm"
-                        style="width: 150px;" placeholder="Salesforce Case Id"></th>
-              
+              <th><input type="search" (input)="onFilterTestName($event.target.value)" class="form-control input-sm"
+                  style="width: 100px;" placeholder="Test Name"></th>
+              <th><input type="search" (input)="onFilterSlsCaseNumber($event.target.value)"
+                  class="form-control input-sm" style="width: 150px;" placeholder="Salesforce Case Number"></th>
+              <th><input type="search" (input)="onFilterSlsCaseId($event.target.value)" class="form-control input-sm"
+                  style="width: 150px;" placeholder="Salesforce Case Id"></th>
+
               <!--<th>Date Version</th>-->
               <th *ngIf="inverserSuppressionActive">Supp</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let ticket of ticketlist | ticketFilter:searchTermn | paginate : { itemsPerPage: 10, currentPage: p } ">
+            <tr
+              *ngFor="let ticket of ticketlist | ticketFilter:searchTermn | paginate : { itemsPerPage: 10, currentPage: p } ">
               <td>{{ticket.dateticket}}</td>
               <td>{{ticket.vocticketstatus.nameword}}</td>
               <!--name product as a list to use it later-->
@@ -99,9 +100,9 @@
                       </select>
               </td>-->
               <!--<td><a routerLink="/product" [queryParams]="{ id: product.idproduct}">{{product.nameproduct}}</a></td>-->
-
-              <td class="nameproducttd"><a class="changecolor" routerLink="/ticket/{{ticket.idticket}}" data-toggle="popover" title="Modify ticket"
-                  data-content="Some content inside the popover"  >{{ticket.tproduct.nameproduct |uppercase}}</a></td>
+              <td class="nameproducttd"><a class="changecolor" routerLink="/ticket" [queryParams]="{ id: ticket.idticket}"
+                  data-toggle="popover" title="Modify ticket"
+                  data-content="Some content inside the popover">{{ticket.tproduct.nameproduct |uppercase}}</a></td>
               <td>
 
                 <!--2eme possibilité
@@ -112,19 +113,19 @@
                 {{ticket.externalcodea}}
               </td>
 
-              
-              
-                  
-              <td class="summarytd">{{ticket.summary}}</td> 
-               <!-- <td><div class="md-form">
-                    <textarea type="text" class="md-textarea form-control" rows="1">{{ticket.summary}}</textarea> 
+
+
+
+              <td class="summarytd">{{ticket.summary}}</td>
+              <!-- <td><div class="md-form">
+                    <textarea type="text" class="md-textarea form-control" rows="1">{{ticket.summary}}</textarea>
                   </div></td>-->
-          
+
               <td>{{ticket.treporter.tperson.nameperson | uppercase}}</td>
               <td>{{ticket.tproductversion.numberversion}}</td>
               <td>{{ticket.vocticketresol.nameword}}</td>
 
-<!--<td>{{ticket.tproductversion.dateversion}}</td>-->
+              <!--<td>{{ticket.tproductversion.dateversion}}</td>-->
 
               <!--<td> <a routerLink="/product/{{vocav.idproduct}}">Modify</a></td>-->
               <td *ngIf="inverserSuppressionActive">
@@ -143,19 +144,14 @@
 
 
 
-          
-                    
+
+
         </table>
         <div style="padding-left: 700px">
-        <pagination-controls  class="my-pagination" (pageChange)="p = $event"
-          autoHide="true"
-                      responsive="true"
-                      previousLabel="Previous"
-                      nextLabel="Next"
-                      screenReaderPaginationLabel="Pagination"
-                      screenReaderPageLabel="page"
-                      screenReaderCurrentLabel="You're on page"></pagination-controls>
-                    </div>     
+          <pagination-controls class="my-pagination" (pageChange)="p = $event" autoHide="true" responsive="true"
+            previousLabel="Previous" nextLabel="Next" screenReaderPaginationLabel="Pagination"
+            screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page"></pagination-controls>
+        </div>
       </div>
 
       <!--<div style="padding-left:600px " class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
@@ -169,7 +165,7 @@
           <li class="paginate_button "><a href="http://localhost:4200/ticketlist" aria-controls="example2" data-dt-idx="6" tabindex="0">6</a></li>
           <li class="paginate_button next" id="example2_next"><a href="#" aria-controls="example2" data-dt-idx="7" tabindex="0">Next</a></li>
         </ul>
-        
+
       </div>-->
 
 
@@ -203,7 +199,8 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+            class="sr-only">Close</span></button>
         <h4 class="modal-title" id="myModalLabel">Confirmation de suppression</h4>
       </div>
       <div class="modal-body">
@@ -213,7 +210,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Annuler</button>
-        <button type="button" (click)="supprimer(selectedTicket.idticket)" class="btn btn-primary" data-dismiss="modal">Supprimer</button>
+        <button type="button" (click)="supprimer(selectedTicket.idticket)" class="btn btn-primary"
+          data-dismiss="modal">Supprimer</button>
       </div>
     </div>
   </div>
