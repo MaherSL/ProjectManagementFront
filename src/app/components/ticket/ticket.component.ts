@@ -66,6 +66,9 @@ private productversionList:Tproductversion[]=[];
     console.log('Selected value is: ', value);
   }
 
+  public onChangeResolution(value: any): void {
+    console.log('On change Resolution: ', value);
+  }
   public removed(value: any): void {
     console.log('Removed value is: ', value);
   }

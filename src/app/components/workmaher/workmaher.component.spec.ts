@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Viewlist2Component } from './viewlist2.component';
+import { WorkmaherComponent } from './workmaher.component';
 
-describe('Viewlist2Component', () => {
-  let component: Viewlist2Component;
-  let fixture: ComponentFixture<Viewlist2Component>;
+describe('WorkmaherComponent', () => {
+  let component: WorkmaherComponent;
+  let fixture: ComponentFixture<WorkmaherComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ Viewlist2Component ]
+      declarations: [ WorkmaherComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(Viewlist2Component);
+    fixture = TestBed.createComponent(WorkmaherComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

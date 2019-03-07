@@ -34,29 +34,29 @@ import { ContentheaderComponent } from './components/templates/contentheader/con
 import { TicketlistComponent } from './components/ticketlist/ticketlist.component';
 import { TicketFilterPipe } from './components/ticket/ticket-filter.pipe';
 import { TicketComponent } from './components/ticket/ticket.component';
-import { Viewlist2Component } from './components/viewlist2/viewlist2.component';
+
 import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 
 //material Design
-import { AppMaterialModule} from 'src/app/app-material/app-material.module';
+import { AppMaterialModule } from 'src/app/app-material/app-material.module';
 
-import { TryComponent } from './components/try/try.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 //pagination
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 //ngx select and multipleselect
 import { NgxSelectModule } from 'ngx-select-ex';
 
 import { SelectmComponent } from './components/selectm/selectm.component';
 //import { SelectDropDownModule } from 'ngx-select-dropdown';
 //import { SelectmComponent } from './components/selectm/selectm.component';
-import {SelectModule} from 'ng2-select';
+import { SelectModule } from 'ng2-select';
 import { SpreedsheetsexcelComponent } from './components/spreedsheetsexcel/spreedsheetsexcel.component';
 
 import { SpreadSheetsModule } from "@grapecity/spread-sheets-angular";
 import { PersonComponent } from './components/person/person.component';
 import { PersonlistComponent } from './components/personlist/personlist.component';
-import { ReporterComponent } from './components/reporter/reporter.component';
+import { WorkmaherComponent } from './components/workmaher/workmaher.component';
+import { WorkaymenComponent } from './components/workaymen/workaymen.component';
 
 @NgModule({
   declarations: [
@@ -86,20 +86,17 @@ import { ReporterComponent } from './components/reporter/reporter.component';
     TicketlistComponent,
     TicketComponent,
     ContentheaderComponent,
-    Viewlist2Component,
     TicketFilterPipe,
     ContentheaderComponent,
-     ConfirmModalComponent,
-
-     TryComponent,
-
-     DashboardComponent,
-     PersonComponent,
-     PersonlistComponent,
+    ConfirmModalComponent,
+    DashboardComponent,
+    PersonComponent,
+    PersonlistComponent,
     //SelectDropDownModule,
-     SelectmComponent,
-     SpreedsheetsexcelComponent,
-     ReporterComponent,
+    SelectmComponent,
+    SpreedsheetsexcelComponent,
+    WorkmaherComponent,
+    WorkaymenComponent
 
   ],
   imports: [

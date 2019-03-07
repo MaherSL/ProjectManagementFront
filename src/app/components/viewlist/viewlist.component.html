@@ -1,5 +1,4 @@
 <app-contentheader></app-contentheader>
-
 <!-- Main content -->
 <div class="content">
   <div class="box box-primary">
@@ -24,21 +23,35 @@
     </div>
     <!-- /.box-header -->
     <div class="box-body">
-      dataTables_wrapper form-inline dt-bootstrap
-      <div class="table-responsive">
+      <div class="table-responsive dataTables_wrapper form-inline dt-bootstrap">
         <table class="table no-margin table-hover table-condensed">
           <thead>
             <tr>
-              <th>Nom</th>
-              <th>Programme</th>
-              <th>Etat</th>
+              <th><input type="search" (input)="onFilterNameview($event.target.value)" class="form-control input-sm"
+                style="width: 100%;" placeholder="Nom"></th>
+              <th>
+                  <input type="search" (input)="onFilterProgview($event.target.value)" class="form-control input-sm"
+                  style="width: 100%;" placeholder="Programme">
+                <!--<select (change)="onFilterProgviewChange($event.target.value)" class="form-control select2 select2-hidden-accessible  input-sm"
+                  style="width: 100%;" tabindex="-1" aria-hidden="true">
+                  <option [value]="view.progview" *ngFor="let view of viewlistInitial "><span *ngIf="!view.progview">[Tous
+                      les programmes]</span>
+                    <span *ngIf="view.progview">{{view.progview}}</span></option>
+                </select>-->
+              </th>
+              <th>
+                <select (change)="onFilterEnabledview($event.target.value)" class="form-control select2 select2-hidden-accessible  input-sm"
+                  style="width: 100%;" tabindex="-1" aria-hidden="true">
+                  <option [value]=null>[Etat]</option>
+                  <option [value]=1 selected>Actif</option>
+                  <option [value]=0>Inactif</option>
+                </select></th>
               <th *ngIf="inverserSuppressionActive">Supp</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let view of viewlist">
-              <td><a routerLink="/view" [queryParams]="{ id: view.idview}">{{view.nameview}}</a></td>
-
+              <td><a routerLink="/view/{{view.idview}}">{{view.nameview}}</a></td>
               <td>{{view.progview}}</td>
               <td>
                 <span *ngIf="view.enabledview==1">Actif</span><span *ngIf="view.enabledview!=1">Inactif</span>

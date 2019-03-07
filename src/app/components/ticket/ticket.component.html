@@ -56,7 +56,8 @@
               <div class="form-group" [ngClass]="{'has-error': submitted && f.vocticketstatus.errors}">
                 <label for="vocticketstatus">Status</label>
                 <ngx-select [items]="ticketstatusList" optionValueField='idvocabword' optionTextField='nameword'
-                  [defaultValue]="tticket.vocticketstatus.idvocabword"></ngx-select>
+                  [defaultValue]="tticket.vocticketstatus.idvocabword" [(ngModel)]="tticket.vocticketstatus.idvocabword"
+                  [ngModelOptions]="{standalone: true}"></ngx-select>
                 <div *ngIf="f.vocticketstatus.errors" class="help-block">
                   <div *ngIf="f.vocticketstatus.errors.required">Mandatory status</div>
                 </div>
@@ -66,8 +67,10 @@
             <div class="col-md-3">
               <div class="form-group" [ngClass]="{'has-error': submitted && f.tproduct.errors}">
                 <label for="tproduct">Product Name</label>
-                <ngx-select [items]="productList" optionValueField='idproduct' (selectionChanges)="doSelectOptions($event)"
-                  optionTextField='nameproduct' [defaultValue]="tticket.tproduct.idproduct"></ngx-select>
+                <ngx-select [items]="productList" optionValueField='idproduct'
+                  (selectionChanges)="doSelectOptions($event)" optionTextField='nameproduct'
+                  [defaultValue]="tticket.tproduct.idproduct" [(ngModel)]="tticket.tproduct.idproduct"
+                  [ngModelOptions]="{standalone: true}"></ngx-select>
                 -
                 <!-- NG2-SELECT OK1 <ng-select [allowClear]="true" [items]="items" [disabled]="false" placeholder="No product selected"
                     >-->
@@ -151,7 +154,9 @@
             <div class="col-md-3">
               <div class="form-group" [ngClass]="{'has-error': submitted && f.treporter.errors}">
                 <label for="treporter">Reporter</label>
-                <ngx-select [items]="rreporterList" optionValueField='key' optionTextField='value' [defaultValue]="tticket.treporter.idreporter">
+                <ngx-select [items]="rreporterList" optionValueField='key' optionTextField='value'
+                  [defaultValue]="tticket.treporter.idreporter" [(ngModel)]="tticket.treporter.idreporter"
+                  [ngModelOptions]="{standalone: true}">
                   <!--<ng-template ngx-select-option let-option let-text="text">
                       {{option.data.tperson.nameperson}} {{option.data.idreporter}}
                                      </ng-template>-->
@@ -169,11 +174,13 @@
 
 
 
-                <ngx-select [items]="productversionList"  [multiple]="true" optionValueField='idproductversion' optionTextField='numberversion' [defaultValue]="tticket.tproductversion.idproductversion">
-                    <!--<ng-template ngx-select-option let-option let-text="text">
+                <ngx-select [items]="productversionList" [multiple]="true" optionValueField='idproductversion'
+                  optionTextField='numberversion' [defaultValue]="tticket.tproductversion.idproductversion"
+                  [(ngModel)]="tticket.tproductversion.idproductversion" [ngModelOptions]="{standalone: true}">
+                  <!--<ng-template ngx-select-option let-option let-text="text">
                         {{option.data.tperson.nameperson}} {{option.data.idreporter}}
                                        </ng-template>-->
-                  </ngx-select>
+                </ngx-select>
                 <!-- <ngx-select [items]="productList" optionValueField='idproduct' (selectionChanges)="doSelectOptions($event)"
                 optionTextField='productversion' [defaultValue]="tticket.tproduct.idproduct"></ngx-select>
               <Select class="form-control" id="productversion">
@@ -186,28 +193,40 @@
               </div>
             </div>
 
+            <!--
+              <ng-select [(ngModel)]="selectedCarId">
+    <ng-option *ngFor="let car of cars" [value]="car.id" [disabled]="car.disabled" >{{car.name}}</ng-option>
+    <ng-option [value]="'custom'">Custom</ng-option>
+</ng-select>
+            -->
             <div class="col-md-4">
               <div class="form-group" [ngClass]="{'has-error': submitted && f.vocticketresol.errors}">
                 <label for="vocticketresol">Resolution</label>
-                <ngx-select [items]="ticketresolList" optionValueField='idvocabword' optionTextField='nameword'
+                <!--    <ngx-select [items]="ticketresolList" (ngModelChange)="onChangeResolution($event)" optionValueField='idvocabword' optionTextField='nameword'
                   [defaultValue]="tticket.vocticketresol.idvocabword" ></ngx-select>
+
+                                  [defaultValue]="tticket.vocticketresol.idvocabword"
+                -->
+                <ngx-select [items]="ticketresolList" (ngModelChange)="onChangeResolution($event)"
+                  optionValueField='idvocabword' optionTextField='nameword'
+                  [(ngModel)]="tticket.vocticketresol.idvocabword" [ngModelOptions]="{standalone: true}"></ngx-select>
                 <div *ngIf="f.vocticketresol.errors" class="help-block">
                   <div *ngIf="f.vocticketresol.errors.required">Mandatory status</div>
                 </div>
+              </div>
             </div>
           </div>
-      </div>
 
 
-      <div class="form-group">
-        <button [disabled]="loading" class="btn btn-primary">Enregistrer</button>
-        <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-        <a routerLink="/ticketlist" class="btn btn-link">Annuler</a>
-        <a routerLink="/ticket" class="btn btn-sm btn-info btn-flat pull-right">Ajouter page</a>
+          <div class="form-group">
+            <button [disabled]="loading" class="btn btn-primary">Enregistrer</button>
+            <img *ngIf="loading"
+              src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            <a routerLink="/ticketlist" class="btn btn-link">Annuler</a>
+            <a routerLink="/ticket" class="btn btn-sm btn-info btn-flat pull-right">Ajouter page</a>
+          </div>
+        </form>
       </div>
-      </form>
     </div>
   </div>
 </div>
-</div>
-<!-- /.table-responsive -->

@@ -278,7 +278,7 @@ export class DashboardComponent implements OnInit {
           }
       }*/
       });
-      console.log("this.groupbarchart=" + JSON.stringify(this.groupbarchart));
+      //console.log("this.groupbarchart=" + JSON.stringify(this.groupbarchart));
     });
   }
   public pieChartLabels: string[] = ["Pending", "InProgress", "OnHold", "Complete", "Cancelled"];

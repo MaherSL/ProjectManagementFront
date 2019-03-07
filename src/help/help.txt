@@ -43,3 +43,5 @@ INFO
 2019.02.10
   npm install chart.js --save
   #npm install rxjs-compat.js --save
+  npm install ng2-charts --save
+  npm install chart.js --save
