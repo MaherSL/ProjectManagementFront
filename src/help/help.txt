@@ -45,3 +45,9 @@ INFO
   #npm install rxjs-compat.js --save
   npm install ng2-charts --save
   npm install chart.js --save
+
+
+2019.03.07  INSTALL EXCEL
+  npm install file-saver
+  npm install xlsx
+  ng g service excel

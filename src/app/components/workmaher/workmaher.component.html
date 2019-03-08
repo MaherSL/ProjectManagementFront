@@ -1,3 +1,4 @@
+<app-contentheader></app-contentheader>
 <!-- Rectangular switch -->
 <label class="switch">
   <input type="checkbox">
@@ -13,6 +14,33 @@
   <input type="checkbox">
   <span class="slider round"></span>
 </label>
-<p>
-  workmaher works!
-</p>
+
+<p>Exporting an excel file of type .xslx !!!</p>
+<p>Export as XLSX by clicking the below button</p>
+<button (click)="exportAsXLSX()"><i class="fa fa-file-excel-o" style="font-size:48px;color:blue"></i></button>
+<table>
+  <tr>
+    <td>Eid</td>
+    <td>Ename</td>
+    <td>Esal</td>
+  </tr>
+  <tr *ngFor="let item of data">
+    <td>{{item.eid}}</td>
+    <td>{{item.ename}}</td>
+    <td>{{item.esal}}</td>
+  </tr>
+</table>
+
+<input type="file" (change)="onFileChange($event)" multiple="false" />
+<table>
+    <tbody>
+  <tr *ngFor="let item of data2">
+    <td class="border-right border-bottom-0">{{item[0]}}</td>
+    <td class="border-right border-bottom-0">{{item[1]}}</td>
+    <td class="border-right border-bottom-0">{{item[2]}}</td>
+    <td class="border-right border-bottom-0">{{item[3]}}</td>
+    <td class="border-right border-bottom-0">{{item[4]}}</td>
+    <td class="border-right border-bottom-0">{{item[5]}}</td>
+  </tr>
+  </tbody>
+</table>
