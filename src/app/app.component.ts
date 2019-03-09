@@ -2,10 +2,6 @@ import { Component, HostBinding, OnInit, AfterViewInit, ChangeDetectorRef } from
 import { ComponentconnService } from './services/componentconn.service';
 import { AuthService } from './services/auth.service';
 import { Router } from '@angular/router';
-import { SyspagenotfoundComponent } from './syspagenotfound/syspagenotfound.component';
-import { Subject } from 'rxjs';
-import { first } from 'rxjs/internal/operators/first';
-import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',

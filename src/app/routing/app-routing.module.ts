@@ -43,7 +43,7 @@ const routes: Routes = [
 
   {
     path: 'index',
-    component: DashboardComponent,
+    component: IndexComponent,
     canActivate: [AuthGuard]
   },
   {

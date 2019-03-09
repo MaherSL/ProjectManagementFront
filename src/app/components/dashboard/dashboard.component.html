@@ -5,24 +5,6 @@
     <div class="col-md-6">
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title">PIE chart using Chartjs and Angular 6</h3>
-
-          <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-            </button>
-            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-          </div>
-        </div>
-        <div class="box-body"><canvas baseChart [data]="pieChartData" [labels]="pieChartLabels"
-            [chartType]="pieChartType" [options]="pieChartOptions" (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
-        </div>
-        <!-- /.box-body -->
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="box box-primary">
-        <div class="box-header with-border">
           <h3 class="box-title">Incoming "fixed" BTs per Month
             (Line chart)</h3>
 
@@ -39,8 +21,7 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="row">
+
     <div class="col-md-6">
       <div class="box box-primary">
         <div class="box-header with-border">
@@ -59,6 +40,8 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="row">
     <div class="col-md-6">
       <div class="box box-primary">
         <div class="box-header with-border">
@@ -77,8 +60,6 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="row">
     <div class="col-md-6">
       <div class="box box-primary">
         <div class="box-header with-border">
@@ -91,9 +72,25 @@
           </div>
         </div>
         <div class="box-body">
-            <div id="c3chart"></div>
+          <div id="c3chart"></div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<!--
+<div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">PIE chart using Chartjs and Angular 6</h3>
+
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+          </div>
+        </div>
+        <div class="box-body"><canvas baseChart [data]="pieChartData" [labels]="pieChartLabels"
+            [chartType]="pieChartType" [options]="pieChartOptions" (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+        </div>
+      -->
