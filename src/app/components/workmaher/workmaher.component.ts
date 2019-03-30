@@ -3,7 +3,7 @@ import { ExcelService } from 'src/app/services/excel.service';
 import * as XLSX from 'xlsx';
 import { AlertService } from 'src/app/services/alert.service';
 import { WorkdataService } from 'src/app/services/workdata.service';
-import { Tworkdata } from 'src/app/entity/Tworkdata';
+import { Tworklinedata } from 'src/app/entity/Tworklinedata';
 const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
 const EXCEL_EXTENSION = '.xlsx';
 
@@ -55,21 +55,21 @@ export class WorkmaherComponent implements OnInit {
       this.data2 = (XLSX.utils.sheet_to_json(ws, { header: 1 }));
       this.alertService.success('Data=' + JSON.stringify(this.data2));
       var s: string = 'columns2=';
-      var workdataList: Tworkdata[] = [];
-      var workdata: Tworkdata;
-      var line=0;
+      var worklinedataList: Tworklinedata[] = [];
+      var worklinedata: Tworklinedata;
+      var line = 0;
       this.data2.forEach(element => {
         s += element[1] + ",";
         line++;
-        workdata = new Tworkdata();
-        workdata.c1 = element[0];
-        workdata.c2 = element[1];
-        workdata.codeworkdata="id1";
-        workdata.lineworkdata=line;
-        workdataList.push(workdata);
+        worklinedata = new Tworklinedata();
+        worklinedata.c1 = element[0];
+        worklinedata.c2 = element[1];
+        worklinedata.codeworkdata = "id1";
+        worklinedata.lineworkdata = line;
+        worklinedataList.push(worklinedata);
       });
       this.alertService.success(s);
-      this.workdataService.saveAll(workdataList)
+      this.workdataService.saveLines(worklinedataList)
         .subscribe(
           data => {
             this.alertService.success('Enregistrement fait avec succès');

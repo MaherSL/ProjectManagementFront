@@ -1,7 +1,8 @@
 
 
-export class Tworkdata {
-    idworkdata: number;
+export class Tworklinedata {
+    idworklinedata: number;
+    idsession:number;
     codeworkdata: string;
     lineworkdata: number;
     c1: string;
@@ -25,8 +26,8 @@ export class Tworkdata {
     n9: string;
     n10: string;
     constructor() {
-       
-    
-    
+
+
+
       }
 }
