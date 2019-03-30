@@ -75,6 +75,13 @@ export class AuthService {
     if (tusersignin == null) return null;
     return (tusersignin.tuser.iduser);
   }
+//used for excel charg
+  currentIdSession(): number {
+    let tusersignin: Tusersignin;
+    tusersignin = JSON.parse(localStorage.getItem(this.loginid));
+    if (tusersignin == null) return null;
+    return (tusersignin.idusersignin);
+  }
 
   currentMailuser(): string {
     let tusersignin: Tusersignin;
