@@ -48,27 +48,60 @@ export class ExcelService {
       var worklinedataList: Tworklinedata[] = [];
       var worklinedata: Tworklinedata;
       var line = 0;
+      var nbrcolumns = 0;
       data.forEach(element => {
+        this.alertService.success("dd="+JSON.stringify(element));
         s += element[1] + ",";
         line++;
         worklinedata = new Tworklinedata();
-        worklinedata.c1 = element[0];
-        worklinedata.c2 = element[1];
-        worklinedata.codeworkdata = "id1";
+        if (element.length > 10) {
+          nbrcolumns = 10;
+        }
+        else {
+          nbrcolumns = element.length;
+        }
+        for (var i = 0; i < nbrcolumns; i++) {
+          switch (i) {
+            case 0: worklinedata.c1 = element[i]; break;
+            case 1: worklinedata.c2 = element[i]; break;
+            case 2: worklinedata.c3 = element[i]; break;
+            case 3: worklinedata.c4 = element[i]; break;
+            case 4: worklinedata.c5 = element[i]; break;
+            case 5: worklinedata.c6 = element[i]; break;
+            case 6: worklinedata.c7 = element[i]; break;
+            case 7: worklinedata.c8 = element[i]; break;
+            case 8: worklinedata.c9 = element[i]; break;
+            case 9: worklinedata.c10 = element[i]; break;
+            default: worklinedata.c1 = "aaaaaa"; break;
+          }
+        }
+        //        worklinedata.c1 = element[0];
+        //worklinedata.c2 = element[1];
+        worklinedata.codeworkdata = "id2";
         worklinedata.lineworkdata = line;
         worklinedataList.push(worklinedata);
       });
       //this.alertService.success(s);
-      this.workdataService.saveLines(worklinedataList)
+      this.workdataService.deleteAll()
         .subscribe(
           data => {
-            if (withmessage)
-              this.alertService.success('Enregistrement fait avec succès');
+            this.workdataService.saveLines(worklinedataList)
+              .subscribe(
+                data => {
+                  if (withmessage){}
+                    //this.alertService.success('Enregistrement fait avec succèssss');
+                },
+                error => {
+                  throw new Error(JSON.stringify(error));
+                  //this.alertService.error(JSON.stringify(error));
+                });
           },
           error => {
             throw new Error(JSON.stringify(error));
             //this.alertService.error(JSON.stringify(error));
           });
+
+
     };
   }
 }

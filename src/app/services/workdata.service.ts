@@ -52,6 +52,7 @@ export class WorkdataService {
     return this.http.get<Tworkvaluedata>(this.url + "/value/list?idsession=" + this.idSession + "&codeworkdata=" + codeworkdata);
   }
 
+
   saveValue(workvaluedata: Tworkvaluedata) {
     workvaluedata.idsession = this.idSession;
     if (workvaluedata.tworkcolumndata != null) {
@@ -64,9 +65,8 @@ export class WorkdataService {
     return this.http.post<Tworkvaluedata>(this.url + "/value/save", workvaluedata);
   }
   saveValues(workvaluedata: Tworkvaluedata[]) {
-    if(workvaluedata!=null)
-    {
-      for(var i=0;i<workvaluedata.length;i++){
+    if (workvaluedata != null) {
+      for (var i = 0; i < workvaluedata.length; i++) {
         if (workvaluedata[i].tworkcolumndata != null) {
           workvaluedata[i].tworkcolumndata.idsession = this.idSession;
         }
