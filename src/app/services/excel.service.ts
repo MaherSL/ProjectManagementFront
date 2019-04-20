@@ -85,7 +85,7 @@ export class ExcelService {
       this.workdataService.deleteAll()
         .subscribe(
           data => {
-            this.workdataService.saveLines(worklinedataList)
+            this.workdataService.saveLines(null,worklinedataList)
               .subscribe(
                 data => {
                   if (withmessage){}

@@ -18,14 +18,18 @@ export class WorkdataService {
     return this.http.get<Tworklinedata>(this.url + "/line/list?idsession=" + this.idSession + "&codeworkdata=" + codeworkdata);
   }
 
-  saveLine(worklinedata: Tworklinedata) {
+  saveLine(codeworkdata: string, worklinedata: Tworklinedata) {
     worklinedata.idsession = this.idSession;
+    if (codeworkdata != null)
+      worklinedata.codeworkdata = codeworkdata;
     return this.http.post<Tworklinedata>(this.url + "/line/save", worklinedata);
   }
-  saveLines(worklinedata: Tworklinedata[]) {
+  saveLines(codeworkdata: string, worklinedata: Tworklinedata[]) {
     if (worklinedata != null) {
       for (var i = 0; i < worklinedata.length; i++) {
         worklinedata[i].idsession = this.idSession;
+        if (codeworkdata != null)
+          worklinedata[i].codeworkdata = codeworkdata;
       }
     }
     return this.http.post<Tworklinedata[]>(this.url + "/line/saveall", worklinedata);
@@ -35,14 +39,18 @@ export class WorkdataService {
     return this.http.get<Tworkcolumndata>(this.url + "/column/list?idsession=" + this.idSession + "&codeworkdata=" + codeworkdata);
   }
 
-  saveColumn(workcolumndata: Tworkcolumndata) {
+  saveColumn(codeworkdata: string, workcolumndata: Tworkcolumndata) {
     workcolumndata.idsession = this.idSession;
+    if (codeworkdata != null)
+      workcolumndata.codeworkdata = codeworkdata;
     return this.http.post<Tworkcolumndata>(this.url + "/column/save", workcolumndata);
   }
-  saveColumns(workcolumndata: Tworkcolumndata[]) {
+  saveColumns(codeworkdata: string, workcolumndata: Tworkcolumndata[]) {
     if (workcolumndata != null) {
       for (var i = 0; i < workcolumndata.length; i++) {
         workcolumndata[i].idsession = this.idSession;
+        if(codeworkdata!=null)
+        workcolumndata[i].codeworkdata = codeworkdata;
       }
     }
     return this.http.post<Tworklinedata[]>(this.url + "/column/saveall", workcolumndata);
@@ -53,8 +61,10 @@ export class WorkdataService {
   }
 
 
-  saveValue(workvaluedata: Tworkvaluedata) {
+  saveValue(codeworkdata: string,workvaluedata: Tworkvaluedata) {
     workvaluedata.idsession = this.idSession;
+    if(codeworkdata!=null)
+    workvaluedata.codeworkdata = codeworkdata;
     if (workvaluedata.tworkcolumndata != null) {
       workvaluedata.tworkcolumndata.idsession = this.idSession;
     }
@@ -64,14 +74,19 @@ export class WorkdataService {
 
     return this.http.post<Tworkvaluedata>(this.url + "/value/save", workvaluedata);
   }
-  saveValues(workvaluedata: Tworkvaluedata[]) {
+  saveValues(codeworkdata: string, workvaluedata: Tworkvaluedata[]) {
     if (workvaluedata != null) {
       for (var i = 0; i < workvaluedata.length; i++) {
         if (workvaluedata[i].tworkcolumndata != null) {
+
           workvaluedata[i].tworkcolumndata.idsession = this.idSession;
+          if(codeworkdata!=null)
+          workvaluedata[i].tworkcolumndata.codeworkdata = codeworkdata;
         }
         if (workvaluedata[i].tworklinedata != null) {
           workvaluedata[i].tworklinedata.idsession = this.idSession;
+          if(codeworkdata!=null)
+          workvaluedata[i].tworklinedata.codeworkdata = codeworkdata;
         }
       }
     }
