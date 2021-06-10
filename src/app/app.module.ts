@@ -1,14 +1,13 @@
 import { ChartsModule } from 'ng2-charts/ng2-charts';
-import { FormiComponent } from './components/formi/formi.component';
 import { AlertService } from './services/alert.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
-import { AppheaderComponent } from './components/appheader/appheader.component';
-import { AppfooterComponent } from './components/appfooter/appfooter.component';
-import { AppmenuComponent } from './components/appmenu/appmenu.component';
+import { AppheaderComponent } from './components/templates/appheader/appheader.component';
+import { AppfooterComponent } from './components/templates/appfooter/appfooter.component';
+import { AppmenuComponent } from './components/templates/appmenu/appmenu.component';
 import { AppsettingsComponent } from './components/appsettings/appsettings.component';
 import { SpaceComponent } from './components/space/space.component';
 import { IndexComponent } from './components/index/index.component';
@@ -18,7 +17,6 @@ import { AuthGuard } from './services/auth.guard';
 import { RolelistComponent } from './components/rolelist/rolelist.component';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RolelistmodifComponent } from './components/rolelistmodif/rolelistmodif.component';
-import { FormcComponent } from './components/formc/formc.component';
 import { ViewlistComponent } from './components/viewlist/viewlist.component';
 import { ViewComponent } from './components/view/view.component';
 import { SyspagenotfoundComponent } from './syspagenotfound/syspagenotfound.component';
@@ -46,7 +44,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
 //ngx select and multipleselect
 import { NgxSelectModule } from 'ngx-select-ex';
 
-import { SelectmComponent } from './components/selectm/selectm.component';
 //import { SelectDropDownModule } from 'ngx-select-dropdown';
 //import { SelectmComponent } from './components/selectm/selectm.component';
 import { SelectModule } from 'ng2-select';
@@ -70,13 +67,10 @@ import { WorkaymenComponent } from './components/workaymen/workaymen.component';
     LoginComponent,
     RolelistComponent,
     RolelistmodifComponent,
-    FormiComponent,
-    FormcComponent,
     ViewComponent,
     ViewlistComponent,
     SyspagenotfoundComponent,
     AlertComponent,
-    FormiComponent,
     VocabComponent,
     VocablistComponent,
     ProductComponent,
@@ -93,7 +87,6 @@ import { WorkaymenComponent } from './components/workaymen/workaymen.component';
     PersonComponent,
     PersonlistComponent,
     //SelectDropDownModule,
-    SelectmComponent,
     SpreedsheetsexcelComponent,
     WorkmaherComponent,
     WorkaymenComponent

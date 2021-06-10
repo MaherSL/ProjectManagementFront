@@ -1,4 +1,4 @@
-import { ComponentconnService } from './../../services/componentconn.service';
+import { ComponentconnService } from 'src/app/services/componentconn.service'
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { ViewService } from 'src/app/services/view.service';
 import { Tview } from 'src/app/entity/Tview';
@@ -25,7 +25,7 @@ export class AppmenuComponent implements OnInit {
   }
 
   hide() {
-    this.viewlist=[];
+    this.viewlist = [];
 
   }
   show() {

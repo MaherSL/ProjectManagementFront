@@ -5,12 +5,12 @@
     <div class="box-header with-border">
       <h3 class="box-title">Ticket</h3>
       <div class="box-tools pull-right">
-        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+        <button type="button" class="btn btn-box-tool btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
         </button>
         <div class="btn-group">
-          <button type="button" class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown">
+          <button type="button" class="btn btn-box-tool dropdown-toggle btn-sm" data-toggle="dropdown">
             <i class="fa fa-wrench"></i></button>
-          <ul class="dropdown-menu" role="menu">
+          <ul class="dropdown-menu input-sm" role="menu">
             <li>
               <a (click)="inverserSuppressionActive=!inverserSuppressionActive">{{inverserSuppressionActive ? 'Désac.
                 suppr.' : 'Activer suppr.'}}</a>
@@ -46,7 +46,7 @@
                   <!--<ngx-select [items]="ticketlist" optionValueField='idticket' (selectionChanges)="doSelectOptions($event)"
                     optionTextField='dateticket' [defaultValue]="tticket.idticket"></ngx-select>-->
                   <input type="Date" class="form-control" formControlName="dateticket" />
-                  <div *ngIf="submitted && f.dateticket.errors" class="help-block">
+                  <div *ngIf="submitted && f.dateticket.errors" class="help-block input-sm">
                     <div *ngIf="f.dateticket.errors.required">Date ticket obligatoire</div>
                   </div>
                 </div>
@@ -56,7 +56,7 @@
               <div class="form-group" [ngClass]="{'has-error': submitted && f.vocticketstatus.errors}">
                 <label for="vocticketstatus">Status</label>
                 <ngx-select [items]="ticketstatusList" optionValueField='idvocabword' optionTextField='nameword'
-                  [defaultValue]="tticket.vocticketstatus.idvocabword"></ngx-select>
+                  [defaultValue]="tticket.vocticketstatus.idvocabword" class="input-sm"></ngx-select>
                 <div *ngIf="f.vocticketstatus.errors" class="help-block">
                   <div *ngIf="f.vocticketstatus.errors.required">Mandatory status</div>
                 </div>
@@ -140,7 +140,7 @@
             <div class="col-md-4">
               <div class="form-group" [ngClass]="{'has-error': submitted && f.summary.errors}">
                 <label for="summary">Summary</label>
-                <input type="text" formControlName="summary" class="form-control" />
+                <input type="text" formControlName="summary" class="form-control input-sm" />
                 <!-- <Select class="form-control" id="summary">
                     <option *ngFor="let ticket of ticketlist" [ngValue]="ticket">{{ticket.summary}}</option>
                   </Select>-->
@@ -157,7 +157,7 @@
                       {{option.data.tperson.nameperson}} {{option.data.idreporter}}
                                      </ng-template>-->
                 </ngx-select>
-                <div *ngIf="submitted && f.treporter.errors" class="help-block">
+                <div *ngIf="submitted && f.treporter.errors" class="help-block input-sm">
                   <div *ngIf="f.treporter.errors.required">Reporter obligatoire</div>
                 </div>
               </div>
@@ -167,9 +167,6 @@
             <div class="col-md-3">
               <div class="form-group" [ngClass]="{'has-error': submitted && f.externalcodea.errors}">
                 <label for="tproductversion">Product Version</label>
-
-
-
                 <ngx-select   [items]="productversionList"  [multiple]="true" optionValueField='idproductversion' optionTextField='numberversion'
                  [defaultValue]="tticket.tproductversion.idproductversion">
                     <!--<ng-template ngx-select-option let-option let-text="text">
@@ -182,7 +179,7 @@
                     <option *ngFor="let ticket of ticketlist" [ngValue]="ticket">{{ticket.tproductversion.numberversion}}</option>
                   </Select>-->
 
-                <div *ngIf="submitted && f.tproductversion.errors" class="help-block">
+                <div *ngIf="submitted && f.tproductversion.errors" class="help-block  input-sm">
                   <div *ngIf="f.tproductversion.errors.required">you can choose more than one version</div>
                 </div>
               </div>

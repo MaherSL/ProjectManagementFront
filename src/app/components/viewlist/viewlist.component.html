@@ -42,8 +42,8 @@
               <th>
                 <select (change)="onFilterEnabledview($event.target.value)" class="form-control select2 select2-hidden-accessible  input-sm"
                   style="width: 100%;" tabindex="-1" aria-hidden="true">
-                  <option [value]=null>[Etat]</option>
-                  <option [value]=1 selected>Actif</option>
+                  <option [value]=null selected>[Etat]</option>
+                  <option [value]=1>Actif</option>
                   <option [value]=0>Inactif</option>
                 </select></th>
               <th *ngIf="inverserSuppressionActive">Supp</th>
