@@ -45,7 +45,7 @@
     "ngx-select-ex": "^3.6.8",
     "ngx-select-multiple": "0.0.3",
     "rxjs": "^6.0.0",
-    "xlsx": "^0.14.1",
+    "xlsx": "^0.17.0",
     "zingchart": "^2.8.5",
     "zone.js": "^0.8.26"
   },
